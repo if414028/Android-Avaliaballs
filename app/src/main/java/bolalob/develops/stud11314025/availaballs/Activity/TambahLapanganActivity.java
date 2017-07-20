@@ -37,8 +37,6 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     @BindView(R.id.eTNamaLapangan)
     EditText etNamaLapangan;
-    @BindView(R.id.eTTipeLapangan)
-    EditText etTipeLapangan;
 
     @BindView(R.id.upload_img)
     ImageView upload_img;
@@ -147,7 +145,6 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     public void addTextWatcher() {
         final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
-        final View lltipelapangan = findViewById(R.id.layoutTipeLapangan);
 
         TextWatcher namaWatcher = new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -169,27 +166,6 @@ public class TambahLapanganActivity extends AppCompatActivity {
             }
         };
         etNamaLapangan.addTextChangedListener(namaWatcher);
-
-        TextWatcher tipeWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lltipelapangan.setAlpha(0.5f);
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etTipeLapangan.getText().length();
-                if (length == 0) {
-                    lltipelapangan.setAlpha(0.5f);
-                } else lltipelapangan.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etTipeLapangan.getText().length();
-                if (length == 0) {
-                    lltipelapangan.setAlpha(0.5f);
-                } else lltipelapangan.setAlpha(1.0f);
-            }
-        };
-        etTipeLapangan.addTextChangedListener(tipeWatcher);
     }
 
     public void nextStep(View view) {

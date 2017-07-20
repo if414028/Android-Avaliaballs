@@ -42,7 +42,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah__lapangan__step__dua);
+        setContentView(R.layout.activity_tambah_lapangan_step_dua);
         ButterKnife.bind(this);
 
         addActionBar();
