@@ -14,8 +14,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +32,7 @@ import bolalob.develops.stud11314025.availaballs.Widget.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 public class TambahLapanganActivity extends AppCompatActivity {
 
@@ -61,7 +60,6 @@ public class TambahLapanganActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         addActionBar();
-        addTextWatcher();
     }
 
     @OnClick(R.id.upload_img)
@@ -149,29 +147,28 @@ public class TambahLapanganActivity extends AppCompatActivity {
         }
     }
 
-    public void addTextWatcher() {
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeNamaLapanganTextChanged() {
         final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        llnamalapangan.setAlpha(0.5f);
+    }
 
-        TextWatcher namaWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                llnamalapangan.setAlpha(0.5f);
-            }
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onNamaLapanganTextChanged() {
+        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        int length = etNamaLapangan.getText().length();
+        if (length == 0) {
+            llnamalapangan.setAlpha(0.5f);
+        } else llnamalapangan.setAlpha(1.0f);
+    }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etNamaLapangan.getText().length();
-                if (length == 0) {
-                    llnamalapangan.setAlpha(0.5f);
-                } else llnamalapangan.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etNamaLapangan.getText().length();
-                if (length == 0) {
-                    llnamalapangan.setAlpha(0.5f);
-                } else llnamalapangan.setAlpha(1.0f);
-            }
-        };
-        etNamaLapangan.addTextChangedListener(namaWatcher);
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterNamaLapanganTextChanged() {
+        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        int length = etNamaLapangan.getText().length();
+        if (length == 0) {
+            llnamalapangan.setAlpha(0.5f);
+        } else llnamalapangan.setAlpha(1.0f);
     }
 
     public void nextStep(View view) {

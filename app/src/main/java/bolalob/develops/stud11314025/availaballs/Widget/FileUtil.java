@@ -86,12 +86,12 @@ public class FileUtil {
 
     public static File getOutputMediaFile(int type) throws IOException {
         // External sdcard location
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "avalaballs");
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "avaliaballs");
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
-                Log.d("TAG", "Oops! Failed create " + "Bolalob" + " directory");
+                Log.d("TAG", "Oops! Failed create " + "avaliaballs" + " directory");
                 return null;
             }
         }

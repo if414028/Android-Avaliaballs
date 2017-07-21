@@ -7,8 +7,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -25,6 +23,7 @@ import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnTextChanged;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -53,8 +52,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
         }
 
-        addTextWatcher();
-
         presenter = new LoginPresenterImp(this);
 
         btnLgn.setOnClickListener(new View.OnClickListener() {
@@ -66,60 +63,52 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
-    public void addTextWatcher() {
-        final View lluname = findViewById(R.id.layoutUsername);
+    @OnTextChanged(value = R.id.eTEmail, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeEmailTextChanged() {
+        final View llemail = findViewById(R.id.layoutUsername);
+        llemail.setAlpha(0.5f);
+    }
+
+    @OnTextChanged(value = R.id.eTEmail, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onEmailTextChanged() {
+        final View llemail = findViewById(R.id.layoutUsername);
+        int length = etEmail.getText().length();
+        if (length == 0) {
+            llemail.setAlpha(0.5f);
+        } else llemail.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTEmail, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterEmailTextChanged() {
+        final View llemail = findViewById(R.id.layoutUsername);
+        int length = etEmail.getText().length();
+        if (length == 0) {
+            llemail.setAlpha(0.5f);
+        } else llemail.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTPassword, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforePassTextChanged() {
         final View llpass = findViewById(R.id.layoutPassword);
+        llpass.setAlpha(0.5f);
+    }
 
-        if (llpass.isActivated()) {
+    @OnTextChanged(value = R.id.eTPassword, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onPassTextChanged() {
+        final View llpass = findViewById(R.id.layoutPassword);
+        int length = etPassword.getText().length();
+        if (length == 0) {
+            llpass.setAlpha(0.5f);
+        } else llpass.setAlpha(1.0f);
+    }
 
-        }
-
-        TextWatcher emailWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lluname.setAlpha(0.5f);
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etEmail.getText().length();
-                if (length == 0) {
-                    lluname.setAlpha(0.5f);
-                } else lluname.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etEmail.getText().length();
-                if (length == 0) {
-                    lluname.setAlpha(0.5f);
-                } else lluname.setAlpha(1.0f);
-            }
-        };
-        etEmail.addTextChangedListener(emailWatcher);
-
-        TextWatcher passWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                int length = etPassword.getText().length();
-                if (length == 0) {
-                    llpass.setAlpha(0.5f);
-                }
-
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etPassword.getText().length();
-                if (length == 0) {
-                    llpass.setAlpha(0.5f);
-                } else llpass.setAlpha(1.0f);
-
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etPassword.getText().length();
-                if (length == 0) {
-                    llpass.setAlpha(0.5f);
-                } else llpass.setAlpha(1.0f);
-            }
-        };
-        etPassword.addTextChangedListener(passWatcher);
+    @OnTextChanged(value = R.id.eTPassword, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterPassTextChanged() {
+        final View llpass = findViewById(R.id.layoutPassword);
+        int length = etPassword.getText().length();
+        if (length == 0) {
+            llpass.setAlpha(0.5f);
+        } else llpass.setAlpha(1.0f);
     }
 
     @Override
@@ -164,6 +153,5 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutUsername);
         layout.setAlpha(1);
     }
-
 
 }

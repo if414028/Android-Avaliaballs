@@ -230,7 +230,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

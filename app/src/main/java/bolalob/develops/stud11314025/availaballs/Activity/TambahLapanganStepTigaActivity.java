@@ -45,7 +45,6 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_tambah_lapangan_step_tiga);
 
         addActionBar();
-
     }
 
     public void addActionBar() {
@@ -66,7 +65,6 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

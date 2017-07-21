@@ -82,6 +82,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;

@@ -5,8 +5,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +23,7 @@ import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 public class TambahLapanganStepDuaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -47,10 +46,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
 
         addActionBar();
 
-        addTextWatcher();
-
         spinnerJumlahLapangan.setOnItemSelectedListener(this);
-
     }
 
     @OnClick(R.id.eTLokasi)
@@ -77,52 +73,52 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     @BindView(R.id.spinnerJumlahLapangan)
     Spinner spinnerJumlahLapangan;
 
-    public void addTextWatcher() {
-
+    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeLokasiTextChanged() {
         final View lllokasi = findViewById(R.id.layoutLokasi);
+        lllokasi.setAlpha(0.5f);
+    }
+
+    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onLokasiTextChanged() {
+        final View lllokasi = findViewById(R.id.layoutLokasi);
+        int length = etLokasi.getText().length();
+        if (length == 0) {
+            lllokasi.setAlpha(0.5f);
+        } else lllokasi.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterLokasiTextChanged() {
+        final View lllokasi = findViewById(R.id.layoutLokasi);
+        int length = etLokasi.getText().length();
+        if (length == 0) {
+            lllokasi.setAlpha(0.5f);
+        } else lllokasi.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeTeleponTextChanged() {
         final View lltelepon = findViewById(R.id.layoutTelepon);
+        lltelepon.setAlpha(0.5f);
+    }
 
-        TextWatcher lokasiWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lllokasi.setAlpha(0.5f);
-            }
+    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onTeleponTextChanged() {
+        final View lltelepon = findViewById(R.id.layoutTelepon);
+        int length = etTelepon.getText().length();
+        if (length == 0) {
+            lltelepon.setAlpha(0.5f);
+        } else lltelepon.setAlpha(1.0f);
+    }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etLokasi.getText().length();
-                if (length == 0) {
-                    lllokasi.setAlpha(0.5f);
-                } else lllokasi.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etLokasi.getText().length();
-                if (length == 0) {
-                    lllokasi.setAlpha(0.5f);
-                } else lllokasi.setAlpha(1.0f);
-            }
-        };
-        etLokasi.addTextChangedListener(lokasiWatcher);
-
-        TextWatcher teleponWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lltelepon.setAlpha(0.5f);
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etTelepon.getText().length();
-                if (length == 0) {
-                    lltelepon.setAlpha(0.5f);
-                } else lltelepon.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etTelepon.getText().length();
-                if (length == 0) {
-                    lltelepon.setAlpha(0.5f);
-                } else lltelepon.setAlpha(1.0f);
-            }
-        };
-        etTelepon.addTextChangedListener(teleponWatcher);
+    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterTeleponTextChanged() {
+        final View lltelepon = findViewById(R.id.layoutTelepon);
+        int length = etTelepon.getText().length();
+        if (length == 0) {
+            lltelepon.setAlpha(0.5f);
+        } else lltelepon.setAlpha(1.0f);
     }
 
     public void addActionBar() {
