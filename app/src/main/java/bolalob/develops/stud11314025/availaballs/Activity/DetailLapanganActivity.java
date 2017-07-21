@@ -1,6 +1,7 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -48,6 +49,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
     ProgressBar progressBar;
     @BindView(R.id.IcEditHariJam)
     CustomFontTextView IcEditJam;
+    @BindView(R.id.appbar)
+    AppBarLayout appbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +62,14 @@ public class DetailLapanganActivity extends AppCompatActivity {
         IcEditJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),UpdateJamBukaActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UpdateJamBukaActivity.class);
                 startActivity(intent);
             }
         });
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);;
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            ;
         }
 
         Intent intent = this.getIntent();
@@ -93,9 +97,13 @@ public class DetailLapanganActivity extends AppCompatActivity {
                 if (scrollRange + verticalOffset == 0) {
                     collapsingToolbarLayout.setTitle(namalap);
                     collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.clrpressed));
+                    collapsingToolbarLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
+                    toolbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
                     isShow = true;
-                } else if(isShow) {
+                } else if (isShow) {
                     collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
+                    toolbar.setBackgroundColor(Color.TRANSPARENT);
+                    appBarLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
                     isShow = false;
                 }
             }

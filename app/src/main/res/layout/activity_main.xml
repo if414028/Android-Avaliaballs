@@ -18,7 +18,7 @@
         android:layout_below="@+id/TextNo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/size140"
+        android:layout_marginBottom="115dp"
         ></android.support.v7.widget.RecyclerView>
 
     <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
@@ -128,7 +128,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/rectanglebutton"
         android:textColor="@color/colorstate"
-        android:layout_marginBottom="@dimen/size80"
+        android:layout_marginBottom="70dp"
         android:textSize="@dimen/font12" android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_alignBottom="@id/rv_main"

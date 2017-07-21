@@ -54,13 +54,11 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     }
 
     @OnClick(R.id.eTLokasi)
-    void onButtonClick(){
+    void onButtonClick() {
         try {
             PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
             startActivityForResult(builder.build(TambahLapanganStepDuaActivity.this), PLACE_PICKER_REQUEST);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -69,7 +67,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("%s", place.getName()+",\n"+place.getAddress());
+                String toastMsg = String.format("%s", place.getName() + ",\n" + place.getAddress());
                 etLokasi.setText(toastMsg);
                 Toast.makeText(TambahLapanganStepDuaActivity.this, toastMsg, Toast.LENGTH_LONG).show();
             }

@@ -43,9 +43,8 @@
 
         </activity>
 
-        <activity android:name=".Activity.TambahLapanganStepDuaActivity">
+        <activity android:name=".Activity.TambahLapanganStepDuaActivity"/>
 
-        </activity>
 
         <activity
             android:name=".Activity.DetailLapanganActivity"
@@ -55,13 +54,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCvpN7qZPXwrahdKwx-XPYLuEm3vib9v7M" />
 
-        <activity android:name=".Activity.TambahLapanganStepTigaActivity">
+        <activity android:name=".Activity.TambahLapanganStepTigaActivity"/>
 
-        </activity>
 
-        <activity android:name=".Activity.UpdateJamBukaActivity">
+        <activity android:name=".Activity.UpdateJamBukaActivity"/>
 
-        </activity>
     </application>
 
 </manifest>

@@ -101,7 +101,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
         takebgCoverDialog.show();
     }
 
-    private void attachToImageView(String imagePath){
+    private void attachToImageView(String imagePath) {
         Glide.with(getContext())
                 .load(imagePath)
                 .dontAnimate()

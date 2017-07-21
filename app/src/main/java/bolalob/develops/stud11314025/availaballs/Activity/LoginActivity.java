@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         final View lluname = findViewById(R.id.layoutUsername);
         final View llpass = findViewById(R.id.layoutPassword);
 
-        if (llpass.isActivated()){
+        if (llpass.isActivated()) {
 
         }
 
