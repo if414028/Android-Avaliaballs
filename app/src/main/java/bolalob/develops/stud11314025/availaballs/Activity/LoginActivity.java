@@ -26,8 +26,6 @@ import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//import android.support.design.R;
-
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @BindView(R.id.eTEmail)
@@ -72,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         final View lluname = findViewById(R.id.layoutUsername);
         final View llpass = findViewById(R.id.layoutPassword);
 
-        if (llpass.isActivated()){
+        if (llpass.isActivated()) {
 
         }
 

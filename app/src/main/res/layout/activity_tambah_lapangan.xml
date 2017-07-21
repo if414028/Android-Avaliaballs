@@ -15,9 +15,9 @@
             android:id="@+id/upload_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_gravity="center"
             android:layout_marginTop="30dp">
 
             <ImageView
@@ -35,11 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="90dp"
-            android:alpha="0.5"
-
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+
+            android:layout_marginTop="90dp"
+            android:alpha="0.5"
             android:background="@drawable/texteditdark"
             android:orientation="horizontal">
 

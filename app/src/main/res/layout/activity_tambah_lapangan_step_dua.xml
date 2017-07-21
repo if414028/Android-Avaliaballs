@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent">
 
-    <LinearLayout android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:focusable="true"
         android:id="@+id/backgroud"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:focusable="true"
         android:focusableInTouchMode="true"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/layoutLokasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:id="@+id/layoutLokasi"
+            android:layout_marginTop="30dp"
             android:alpha="0.5"
-            android:background="@drawable/texteditdark">
+            android:background="@drawable/texteditdark"
+            android:orientation="horizontal">
 
             <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                 android:id="@+id/iconLokasiTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:layout_marginTop="18dp"
                 android:text="@string/icon_location"
+                android:textSize="20dp"
                 app:font="@string/font_icon">
 
             </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
@@ -50,6 +50,7 @@
                     android:id="@+id/eTLokasi"
                     android:layout_width="240dp"
                     android:layout_height="40dp"
+                    android:background="@android:color/transparent"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/clrline"
                     android:ems="10"
@@ -58,8 +59,7 @@
                     android:lines="3"
                     android:textSize="12dp"
                     android:textStyle="normal"
-                    android:background="@android:color/transparent"
-                    app:font="@string/font_roboto"/>
+                    app:font="@string/font_roboto" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -67,31 +67,31 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lytlp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp"
-            android:id="@+id/lytlp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
 
             <LinearLayout
+                android:id="@+id/layoutTelepon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:id="@+id/layoutTelepon"
                 android:alpha="0.5"
-                android:background="@drawable/texteditdark">
+                android:background="@drawable/texteditdark"
+                android:orientation="horizontal">
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                     android:id="@+id/iconTeleponTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/icon_phone"
+                    android:textSize="20dp"
                     app:font="@string/font_icon">
 
                 </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
@@ -110,6 +110,7 @@
                         android:id="@+id/eTTelepon"
                         android:layout_width="200dp"
                         android:layout_height="40dp"
+                        android:background="@android:color/transparent"
                         android:drawablePadding="15dp"
                         android:drawableTint="@color/clrline"
                         android:ems="10"
@@ -118,7 +119,6 @@
                         android:lines="3"
                         android:textSize="12dp"
                         android:textStyle="normal"
-                        android:background="@android:color/transparent"
                         app:font="@string/font_roboto" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -127,12 +127,11 @@
                     android:id="@+id/iconTeleponAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/icon_add"
-                    app:font="@string/font_icon">
-                </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+                    android:textSize="20dp"
+                    app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 
             </LinearLayout>
 
@@ -141,34 +140,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Berapa Jumlah Lapangan?"
-            android:layout_marginTop="50dp"
-            android:textSize="16dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="50dp"
+            android:text="Berapa Jumlah Lapangan?"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerJumlahLapangan"
+            style="@style/SpinnerTheme"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:entries="@array/jumlah_lapangan"
-            style="@style/SpinnerTheme"/>
+            android:entries="@array/jumlah_lapangan" />
 
         <Button
             android:id="@+id/btnLogin"
+            style="@style/SpinnerTheme"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="80dp"
             android:background="@drawable/circlebutton"
+            android:onClick="nextStep"
             android:text="Selanjutnya"
-            style="@style/SpinnerTheme"
             android:textAllCaps="false"
-            android:textColor="@android:color/background_light"
-            android:layout_gravity="center"
-            android:onClick="nextStep"/>
+            android:textColor="@android:color/background_light" />
 
 
     </LinearLayout>

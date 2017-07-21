@@ -266,52 +266,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         spinnerJmTpJumat.setOnItemSelectedListener(this);
         spinnerJmTpSabtu.setOnItemSelectedListener(this);
         spinnerJmTpMinggu.setOnItemSelectedListener(this);
-
-
-//        List<String> categories = new ArrayList<String>();
-//        categories.add("08:00");
-//        categories.add("00:00");
-//        categories.add("01:00");
-//        categories.add("02:00");
-//        categories.add("03:00");
-//        categories.add("04:00");
-//        categories.add("05:00");
-//        categories.add("06:00");
-//        categories.add("07:00");
-//        categories.add("09:00");
-//        categories.add("10:00");
-//        categories.add("11:00");
-//        categories.add("12:00");
-//        categories.add("13:00");
-//        categories.add("14:00");
-//        categories.add("15:00");
-//        categories.add("16:00");
-//        categories.add("17:00");
-//        categories.add("18:00");
-//        categories.add("19:00");
-//        categories.add("20:00");
-//        categories.add("21:00");
-//        categories.add("22:00");
-//        categories.add("23:00");
-//
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,R.layout.spinner_itemjam,R.array.array_itemjam);
-//
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerJmBkSenin.setAdapter(dataAdapter);
-//        spinnerJmBkSelasa.setAdapter(dataAdapter);
-//        spinnerJmBkRabu.setAdapter(dataAdapter);
-//        spinnerJmBkKamis.setAdapter(dataAdapter);
-//        spinnerJmBkJumat.setAdapter(dataAdapter);
-//        spinnerJmBkSabtu.setAdapter(dataAdapter);
-//        spinnerJmBkMinggu.setAdapter(dataAdapter);
-//        spinnerJmTpSenin.setAdapter(dataAdapter);
-//        spinnerJmTpSelasa.setAdapter(dataAdapter);
-//        spinnerJmTpRabu.setAdapter(dataAdapter);
-//        spinnerJmTpKamis.setAdapter(dataAdapter);
-//        spinnerJmTpJumat.setAdapter(dataAdapter);
-//        spinnerJmTpSabtu.setAdapter(dataAdapter);
-//        spinnerJmTpMinggu.setAdapter(dataAdapter);
-
     }
 
     @Override
@@ -328,9 +282,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String item = adapterView.getItemAtPosition(i).toString();
-
-        // Showing selected spinner item
-//        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
     @Override

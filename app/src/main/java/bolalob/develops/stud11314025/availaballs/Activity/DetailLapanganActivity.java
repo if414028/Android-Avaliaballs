@@ -59,13 +59,14 @@ public class DetailLapanganActivity extends AppCompatActivity {
         IcEditJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),UpdateJamBukaActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UpdateJamBukaActivity.class);
                 startActivity(intent);
             }
         });
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);;
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            ;
         }
 
         Intent intent = this.getIntent();
@@ -94,7 +95,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
                     collapsingToolbarLayout.setTitle(namalap);
                     collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.clrpressed));
                     isShow = true;
-                } else if(isShow) {
+                } else if (isShow) {
                     collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
                     isShow = false;
                 }
@@ -128,12 +129,6 @@ public class DetailLapanganActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 navigateUpTo(new Intent(this, MainActivity.class));
             }
@@ -141,10 +136,4 @@ public class DetailLapanganActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void updatejambuka(View view) {
-
-    }
-
-
 }

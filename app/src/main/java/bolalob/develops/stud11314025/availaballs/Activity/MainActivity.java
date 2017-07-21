@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -125,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
                     LabelNo.setVisibility(View.VISIBLE);
                     LabelNamaLap.setVisibility(View.VISIBLE);
                 }
-
-
             }
 
             @Override
@@ -135,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     public void tambahLapangan(View view) {
