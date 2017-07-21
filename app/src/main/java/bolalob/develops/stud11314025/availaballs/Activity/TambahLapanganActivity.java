@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
+
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.FileUtil;
 import bolalob.develops.stud11314025.availaballs.Widget.Utils;
@@ -88,7 +90,11 @@ public class TambahLapanganActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int position) {
                 switch (position) {
                     case 0:
-                        imageUri = FileUtil.getFromCamera(getContext());
+                        try {
+                            FileUtil.getFromCamera(getContext());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 1:
                         FileUtil.getFromAlbum(getContext());
@@ -128,12 +134,12 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_FROM_CAMERA) {
             if (resultCode == RESULT_OK) {
-                imagePath = FileUtil.compressImage(this, imageUri.getPath(), 640);
+                imagePath = FileUtil.compressImage(this, null, 640);
                 attachToImageView(imagePath);
             }
         } else if (requestCode == REQUEST_FROM_ALBUM) {
             if (resultCode == RESULT_OK) {
-                imageUri = data.getData();
+                Uri imageUri = data.getData();
                 boolean isFromGoogleDrive = imageUri.toString().contains("com.google.android.apps.docs.storage");
                 imagePath = FileUtil.compressImage(this, isFromGoogleDrive ?
                         FileUtil.downloadFromGoogleDrive(this, imageUri) :
