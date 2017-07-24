@@ -32,6 +32,7 @@ import bolalob.develops.stud11314025.availaballs.Widget.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
 
 public class TambahLapanganActivity extends AppCompatActivity {
@@ -169,6 +170,14 @@ public class TambahLapanganActivity extends AppCompatActivity {
         if (length == 0) {
             llnamalapangan.setAlpha(0.5f);
         } else llnamalapangan.setAlpha(1.0f);
+    }
+
+    @OnFocusChange(value = R.id.eTNamaLapangan)
+    void onNamaLapanganFocusChanged(boolean focused) {
+        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        if (!focused) {
+            llnamalapangan.setAlpha(0.5f);
+        }
     }
 
     public void nextStep(View view) {

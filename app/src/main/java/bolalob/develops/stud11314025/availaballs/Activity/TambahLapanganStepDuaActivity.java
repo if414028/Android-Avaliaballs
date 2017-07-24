@@ -23,6 +23,7 @@ import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
 
 public class TambahLapanganStepDuaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -97,6 +98,14 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         } else lllokasi.setAlpha(1.0f);
     }
 
+    @OnFocusChange(value = R.id.eTLokasi)
+    void onLokasiFocusChanged(boolean focused) {
+        final View lllokasi = findViewById(R.id.layoutLokasi);
+        if (!focused) {
+            lllokasi.setAlpha(0.5f);
+        }
+    }
+
     @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
     void beforeTeleponTextChanged() {
         final View lltelepon = findViewById(R.id.layoutTelepon);
@@ -119,6 +128,14 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         if (length == 0) {
             lltelepon.setAlpha(0.5f);
         } else lltelepon.setAlpha(1.0f);
+    }
+
+    @OnFocusChange(value = R.id.eTTelepon)
+    void afterTeleponFocusChanged(boolean focused) {
+        final View lltelepon = findViewById(R.id.layoutTelepon1);
+        if (!focused) {
+            lltelepon.setAlpha(0.5f);
+        }
     }
 
     public void addActionBar() {

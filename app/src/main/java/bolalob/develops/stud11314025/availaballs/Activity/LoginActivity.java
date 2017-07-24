@@ -23,6 +23,7 @@ import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -87,6 +88,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         } else llemail.setAlpha(1.0f);
     }
 
+    @OnFocusChange(value = R.id.eTEmail)
+    void onEmailFocusChanged(boolean focused) {
+        final View llemail = findViewById(R.id.layoutUsername);
+        if (!focused) {
+            llemail.setAlpha(0.5f);
+        }
+    }
+
     @OnTextChanged(value = R.id.eTPassword, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
     void beforePassTextChanged() {
         final View llpass = findViewById(R.id.layoutPassword);
@@ -110,6 +119,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             llpass.setAlpha(0.5f);
         } else llpass.setAlpha(1.0f);
     }
+
+    @OnFocusChange(value = R.id.eTPassword)
+    void onPassFocusChanged(boolean focused) {
+        final View llpass = findViewById(R.id.layoutPassword);
+        if (!focused) {
+            llpass.setAlpha(0.5f);
+        }
+    }
+
 
     @Override
     public void showValidationError() {
