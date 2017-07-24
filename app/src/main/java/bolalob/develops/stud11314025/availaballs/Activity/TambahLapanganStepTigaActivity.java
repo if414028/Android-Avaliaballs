@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
     CheckBox chSabtu;
     @BindView(R.id.checkBoxMinggu)
     CheckBox chMinggu;
+    @BindView(R.id.eTHarga)
+    EditText etHarga;
 
     @BindView(R.id.spinnerJamBuka)
     Spinner spinnerJamBuka;
@@ -45,6 +48,9 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_tambah_lapangan_step_tiga);
 
         addActionBar();
+
+        EditText harga = (EditText) findViewById(R.id.eTHarga);
+        harga.addTextChangedListener(new NumberTextWatcher(harga));
     }
 
     public void addActionBar() {
@@ -65,6 +71,7 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

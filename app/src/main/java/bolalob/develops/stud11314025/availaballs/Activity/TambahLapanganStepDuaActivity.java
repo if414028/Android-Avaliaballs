@@ -184,18 +184,18 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
 
     @OnClick(R.id.iconTeleponAdd)
     void addTelepon() {
-        LinearLayout ly = (LinearLayout) findViewById(R.id.lytlp);
+        LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
 
         View tv = LayoutInflater.from(this).inflate(R.layout.listedittext_telepon, null);
 
-        int count = ly.getChildCount();
+        int count = parent.getChildCount();
 
-        int maxPhoneNumber = 5;
+        int maxPhoneNumber = 3;
 
         if (count < maxPhoneNumber) {
-            ly.addView(tv);
+            parent.addView(tv);
         } else {
-            Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 5 nomor telepon.", Toast.LENGTH_LONG).show();
+            Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 3 nomor telepon.", Toast.LENGTH_LONG).show();
         }
     }
 
