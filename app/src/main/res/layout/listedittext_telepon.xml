@@ -56,10 +56,21 @@
         android:id="@+id/iconTeleponAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.8"
+        android:layout_weight="0.2"
         android:layout_marginRight="5dp"
         android:layout_marginTop="18dp"
         android:text="@string/icon_add"
+        android:textSize="20dp"
+        app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+    <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+        android:id="@+id/iconTeleponRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/icon_remove"
         android:textSize="20dp"
         app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 

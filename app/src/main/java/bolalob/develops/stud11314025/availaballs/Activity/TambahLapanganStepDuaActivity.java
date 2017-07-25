@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         spinnerJumlahLapangan.setOnItemSelectedListener(this);
     }
 
-    @OnClick(R.id.eTLokasi)
+    @OnClick(R.id.location_button)
     void onButtonClick() {
         try {
             PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
@@ -92,10 +93,15 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void afterLokasiTextChanged() {
         final View lllokasi = findViewById(R.id.layoutLokasi);
+        final ImageView map = (ImageView) findViewById(R.id.location_button);
+
         int length = etLokasi.getText().length();
         if (length == 0) {
             lllokasi.setAlpha(0.5f);
-        } else lllokasi.setAlpha(1.0f);
+        } else {
+            lllokasi.setAlpha(1.0f);
+            map.setImageResource(R.drawable.map_color);
+        }
     }
 
     @OnFocusChange(value = R.id.eTLokasi)

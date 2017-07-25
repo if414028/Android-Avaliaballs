@@ -39,6 +39,8 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     @BindView(R.id.eTNamaLapangan)
     EditText etNamaLapangan;
+//    @BindView(R.id.upload_frame)
+//    View upload_frame;
 
     @BindView(R.id.upload_img)
     ImageView upload_img;
