@@ -56,8 +56,12 @@ public class FileUtil {
     }
 
     public static Uri getOutputMediaFileUri(int type, Context context) throws IOException {
-        return FileProvider.getUriForFile(context,
-                BuildConfig.APPLICATION_ID + ".provider", getOutputMediaFile(type));
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT){
+            return Uri.fromFile(getOutputMediaFile(type));
+        } else {
+            return FileProvider.getUriForFile(context,
+                    BuildConfig.APPLICATION_ID + ".provider", getOutputMediaFile(type));
+        }
     }
 
     public static String downloadFromGoogleDrive(Context ctx, Uri uri) {
@@ -86,12 +90,12 @@ public class FileUtil {
 
     public static File getOutputMediaFile(int type) throws IOException {
         // External sdcard location
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "avaliaballs");
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Bolalob");
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
-                Log.d("TAG", "Oops! Failed create " + "avaliaballs" + " directory");
+                Log.d("TAG", "Oops! Failed create " + "Bolalob" + " directory");
                 return null;
             }
         }

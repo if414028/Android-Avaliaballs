@@ -128,7 +128,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         }
     }
 
-
     @Override
     public void showValidationError() {
         Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_login), "Email atau Password Kosong", Snackbar.LENGTH_LONG)
