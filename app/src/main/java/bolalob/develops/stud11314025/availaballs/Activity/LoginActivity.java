@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.eTPassword)
     EditText etPassword;
     @BindView(R.id.btnLogin)
-    Button btnLgn;
-    @BindView(R.id.textInputEmail)
-    TextInputLayout txtinputEmail;
+    Button btnLogin;
+    @BindView(R.id.txtInputEmail)
+    TextInputLayout txtInputEmail;
     @BindView(R.id.iconEmailTextView)
     CustomFontTextView iconemailTV;
 
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         presenter = new LoginPresenterImp(this);
 
-        btnLgn.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 presenter.login(etEmail.getText().toString(), etPassword.getText().toString());

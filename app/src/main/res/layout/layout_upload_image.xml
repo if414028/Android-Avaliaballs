@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/upload_frame"
     android:layout_width="300dp"
-    android:layout_height="140dp">
+    android:layout_height="140dp"
+    android:layout_marginTop="@dimen/size30">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +16,17 @@
             android:id="@+id/iconCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/icon_lapangan"
-            android:textSize="20dp"
-            app:font="@string/icon_camera" />
+            android:text="@string/icon_location"
+            android:textSize="20sp"
+            app:font="@string/font_icon" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="upload foto lapanganmu &#10; *720*340px"
+            android:text="test"
             android:textColor="#808080"
             android:textStyle="italic" />
     </LinearLayout>

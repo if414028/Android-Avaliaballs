@@ -68,7 +68,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             ;
         }
-
+        
         Intent intent = this.getIntent();
         final String namalap = intent.getExtras().getString("NAMALAP_KEY");
         String loklap = intent.getExtras().getString("LOKASI_KEY");

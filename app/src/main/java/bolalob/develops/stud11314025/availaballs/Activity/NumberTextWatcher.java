@@ -18,8 +18,7 @@ class NumberTextWatcher implements TextWatcher {
 
     private EditText et;
 
-    public NumberTextWatcher(EditText et)
-    {
+    public NumberTextWatcher(EditText et) {
         df = new DecimalFormat("#,###.##");
         df.setDecimalSeparatorAlwaysShown(true);
         dfnd = new DecimalFormat("#,###");
@@ -30,8 +29,7 @@ class NumberTextWatcher implements TextWatcher {
     @SuppressWarnings("unused")
     private static final String TAG = "NumberTextWatcher";
 
-    public void afterTextChanged(Editable s)
-    {
+    public void afterTextChanged(Editable s) {
         et.removeTextChangedListener(this);
 
         try {
@@ -63,14 +61,11 @@ class NumberTextWatcher implements TextWatcher {
         et.addTextChangedListener(this);
     }
 
-    public void beforeTextChanged(CharSequence s, int start, int count, int after)
-    {
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
     }
 
-    public void onTextChanged(CharSequence s, int start, int before, int count)
-    {
-        if (s.toString().contains(String.valueOf(df.getDecimalFormatSymbols().getDecimalSeparator())))
-        {
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (s.toString().contains(String.valueOf(df.getDecimalFormatSymbols().getDecimalSeparator()))) {
             hasFractionalPart = true;
         } else {
             hasFractionalPart = false;

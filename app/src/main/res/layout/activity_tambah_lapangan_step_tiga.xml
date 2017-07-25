@@ -231,7 +231,7 @@
             </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputEmail"
+                android:id="@+id/txtInputEmail"
                 android:layout_width="240dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
@@ -245,11 +245,11 @@
                     android:id="@+id/eTHarga"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
-                    android:gravity="center_vertical"
                     android:layout_marginBottom="12dp"
                     android:background="@android:color/transparent"
                     android:drawableTint="@color/clrline"
                     android:ems="10"
+                    android:gravity="center_vertical"
                     android:inputType="numberDecimal"
                     android:textColor="@color/clrlinedark"
                     android:textColorHighlight="@color/clrlinedark"

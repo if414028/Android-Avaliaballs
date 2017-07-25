@@ -192,7 +192,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     void addTelepon() {
         LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
 
-        View tv = LayoutInflater.from(this).inflate(R.layout.listedittext_telepon, null);
+        View tv = LayoutInflater.from(this).inflate(R.layout.list_edittext_telepon, null);
 
         int count = parent.getChildCount();
 

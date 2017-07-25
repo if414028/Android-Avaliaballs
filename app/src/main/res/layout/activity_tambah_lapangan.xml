@@ -10,30 +10,11 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:focusable="true"
-        android:gravity="center"
         android:focusableInTouchMode="true"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/upload_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="30dp">
-
-            <ImageView
-                android:id="@+id/upload_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/upload" />
-
-        </LinearLayout>
-
-        <!--<include layout="@layout/upload_image"/>-->
+        <include layout="@layout/layout_upload_image" />
 
         <LinearLayout
             android:id="@+id/layoutNamaLapangan"

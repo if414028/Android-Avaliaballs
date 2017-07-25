@@ -36,7 +36,6 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
     CheckBox chMinggu;
     @BindView(R.id.eTHarga)
     EditText etHarga;
-
     @BindView(R.id.spinnerJamBuka)
     Spinner spinnerJamBuka;
     @BindView(R.id.spinnerJamTutup)
@@ -71,7 +70,6 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

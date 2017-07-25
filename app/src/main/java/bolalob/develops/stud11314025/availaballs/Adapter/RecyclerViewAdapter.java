@@ -58,7 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // membuat view baru
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listlapangan_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_lapangan_item, parent, false);
         // mengeset ukuran view, margin, padding, dan parameter layout lainnya
         ViewHolder vh = new ViewHolder(v);
         return vh;

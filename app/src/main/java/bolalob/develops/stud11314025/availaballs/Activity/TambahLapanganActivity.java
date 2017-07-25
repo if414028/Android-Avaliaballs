@@ -39,10 +39,8 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     @BindView(R.id.eTNamaLapangan)
     EditText etNamaLapangan;
-//    @BindView(R.id.upload_frame)
-//    View upload_frame;
 
-    @BindView(R.id.upload_img)
+    @BindView(R.id.image_upload)
     ImageView upload_img;
 
     private static final int ASK_MULTIPLE_PERMISSION = 1111;
@@ -65,8 +63,8 @@ public class TambahLapanganActivity extends AppCompatActivity {
         addActionBar();
     }
 
-    @OnClick(R.id.upload_img)
-    void onButtonClick() {
+    @OnClick(R.id.image_upload)
+    void onCameraButtonClick() {
         if (Utils.checkSupportCamera(this)) {
             onAskPermission();
         } else {
