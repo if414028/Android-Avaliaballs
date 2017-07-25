@@ -61,160 +61,81 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
     @OnClick(R.id.cbMinggu)
     void cbminggu(CheckBox checkbox) {
         if (spinnerJmBkMinggu.isClickable() == true && spinnerJmTpMinggu.isClickable() == true) {
-            spinnerJmBkMinggu.setClickable(false);
-            spinnerJmTpMinggu.setClickable(false);
-            spinnerJmBkMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkMinggu.setAlpha(0.5f);
-            spinnerJmTpMinggu.setAlpha(0.5f);
+            spinnerMingguTransformClickableTrue();
         } else {
-            spinnerJmBkMinggu.setClickable(true);
-            spinnerJmTpMinggu.setClickable(true);
-            spinnerJmBkMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmBkMinggu.setAlpha(1.0f);
-            spinnerJmTpMinggu.setAlpha(1.0f);
+            spinnerMingguTransformClickableFalse();
         }
     }
 
     @OnClick(R.id.cbSabtu)
     void cbsabtu(CheckBox checkbox) {
         if (spinnerJmBkSabtu.isClickable() == true && spinnerJmTpSabtu.isClickable() == true) {
-            spinnerJmBkSabtu.setClickable(false);
-            spinnerJmTpSabtu.setClickable(false);
-            spinnerJmBkSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkSabtu.setAlpha(0.5f);
-            spinnerJmTpSabtu.setAlpha(0.5f);
+            spinnerSabtuTransformClickableTrue();
         } else {
-            spinnerJmBkSabtu.setClickable(true);
-            spinnerJmTpSabtu.setClickable(true);
-            spinnerJmBkSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmBkSabtu.setAlpha(1.0f);
-            spinnerJmTpSabtu.setAlpha(1.0f);
+            spinnerSabtuTransformClickableFalse();
         }
     }
+
 
     @OnClick(R.id.cbJumat)
     void cbjumat(CheckBox checkbox) {
         if (spinnerJmBkJumat.isClickable() == true && spinnerJmTpJumat.isClickable() == true) {
-            spinnerJmBkJumat.setClickable(false);
-            spinnerJmTpJumat.setClickable(false);
-            spinnerJmBkJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkJumat.setAlpha(0.5f);
-            spinnerJmTpJumat.setAlpha(0.5f);
+            spinnerJumatTransformClickableTrue();
         } else {
-            spinnerJmBkJumat.setClickable(true);
-            spinnerJmTpJumat.setClickable(true);
-            spinnerJmBkJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmBkJumat.setAlpha(1.0f);
-            spinnerJmTpJumat.setAlpha(1.0f);
+            spinnerJumatTransformClickableFalse();
         }
     }
+
 
     @OnClick(R.id.cbKamis)
     void cbkamis(CheckBox checkbox) {
         if (spinnerJmBkKamis.isClickable() == true && spinnerJmTpKamis.isClickable() == true) {
-            spinnerJmBkKamis.setClickable(false);
-            spinnerJmTpKamis.setClickable(false);
-            spinnerJmBkKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkKamis.setAlpha(0.5f);
-            spinnerJmTpKamis.setAlpha(0.5f);
+            spinnerKamisTransformClickableTrue();
         } else {
-            spinnerJmBkKamis.setClickable(true);
-            spinnerJmTpKamis.setClickable(true);
-            spinnerJmBkKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmBkKamis.setAlpha(1.0f);
-            spinnerJmTpKamis.setAlpha(1.0f);
+            spinnerKamisTransformClickableFalse();
         }
     }
+
 
     @OnClick(R.id.cbRabu)
     void cbrabu(CheckBox checkbox) {
         if (spinnerJmBkRabu.isClickable() == true && spinnerJmTpRabu.isClickable() == true) {
-            spinnerJmBkRabu.setClickable(false);
-            spinnerJmTpRabu.setClickable(false);
-            spinnerJmBkRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkRabu.setAlpha(0.5f);
-            spinnerJmTpRabu.setAlpha(0.5f);
+            spinnerRabuTransformClickableTrue();
         } else {
-            spinnerJmBkRabu.setClickable(true);
-            spinnerJmTpRabu.setClickable(true);
-            spinnerJmBkRabu.setAlpha(1.0f);
-            spinnerJmTpRabu.setAlpha(1.0f);
-            spinnerJmBkRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-
+            spinnerRabuTransformClickableFalse();
         }
     }
+
 
     @OnClick(R.id.cbSelasa)
     void cbselasa(CheckBox checkbox) {
         if (spinnerJmBkSelasa.isClickable() == true && spinnerJmTpSelasa.isClickable() == true) {
-            spinnerJmBkSelasa.setClickable(false);
-            spinnerJmTpSelasa.setClickable(false);
-            spinnerJmBkSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkSelasa.setAlpha(0.5f);
-            spinnerJmTpSelasa.setAlpha(0.5f);
+            spinnerSelasaTransformClickableTrue();
         } else {
-            spinnerJmBkSelasa.setClickable(true);
-            spinnerJmTpSelasa.setClickable(true);
-            spinnerJmBkSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmBkSelasa.setAlpha(1.0f);
-            spinnerJmTpSelasa.setAlpha(1.0f);
+            spinnerSelasaTransformClickableFalse();
         }
     }
+
 
     @OnClick(R.id.cbSenin)
     void cbsenin(CheckBox checkbox) {
         if (spinnerJmBkSenin.isClickable() == true && spinnerJmTpSenin.isClickable() == true) {
-            spinnerJmBkSenin.setClickable(false);
-            spinnerJmTpSenin.setClickable(false);
-            spinnerJmBkSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmTpSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
-            spinnerJmBkSenin.setAlpha(0.5f);
-            spinnerJmTpSenin.setAlpha(0.5f);
+            spinnerSeninTransformClickableTrue();
         } else {
-            spinnerJmBkSenin.setClickable(true);
-            spinnerJmTpSenin.setClickable(true);
-            spinnerJmBkSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmTpSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
-            spinnerJmBkSenin.setAlpha(1.0f);
-            spinnerJmTpSenin.setAlpha(1.0f);
-
+            spinnerSeninTransformClickableFalse();
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_jam_buka);
         ButterKnife.bind(this);
+        setActionBarOntheTop();
+        setOnItemSelectedListenerAll();
+    }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        ActionBar mActionBar = getSupportActionBar();
-        mActionBar.setDisplayShowHomeEnabled(false);
-        mActionBar.setDisplayShowTitleEnabled(false);
-        LayoutInflater mInflater = LayoutInflater.from(this);
-
-        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
-        mTitleTextView.setText("Pengaturan Jadwal");
-
-        mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
-        mActionBar.setCustomView(mCustomView);
-        mActionBar.setDisplayShowCustomEnabled(true);
-
+    private void setOnItemSelectedListenerAll() {
         spinnerJmBkSenin.setOnItemSelectedListener(this);
         spinnerJmBkSelasa.setOnItemSelectedListener(this);
         spinnerJmBkRabu.setOnItemSelectedListener(this);
@@ -229,7 +150,23 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         spinnerJmTpJumat.setOnItemSelectedListener(this);
         spinnerJmTpSabtu.setOnItemSelectedListener(this);
         spinnerJmTpMinggu.setOnItemSelectedListener(this);
+    }
 
+    private void setActionBarOntheTop() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(this);
+
+        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setText("Pengaturan Jadwal");
+
+        mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
     }
 
     @Override
@@ -257,7 +194,133 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
     }
 
     public void Simpan(View view) {
-        Intent intent = new Intent(getApplicationContext(), DetailLapanganActivity.class);
-        startActivity(intent);
+        this.finish();
     }
+
+    private void spinnerMingguTransformClickableFalse() {
+        spinnerJmBkMinggu.setClickable(true);
+        spinnerJmTpMinggu.setClickable(true);
+        spinnerJmBkMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmBkMinggu.setAlpha(1.0f);
+        spinnerJmTpMinggu.setAlpha(1.0f);
+    }
+
+    private void spinnerMingguTransformClickableTrue() {
+        spinnerJmBkMinggu.setClickable(false);
+        spinnerJmTpMinggu.setClickable(false);
+        spinnerJmBkMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpMinggu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkMinggu.setAlpha(0.5f);
+        spinnerJmTpMinggu.setAlpha(0.5f);
+    }
+
+    private void spinnerSabtuTransformClickableFalse() {
+        spinnerJmBkSabtu.setClickable(true);
+        spinnerJmTpSabtu.setClickable(true);
+        spinnerJmBkSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmBkSabtu.setAlpha(1.0f);
+        spinnerJmTpSabtu.setAlpha(1.0f);
+    }
+
+    private void spinnerSabtuTransformClickableTrue() {
+        spinnerJmBkSabtu.setClickable(false);
+        spinnerJmTpSabtu.setClickable(false);
+        spinnerJmBkSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpSabtu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkSabtu.setAlpha(0.5f);
+        spinnerJmTpSabtu.setAlpha(0.5f);
+    }
+
+    private void spinnerJumatTransformClickableFalse() {
+        spinnerJmBkJumat.setClickable(true);
+        spinnerJmTpJumat.setClickable(true);
+        spinnerJmBkJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmBkJumat.setAlpha(1.0f);
+        spinnerJmTpJumat.setAlpha(1.0f);
+    }
+
+    private void spinnerJumatTransformClickableTrue() {
+        spinnerJmBkJumat.setClickable(false);
+        spinnerJmTpJumat.setClickable(false);
+        spinnerJmBkJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpJumat.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkJumat.setAlpha(0.5f);
+        spinnerJmTpJumat.setAlpha(0.5f);
+    }
+
+    private void spinnerKamisTransformClickableFalse() {
+        spinnerJmBkKamis.setClickable(true);
+        spinnerJmTpKamis.setClickable(true);
+        spinnerJmBkKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmBkKamis.setAlpha(1.0f);
+        spinnerJmTpKamis.setAlpha(1.0f);
+    }
+
+    private void spinnerKamisTransformClickableTrue() {
+        spinnerJmBkKamis.setClickable(false);
+        spinnerJmTpKamis.setClickable(false);
+        spinnerJmBkKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpKamis.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkKamis.setAlpha(0.5f);
+        spinnerJmTpKamis.setAlpha(0.5f);
+    }
+
+    private void spinnerRabuTransformClickableFalse() {
+        spinnerJmBkRabu.setClickable(true);
+        spinnerJmTpRabu.setClickable(true);
+        spinnerJmBkRabu.setAlpha(1.0f);
+        spinnerJmTpRabu.setAlpha(1.0f);
+        spinnerJmBkRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+    }
+
+    private void spinnerRabuTransformClickableTrue() {
+        spinnerJmBkRabu.setClickable(false);
+        spinnerJmTpRabu.setClickable(false);
+        spinnerJmBkRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpRabu.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkRabu.setAlpha(0.5f);
+        spinnerJmTpRabu.setAlpha(0.5f);
+    }
+
+    private void spinnerSelasaTransformClickableFalse() {
+        spinnerJmBkSelasa.setClickable(true);
+        spinnerJmTpSelasa.setClickable(true);
+        spinnerJmBkSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmBkSelasa.setAlpha(1.0f);
+        spinnerJmTpSelasa.setAlpha(1.0f);
+    }
+
+    private void spinnerSelasaTransformClickableTrue() {
+        spinnerJmBkSelasa.setClickable(false);
+        spinnerJmTpSelasa.setClickable(false);
+        spinnerJmBkSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpSelasa.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkSelasa.setAlpha(0.5f);
+        spinnerJmTpSelasa.setAlpha(0.5f);
+    }
+
+    private void spinnerSeninTransformClickableFalse() {
+        spinnerJmBkSenin.setClickable(true);
+        spinnerJmTpSenin.setClickable(true);
+        spinnerJmBkSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmTpSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner_checked));
+        spinnerJmBkSenin.setAlpha(1.0f);
+        spinnerJmTpSenin.setAlpha(1.0f);
+    }
+
+    private void spinnerSeninTransformClickableTrue() {
+        spinnerJmBkSenin.setClickable(false);
+        spinnerJmTpSenin.setClickable(false);
+        spinnerJmBkSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmTpSenin.setBackgroundDrawable(getResources().getDrawable(R.drawable.bgspinner));
+        spinnerJmBkSenin.setAlpha(0.5f);
+        spinnerJmTpSenin.setAlpha(0.5f);
+    }
+
 }

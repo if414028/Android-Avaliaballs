@@ -58,58 +58,84 @@ public class DetailLapanganActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_lapangan);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-
+        setActionbar();
+        getDataNamaLap();
+        getDataLokLap();
+        getDataPhoto();
+        getDataPhoneNum();
+        getDataJumlahLap();
+        getDataPrice();
+        getDataOpenHour();
+        getDataCloseHour();
+        setTextTv();
+        setCollapsingActionBar();
+        setImageGlideinAppbar();
         IcEditJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), UpdateJamBukaActivity.class);
-                startActivity(intent);
+                Intent intentJm = new Intent(getApplicationContext(), UpdateJamBukaActivity.class);
+                startActivity(intentJm);
             }
         });
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            ;
-        }
+    }
 
+    private void setTextTv() {
+        tvNmLap.setText(getDataNamaLap());
+        tvOpenHour.setText(getDataOpenHour());
+        tvCloseHour.setText(getDataCloseHour());
+        tvAlmt.setText(getDataLokLap());
+        tvNoHp.setText(getDataPhoneNum());
+        tvJmlhLap.setText(getDataJumlahLap());
+        tvHrg.setText("Rp." + getDataPrice());
+    }
+
+    private String getDataCloseHour() {
         Intent intent = this.getIntent();
-        final String namalap = intent.getExtras().getString("NAMALAP_KEY");
-        String loklap = intent.getExtras().getString("LOKASI_KEY");
-        String photo = intent.getExtras().getString("PHOTO_KEY");
-        String phonenum = intent.getExtras().getString("PHONENUM_KEY");
-        String jmlhlap = intent.getExtras().getString("JUMLAHLAP_KEY");
-        String price = intent.getExtras().getString("PRICE_KEY");
-        String openhour = intent.getExtras().getString("OPENHOUR_KEY");
         String closehour = intent.getExtras().getString("CLOSEHOUR_KEY");
-        tvNmLap.setText(namalap);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
+        return closehour;
 
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(namalap);
-                    collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.clrpressed));
-                    collapsingToolbarLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
-                    toolbar.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
-                    isShow = true;
-                } else if (isShow) {
-                    collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
-                    toolbar.setBackgroundColor(Color.TRANSPARENT);
-                    appBarLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
-                    isShow = false;
-                }
-            }
-        });
+    }
+
+    private String getDataOpenHour() {
+        Intent intent = this.getIntent();
+        String openhour = intent.getExtras().getString("OPENHOUR_KEY");
+        return openhour;
+
+    }
+
+    private String getDataPrice() {
+        Intent intent = this.getIntent();
+        String price = intent.getExtras().getString("PRICE_KEY");
+        return price;
+    }
+
+    private String getDataJumlahLap() {
+        Intent intent = this.getIntent();
+        String jmlhlap = intent.getExtras().getString("JUMLAHLAP_KEY");
+        return jmlhlap;
+    }
+
+    private String getDataPhoneNum() {
+        Intent intent = this.getIntent();
+        String phonenum = intent.getExtras().getString("PHONENUM_KEY");
+        return phonenum;
+    }
+
+    private String getDataLokLap() {
+        Intent intent = this.getIntent();
+        String loklap = intent.getExtras().getString("LOKASI_KEY");
+        return loklap;
+    }
+
+    private String getDataPhoto() {
+        Intent intent = this.getIntent();
+        String photo = intent.getExtras().getString("PHOTO_KEY");
+        return photo;
+    }
+
+    private void setImageGlideinAppbar() {
         Glide.with(getApplicationContext())
-                .load(photo)
+                .load(getDataPhoto())
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -124,12 +150,41 @@ public class DetailLapanganActivity extends AppCompatActivity {
                     }
                 })
                 .into(appbarimage);
-        tvOpenHour.setText(openhour);
-        tvCloseHour.setText(closehour);
-        tvAlmt.setText(loklap);
-        tvNoHp.setText(phonenum);
-        tvJmlhLap.setText(jmlhlap);
-        tvHrg.setText("Rp." + price);
+    }
+
+    private void setCollapsingActionBar() {
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbarLayout.setTitle(getDataNamaLap());
+                    collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.clrpressed));
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
+                    toolbar.setBackgroundColor(Color.TRANSPARENT);
+                    appBarLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
+                    isShow = false;
+                }
+            }
+        });
+    }
+
+    private void setActionbar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            ;
+        }
     }
 
     @Override
@@ -150,9 +205,9 @@ public class DetailLapanganActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void updatejambuka(View view) {
-
+    public String getDataNamaLap() {
+        Intent intent = this.getIntent();
+        final String namalap = intent.getExtras().getString("NAMALAP_KEY");
+        return namalap;
     }
-
-
 }

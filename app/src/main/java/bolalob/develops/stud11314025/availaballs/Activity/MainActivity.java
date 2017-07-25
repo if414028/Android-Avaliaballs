@@ -68,27 +68,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        ActionBar mActionBar = getSupportActionBar();
-        mActionBar.setDisplayShowHomeEnabled(false);
-        mActionBar.setDisplayShowTitleEnabled(false);
-        LayoutInflater mInflater = LayoutInflater.from(this);
-
-        Window window = MainActivity.this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
-        }
-
-        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
-        mTitleTextView.setText("List Lapangan");
-
-        mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
-        mActionBar.setCustomView(mCustomView);
-        mActionBar.setDisplayShowCustomEnabled(true);
+        setActionbar();
+        setStatusBarColor();
         progressBar.setVisibility(View.VISIBLE);
+        consumeAPIListLapngan();
 
+
+    }
+
+    private void consumeAPIListLapngan() {
         API client = Service.createService(API.class);
         Call<List<Lapangan>> call = client.getAllLapangan();
         call.enqueue(new Callback<List<Lapangan>>() {
@@ -101,29 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 rvView.setLayoutManager(layoutManager);
                 rvView.setAdapter(adapter);
                 if (repos.isEmpty()) {
-                    rvView.setVisibility(View.GONE);
-                    imageView.setVisibility(View.VISIBLE);
-                    emptyview.setVisibility(View.VISIBLE);
-                    btn1.setVisibility(View.GONE);
-                    btn2.setVisibility(View.GONE);
-                    btn3.setVisibility(View.GONE);
-                    btn4.setVisibility(View.GONE);
-                    btn5.setVisibility(View.GONE);
-                    LabelLokasi.setVisibility(View.GONE);
-                    LabelNo.setVisibility(View.GONE);
-                    LabelNamaLap.setVisibility(View.GONE);
+                    viewEmpty();
                 } else {
-                    imageView.setVisibility(View.GONE);
-                    rvView.setVisibility(View.VISIBLE);
-                    emptyview.setVisibility(View.GONE);
-                    btn1.setVisibility(View.VISIBLE);
-                    btn2.setVisibility(View.VISIBLE);
-                    btn3.setVisibility(View.VISIBLE);
-                    btn4.setVisibility(View.VISIBLE);
-                    btn5.setVisibility(View.VISIBLE);
-                    LabelLokasi.setVisibility(View.VISIBLE);
-                    LabelNo.setVisibility(View.VISIBLE);
-                    LabelNamaLap.setVisibility(View.VISIBLE);
+                    viewnotEmpty();
                 }
 
 
@@ -135,7 +103,57 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
 
+    private void setActionbar() {
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(this);
+        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
+        mTitleTextView.setText("List Lapangan");
+
+        mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+    }
+
+    private void setStatusBarColor() {
+        Window window = MainActivity.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
+        }
+    }
+
+    private void viewnotEmpty() {
+        imageView.setVisibility(View.GONE);
+        rvView.setVisibility(View.VISIBLE);
+        emptyview.setVisibility(View.GONE);
+        btn1.setVisibility(View.VISIBLE);
+        btn2.setVisibility(View.VISIBLE);
+        btn3.setVisibility(View.VISIBLE);
+        btn4.setVisibility(View.VISIBLE);
+        btn5.setVisibility(View.VISIBLE);
+        LabelLokasi.setVisibility(View.VISIBLE);
+        LabelNo.setVisibility(View.VISIBLE);
+        LabelNamaLap.setVisibility(View.VISIBLE);
+    }
+
+    private void viewEmpty() {
+        rvView.setVisibility(View.GONE);
+        imageView.setVisibility(View.VISIBLE);
+        emptyview.setVisibility(View.VISIBLE);
+        btn1.setVisibility(View.GONE);
+        btn2.setVisibility(View.GONE);
+        btn3.setVisibility(View.GONE);
+        btn4.setVisibility(View.GONE);
+        btn5.setVisibility(View.GONE);
+        LabelLokasi.setVisibility(View.GONE);
+        LabelNo.setVisibility(View.GONE);
+        LabelNamaLap.setVisibility(View.GONE);
     }
 
     public void tambahLapangan(View view) {
