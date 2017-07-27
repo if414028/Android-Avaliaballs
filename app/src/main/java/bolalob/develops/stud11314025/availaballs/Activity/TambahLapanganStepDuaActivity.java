@@ -5,13 +5,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +24,8 @@ import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
+import butterknife.OnTextChanged;
 
 public class TambahLapanganStepDuaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -42,18 +43,15 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah__lapangan__step__dua);
+        setContentView(R.layout.activity_tambah_lapangan_step_dua);
         ButterKnife.bind(this);
 
         addActionBar();
 
-        addTextWatcher();
-
         spinnerJumlahLapangan.setOnItemSelectedListener(this);
-
     }
 
-    @OnClick(R.id.eTLokasi)
+    @OnClick(R.id.location_button)
     void onButtonClick() {
         try {
             PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
@@ -77,52 +75,73 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     @BindView(R.id.spinnerJumlahLapangan)
     Spinner spinnerJumlahLapangan;
 
-    public void addTextWatcher() {
-
+    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeLokasiTextChanged() {
         final View lllokasi = findViewById(R.id.layoutLokasi);
+        lllokasi.setAlpha(0.5f);
+    }
+
+    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onLokasiTextChanged() {
+        final View lllokasi = findViewById(R.id.layoutLokasi);
+        int length = etLokasi.getText().length();
+        if (length == 0) {
+            lllokasi.setAlpha(0.5f);
+        } else lllokasi.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterLokasiTextChanged() {
+        final View lllokasi = findViewById(R.id.layoutLokasi);
+        final ImageView map = (ImageView) findViewById(R.id.location_button);
+
+        int length = etLokasi.getText().length();
+        if (length == 0) {
+            lllokasi.setAlpha(0.5f);
+        } else {
+            lllokasi.setAlpha(1.0f);
+            map.setImageResource(R.drawable.map_color);
+        }
+    }
+
+    @OnFocusChange(value = R.id.eTLokasi)
+    void onLokasiFocusChanged(boolean focused) {
+        final View lllokasi = findViewById(R.id.layoutLokasi);
+        if (!focused) {
+            lllokasi.setAlpha(0.5f);
+        }
+    }
+
+    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeTeleponTextChanged() {
         final View lltelepon = findViewById(R.id.layoutTelepon);
+        lltelepon.setAlpha(0.5f);
+    }
 
-        TextWatcher lokasiWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lllokasi.setAlpha(0.5f);
-            }
+    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onTeleponTextChanged() {
+        final View lltelepon = findViewById(R.id.layoutTelepon);
+        int length = etTelepon.getText().length();
+        if (length == 0) {
+            lltelepon.setAlpha(0.5f);
+        } else lltelepon.setAlpha(1.0f);
+    }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etLokasi.getText().length();
-                if (length == 0) {
-                    lllokasi.setAlpha(0.5f);
-                } else lllokasi.setAlpha(1.0f);
-            }
+    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterTeleponTextChanged() {
+        final View lltelepon = findViewById(R.id.layoutTelepon);
+        int length = etTelepon.getText().length();
+        if (length == 0) {
+            lltelepon.setAlpha(0.5f);
+        } else lltelepon.setAlpha(1.0f);
+    }
 
-            public void afterTextChanged(Editable s) {
-                int length = etLokasi.getText().length();
-                if (length == 0) {
-                    lllokasi.setAlpha(0.5f);
-                } else lllokasi.setAlpha(1.0f);
-            }
-        };
-        etLokasi.addTextChangedListener(lokasiWatcher);
-
-        TextWatcher teleponWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lltelepon.setAlpha(0.5f);
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etTelepon.getText().length();
-                if (length == 0) {
-                    lltelepon.setAlpha(0.5f);
-                } else lltelepon.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etTelepon.getText().length();
-                if (length == 0) {
-                    lltelepon.setAlpha(0.5f);
-                } else lltelepon.setAlpha(1.0f);
-            }
-        };
-        etTelepon.addTextChangedListener(teleponWatcher);
+    @OnFocusChange(value = R.id.eTTelepon)
+    void afterTeleponFocusChanged(boolean focused) {
+        final View lltelepon = findViewById(R.id.layoutTelepon1);
+        if (!focused) {
+            lltelepon.setAlpha(0.5f);
+        }
     }
 
     public void addActionBar() {
@@ -145,11 +164,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
-
-        // Showing selected spinner item
-        //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -175,18 +190,18 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
 
     @OnClick(R.id.iconTeleponAdd)
     void addTelepon() {
-        LinearLayout ly = (LinearLayout) findViewById(R.id.lytlp);
+        LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
 
-        View tv = LayoutInflater.from(this).inflate(R.layout.listedittext_telepon, null);
+        View tv = LayoutInflater.from(this).inflate(R.layout.list_edittext_telepon, null);
 
-        int count = ly.getChildCount();
+        int count = parent.getChildCount();
 
-        int maxPhoneNumber = 5;
+        int maxPhoneNumber = 3;
 
         if (count < maxPhoneNumber) {
-            ly.addView(tv);
+            parent.addView(tv);
         } else {
-            Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 5 nomor telepon.", Toast.LENGTH_LONG).show();
+            Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 3 nomor telepon.", Toast.LENGTH_LONG).show();
         }
     }
 

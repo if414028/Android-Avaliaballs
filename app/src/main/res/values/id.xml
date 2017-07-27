@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="layoutTelepon1" />
-    <item type="id" name="layoutTelepon2" />
-    <item type="id" name="layoutTelepon3" />
+    <item name="layoutTelepon1" type="id" />
+    <item name="layoutTelepon2" type="id" />
+    <item name="layoutTelepon3" type="id" />
 </resources>

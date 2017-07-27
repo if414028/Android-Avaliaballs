@@ -45,12 +45,21 @@
         <activity
             android:name=".Activity.TambahLapanganActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" />
 
-        </activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
         <activity android:name=".Activity.TambahLapanganStepDuaActivity"/>
 
+        <activity android:name=".Activity.TambahLapanganStepDuaActivity" />
 
         <activity
             android:name=".Activity.DetailLapanganActivity"
@@ -61,10 +70,12 @@
             android:value="AIzaSyCvpN7qZPXwrahdKwx-XPYLuEm3vib9v7M" />
 
         <activity android:name=".Activity.TambahLapanganStepTigaActivity"/>
+        <activity android:name=".Activity.TambahLapanganStepTigaActivity" />
 
 
         <activity android:name=".Activity.UpdateJamBukaActivity"/>
 
+        <activity android:name=".Activity.UpdateJamBukaActivity" />
     </application>
 
 </manifest>

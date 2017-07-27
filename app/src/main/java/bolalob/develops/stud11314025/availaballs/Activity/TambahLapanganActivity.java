@@ -14,8 +14,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,21 +24,23 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
+
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.FileUtil;
 import bolalob.develops.stud11314025.availaballs.Widget.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
+import butterknife.OnTextChanged;
 
 public class TambahLapanganActivity extends AppCompatActivity {
 
     @BindView(R.id.eTNamaLapangan)
     EditText etNamaLapangan;
-    @BindView(R.id.eTTipeLapangan)
-    EditText etTipeLapangan;
 
-    @BindView(R.id.upload_img)
+    @BindView(R.id.image_upload)
     ImageView upload_img;
 
     private static final int ASK_MULTIPLE_PERMISSION = 1111;
@@ -61,11 +61,10 @@ public class TambahLapanganActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         addActionBar();
-        addTextWatcher();
     }
 
-    @OnClick(R.id.upload_img)
-    void onButtonClick() {
+    @OnClick(R.id.image_upload)
+    void onCameraButtonClick() {
         if (Utils.checkSupportCamera(this)) {
             onAskPermission();
         } else {
@@ -90,7 +89,11 @@ public class TambahLapanganActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int position) {
                 switch (position) {
                     case 0:
-                        imageUri = FileUtil.getFromCamera(getContext());
+                        try {
+                            FileUtil.getFromCamera(getContext());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 1:
                         FileUtil.getFromAlbum(getContext());
@@ -130,12 +133,12 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_FROM_CAMERA) {
             if (resultCode == RESULT_OK) {
-                imagePath = FileUtil.compressImage(this, imageUri.getPath(), 640);
+                imagePath = FileUtil.compressImage(this, null, 640);
                 attachToImageView(imagePath);
             }
         } else if (requestCode == REQUEST_FROM_ALBUM) {
             if (resultCode == RESULT_OK) {
-                imageUri = data.getData();
+                Uri imageUri = data.getData();
                 boolean isFromGoogleDrive = imageUri.toString().contains("com.google.android.apps.docs.storage");
                 imagePath = FileUtil.compressImage(this, isFromGoogleDrive ?
                         FileUtil.downloadFromGoogleDrive(this, imageUri) :
@@ -145,51 +148,36 @@ public class TambahLapanganActivity extends AppCompatActivity {
         }
     }
 
-    public void addTextWatcher() {
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeNamaLapanganTextChanged() {
         final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
-        final View lltipelapangan = findViewById(R.id.layoutTipeLapangan);
+        llnamalapangan.setAlpha(0.5f);
+    }
 
-        TextWatcher namaWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                llnamalapangan.setAlpha(0.5f);
-            }
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onNamaLapanganTextChanged() {
+        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        int length = etNamaLapangan.getText().length();
+        if (length == 0) {
+            llnamalapangan.setAlpha(0.5f);
+        } else llnamalapangan.setAlpha(1.0f);
+    }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etNamaLapangan.getText().length();
-                if (length == 0) {
-                    llnamalapangan.setAlpha(0.5f);
-                } else llnamalapangan.setAlpha(1.0f);
-            }
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterNamaLapanganTextChanged() {
+        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        int length = etNamaLapangan.getText().length();
+        if (length == 0) {
+            llnamalapangan.setAlpha(0.5f);
+        } else llnamalapangan.setAlpha(1.0f);
+    }
 
-            public void afterTextChanged(Editable s) {
-                int length = etNamaLapangan.getText().length();
-                if (length == 0) {
-                    llnamalapangan.setAlpha(0.5f);
-                } else llnamalapangan.setAlpha(1.0f);
-            }
-        };
-        etNamaLapangan.addTextChangedListener(namaWatcher);
-
-        TextWatcher tipeWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                lltipelapangan.setAlpha(0.5f);
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int length = etTipeLapangan.getText().length();
-                if (length == 0) {
-                    lltipelapangan.setAlpha(0.5f);
-                } else lltipelapangan.setAlpha(1.0f);
-            }
-
-            public void afterTextChanged(Editable s) {
-                int length = etTipeLapangan.getText().length();
-                if (length == 0) {
-                    lltipelapangan.setAlpha(0.5f);
-                } else lltipelapangan.setAlpha(1.0f);
-            }
-        };
-        etTipeLapangan.addTextChangedListener(tipeWatcher);
+    @OnFocusChange(value = R.id.eTNamaLapangan)
+    void onNamaLapanganFocusChanged(boolean focused) {
+        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        if (!focused) {
+            llnamalapangan.setAlpha(0.5f);
+        }
     }
 
     public void nextStep(View view) {

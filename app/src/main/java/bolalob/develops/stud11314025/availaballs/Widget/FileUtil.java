@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import java.io.File;
@@ -27,6 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import bolalob.develops.stud11314025.availaballs.BuildConfig;
+
 /**
  * Created by bobbi.sinaga on 8/24/2015.
  * edited by ahmad syafii
@@ -36,14 +39,13 @@ public class FileUtil {
     private static final int FILETYPE_IMAGE = 1;
     private static final int REQUEST_FROM_CAMERA = 1001;
     private static final int REQUEST_FROM_ALBUM = 1002;
+    private static String photoImagePath;
 
-    public static Uri getFromCamera(Context ctx) {
+    public static void getFromCamera(Context ctx) throws IOException {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        Uri fileUri = getOutputMediaFileUri(FILETYPE_IMAGE);
+        Uri fileUri = getOutputMediaFileUri(FILETYPE_IMAGE, ctx);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
         ((Activity) ctx).startActivityForResult(intent, REQUEST_FROM_CAMERA);
-
-        return fileUri;
     }
 
     public static void getFromAlbum(Context ctx) {
@@ -53,8 +55,13 @@ public class FileUtil {
         ((Activity) ctx).startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_FROM_ALBUM);
     }
 
-    public static Uri getOutputMediaFileUri(int type) {
-        return Uri.fromFile(getOutputMediaFile(type));
+    public static Uri getOutputMediaFileUri(int type, Context context) throws IOException {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT){
+            return Uri.fromFile(getOutputMediaFile(type));
+        } else {
+            return FileProvider.getUriForFile(context,
+                    BuildConfig.APPLICATION_ID + ".provider", getOutputMediaFile(type));
+        }
     }
 
     public static String downloadFromGoogleDrive(Context ctx, Uri uri) {
@@ -81,7 +88,7 @@ public class FileUtil {
         return directory.getAbsolutePath() + "/" + returnCursor.getString(nameIndex);
     }
 
-    public static File getOutputMediaFile(int type) {
+    public static File getOutputMediaFile(int type) throws IOException {
         // External sdcard location
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Bolalob");
 
@@ -96,17 +103,19 @@ public class FileUtil {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         File mediaFile;
         if (type == FILETYPE_IMAGE) {
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + ".jpg");
+            mediaFile = File.createTempFile("IMG_" + timeStamp, ".jpg", mediaStorageDir);
         } else {
             return null;
         }
+
+        photoImagePath = mediaFile.getAbsolutePath();
 
         return mediaFile;
     }
 
     private static File getTempImageFile(Context ctx, String filePath) {
         File dir;
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+        if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
             dir = prepareExternalCacheDir(ctx);
         } else {
             dir = ctx.getCacheDir();
@@ -121,7 +130,7 @@ public class FileUtil {
 
     private static File prepareExternalCacheDir(Context ctx) {
         String relativepath = "/Android/data/" + ctx.getPackageName() + "/Cache";
-        File file = new File(Environment.getExternalStorageDirectory(), relativepath);
+        File file = new File(android.os.Environment.getExternalStorageDirectory(), relativepath);
         if (!file.isDirectory()) {
             file.mkdirs();
         }
@@ -129,6 +138,7 @@ public class FileUtil {
     }
 
     public static String compressImage(Context ctx, String imagePath, int finalSize) {
+        imagePath = imagePath != null ? imagePath : photoImagePath;
         File file = getTempImageFile(ctx, imagePath);
 
         int rotation = 0;

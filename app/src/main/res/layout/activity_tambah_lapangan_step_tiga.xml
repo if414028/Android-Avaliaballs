@@ -1,222 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="fill_parent">
 
-    <LinearLayout android:layout_height="fill_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        xmlns:android="http://schemas.android.com/apk/res/android" >
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="30dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/judulHariBukaLapangan"
-                android:textStyle="bold"
                 android:textColor="@color/clrlinedark"
-                android:textSize="16dp"/>
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <CheckBox
+                    android:id="@+id/checkBoxSenin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginRight="20dp">
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/senin" />
 
-                    <CheckBox
-                        android:id="@+id/checkBoxSenin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/senin"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-
-                    <CheckBox
-                        android:id="@+id/checkBoxSelasa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/selasa"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-
-                    <CheckBox
-                        android:id="@+id/checkBoxRabu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rabu"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <CheckBox
+                    android:id="@+id/checkBoxSelasa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/selasa" />
 
-                    <CheckBox
-                        android:id="@+id/checkBoxKamis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kamis"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-
-                    <CheckBox
-                        android:id="@+id/checkBoxJumat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/jumat"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-
-                    <CheckBox
-                        android:id="@+id/checkBoxSabtu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sabtu"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <CheckBox
+                    android:id="@+id/checkBoxRabu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
-
-                    <CheckBox
-                        android:id="@+id/checkBoxMinggu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/minggu"
-                        android:layout_above="@+id/button"
-                        android:layout_centerHorizontal="true" />
-                </LinearLayout>
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/rabu" />
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:textColor="@color/clrlinedark"
-                android:text="@string/judulJamBukaLapangan"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBoxKamis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="Kamis" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxJumat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/jumat" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxSabtu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/sabtu" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBoxMinggu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/minggu" />
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/spinnerJamBuka"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:entries="@array/array_itemjam"
-                style="@style/SpinnerTheme"/>
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:text="-"
+                android:gravity="center"
+                android:text="@string/judulJamBukaLapangan"
+                android:textColor="@color/clrlinedark"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"/>
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/spinnerJamTutup"
+                android:id="@+id/spinnerJamBuka"
+                style="@style/SpinnerTheme"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:entries="@array/array_itemjam"
-                style="@style/SpinnerTheme"/>
+                android:entries="@array/array_itemjam" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="30dp"
+                android:text="-"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerJamTutup"
+                style="@style/SpinnerTheme"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:entries="@array/array_itemjam" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:gravity="center"
-            android:textStyle="italic"
-            android:text="@string/hintTextJamLapangan"/>
+            android:text="@string/hintTextJamLapangan"
+            android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp">
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/judulHargaLapangan"
                 android:textColor="@color/clrlinedark"
-                android:text="@string/judulHargaLapangan"/>
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
             android:background="@drawable/hargabutton"
             android:gravity="center_vertical"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal">
 
             <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                 android:id="@+id/iconEmailTextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
                 android:text="Rp"
-                android:textStyle="bold"
-                app:font="@string/font_icon"
                 android:textColor="@color/clrlinedark"
-                android:layout_marginLeft="20dp">
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:font="@string/font_icon">
 
             </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputEmail"
+                android:id="@+id/txtInputEmail"
                 android:layout_width="240dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
@@ -227,18 +242,19 @@
                 android:theme="@style/TextLabelLogin">
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
-                    android:id="@+id/eTEmail"
+                    android:id="@+id/eTHarga"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="33dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
                     android:drawableTint="@color/clrline"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/clrlinedark"
                     android:textColorHighlight="@color/clrlinedark"
-                    android:ems="10"
-                    android:inputType="number"
                     android:textSize="16dp"
-                    android:layout_marginBottom="10dp"
                     android:textStyle="normal"
-                    android:background="@android:color/transparent"
                     app:font="@string/font_roboto" />
 
             </android.support.design.widget.TextInputLayout>
@@ -248,25 +264,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:gravity="center"
-            android:textStyle="italic"
-            android:text="@string/hintTextJamLapangan"/>
+            android:text="@string/hintTextJamLapangan"
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="30dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="80dp"
             android:background="@drawable/circlebutton"
+            android:onClick="finishStep"
             android:text="Selesai"
             android:textAllCaps="false"
-            android:textColor="@android:color/background_light"
-            android:layout_gravity="center"
-            android:onClick="finishStep"/>
+            android:textColor="@android:color/background_light" />
 
     </LinearLayout>
 
