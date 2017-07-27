@@ -93,6 +93,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         final View llemail = findViewById(R.id.layoutUsername);
         if (!focused) {
             llemail.setAlpha(0.5f);
+        } else {
+            llemail.setAlpha(1.0f);
         }
     }
 
@@ -125,6 +127,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         final View llpass = findViewById(R.id.layoutPassword);
         if (!focused) {
             llpass.setAlpha(0.5f);
+        } else {
+            llpass.setAlpha(1.0f);
         }
     }
 

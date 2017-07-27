@@ -37,6 +37,8 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     CustomFontTextView addTlp;
     @BindView(R.id.lytlp)
     LinearLayout ly;
+    @BindView(R.id.txtCoordinat)
+    TextView textCoordinat;
 
     int PLACE_PICKER_REQUEST = 1;
 
@@ -65,8 +67,8 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("%s", place.getName() + ",\n" + place.getAddress());
-                etLokasi.setText(toastMsg);
+                String toastMsg = String.format("%s", place.getName());
+                textCoordinat.setText(toastMsg);
                 Toast.makeText(TambahLapanganStepDuaActivity.this, toastMsg, Toast.LENGTH_LONG).show();
             }
         }
@@ -100,6 +102,15 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
             lllokasi.setAlpha(0.5f);
         } else {
             lllokasi.setAlpha(1.0f);
+        }
+    }
+
+    @OnTextChanged(value = R.id.txtCoordinat, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterGetLocationChanged() {
+        final TextView txtCoor = (TextView) findViewById(R.id.txtCoordinat);
+        final ImageView map = (ImageView) findViewById(R.id.location_button);
+        int length = textCoordinat.getText().length();
+        if (length > 1) {
             map.setImageResource(R.drawable.map_color);
         }
     }
@@ -141,6 +152,8 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         final View lltelepon = findViewById(R.id.layoutTelepon1);
         if (!focused) {
             lltelepon.setAlpha(0.5f);
+        } else {
+            lltelepon.setAlpha(1.0f);
         }
     }
 

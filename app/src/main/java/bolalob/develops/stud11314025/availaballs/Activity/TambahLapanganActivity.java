@@ -177,6 +177,8 @@ public class TambahLapanganActivity extends AppCompatActivity {
         final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
         if (!focused) {
             llnamalapangan.setAlpha(0.5f);
+        } else {
+            llnamalapangan.setAlpha(1.0f);
         }
     }
 
