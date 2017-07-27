@@ -6,11 +6,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -45,8 +48,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.app_bar_image)
     ImageView appbarimage;
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
+    @BindView(R.id.placeholder_image)
+    ImageView loadingImage;
     @BindView(R.id.IcEditHariJam)
     CustomFontTextView IcEditJam;
     @BindView(R.id.appbar)
@@ -70,13 +73,22 @@ public class DetailLapanganActivity extends AppCompatActivity {
         setTextTv();
         setCollapsingActionBar();
         setImageGlideinAppbar();
+        setStatusBarColor();
         IcEditJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentJm = new Intent(getApplicationContext(), UpdateJamBukaActivity.class);
+                Intent intentJm = new Intent(DetailLapanganActivity.this, UpdateJamBukaActivity.class);
                 startActivity(intentJm);
             }
         });
+    }
+    private void setStatusBarColor() {
+        Window window = DetailLapanganActivity.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.clrNavigation));
+        }
     }
 
     private void setTextTv() {
@@ -139,13 +151,13 @@ public class DetailLapanganActivity extends AppCompatActivity {
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        progressBar.setVisibility(View.GONE);
+                        loadingImage.setVisibility(View.GONE);
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        progressBar.setVisibility(View.GONE);
+                        loadingImage.setVisibility(View.GONE);
                         return false;
                     }
                 })
@@ -171,8 +183,6 @@ public class DetailLapanganActivity extends AppCompatActivity {
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
-                    toolbar.setBackgroundColor(Color.TRANSPARENT);
-                    appBarLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadow));
                     isShow = false;
                 }
             }
@@ -188,9 +198,16 @@ public class DetailLapanganActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            navigateUpTo(new Intent(this, MainActivity.class));
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) {
+         if (id == android.R.id.home) {
             // This ID represents the Home or Up button. In the case of this
             // activity, the Up button is shown. For
             // more details, see the Navigation pattern on Android Design:

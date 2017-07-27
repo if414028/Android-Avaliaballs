@@ -7,12 +7,15 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -133,6 +136,17 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         ButterKnife.bind(this);
         setActionBarOntheTop();
         setOnItemSelectedListenerAll();
+        setStatusbar();
+    }
+
+
+    private void setStatusbar() {
+        Window window = UpdateJamBukaActivity.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.clrNavigation));
+        }
     }
 
     private void setOnItemSelectedListenerAll() {
@@ -194,7 +208,8 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
     }
 
     public void Simpan(View view) {
-        this.finish();
+        Intent intent = new Intent(getApplicationContext(), DetailLapanganActivity.class);
+        startActivity(intent);
     }
 
     private void spinnerMingguTransformClickableFalse() {

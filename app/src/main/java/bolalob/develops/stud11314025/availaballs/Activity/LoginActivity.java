@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.clrlinedark));
         }
     }
 
