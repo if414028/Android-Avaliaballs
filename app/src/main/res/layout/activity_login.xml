@@ -57,15 +57,15 @@
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
                     android:id="@+id/eTEmail"
-                    android:layout_width="240dp"
+                    android:layout_width="210dp"
                     android:layout_height="40dp"
                     android:background="@android:color/transparent"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/clrline"
                     android:ems="10"
                     android:hint="email"
-                    android:inputType="textEmailAddress"
                     android:text="admin"
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/clrpressed"
                     android:textColorHighlight="#FFFFFF"
                     android:textSize="12dp"
@@ -110,7 +110,7 @@
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
                     android:id="@+id/eTPassword"
-                    android:layout_width="240dp"
+                    android:layout_width="210dp"
                     android:layout_height="40dp"
                     android:background="@android:color/transparent"
                     android:drawablePadding="15dp"
