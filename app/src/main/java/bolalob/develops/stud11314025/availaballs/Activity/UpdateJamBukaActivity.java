@@ -208,8 +208,7 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
     }
 
     public void Simpan(View view) {
-        Intent intent = new Intent(getApplicationContext(), DetailLapanganActivity.class);
-        startActivity(intent);
+        this.finish();
     }
 
     private void spinnerMingguTransformClickableFalse() {
