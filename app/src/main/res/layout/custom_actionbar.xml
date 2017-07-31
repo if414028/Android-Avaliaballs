@@ -25,13 +25,40 @@
         android:textStyle="bold"
         app:font="@string/font_roboto" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="8dp"
-        android:background="@null" />
+        android:layout_centerVertical="true">
+
+        <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+            android:id="@+id/iconByMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:text="@string/icon_bymap"
+            android:textColor="@color/clrpressed"
+            android:textSize="20dp"
+            app:font="@string/font_icon">
+
+        </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+        <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+            android:id="@+id/iconOlogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:text="@string/icon_logout"
+            android:textColor="@color/clrpressed"
+            android:textSize="20dp"
+            app:font="@string/font_icon">
+
+        </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+    </LinearLayout>
 
 </RelativeLayout>

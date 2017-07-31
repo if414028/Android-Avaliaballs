@@ -11,5 +11,8 @@
     <string name="icon_phone">&#xe908;</string>
     <string name="icon_remove">&#xe909;</string>
     <string name="icon_gear">&#xe903;</string>
+    <string name="icon_bymap">&#xe90b;</string>
+    <string name="icon_logout">&#xe90c;</string>
+
 
 </resources>

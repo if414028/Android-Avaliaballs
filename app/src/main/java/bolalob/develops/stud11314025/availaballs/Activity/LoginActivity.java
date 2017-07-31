@@ -1,6 +1,7 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -40,6 +41,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     CustomFontTextView iconemailTV;
 
     private LoginPresenter presenter;
+
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
+    public static final String TAG_EMAIL = "emailKey";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -150,7 +156,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void loginSucess() {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        preferences = getSharedPreferences("myPreferences", MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.putString(TAG_EMAIL, etEmail.getText().toString());
+        editor.commit();
         startActivity(mainIntent);
+
     }
 
     @Override

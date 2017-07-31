@@ -1,10 +1,10 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +30,7 @@ import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +38,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    private SharedPreferences preferences;
+    private final String TAG_EMAIL = "emailKey";
 
     @BindView(R.id.rv_main)
     RecyclerView rvView;
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         consumeAPIListLapngan();
 
-
     }
 
     private void consumeAPIListLapngan() {
@@ -105,18 +108,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @OnClick(R.id.buttonBottom)
+    void byMap() {
+        Intent intent = new Intent(MainActivity.this, TambahLapanganActivity.class);
+        startActivity(intent);
+    }
+
     private void setActionbar() {
+        preferences = getSharedPreferences("myPreferences", MODE_PRIVATE);
+        String login = preferences.getString(TAG_EMAIL, "-");
         ActionBar mActionBar = getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
         LayoutInflater mInflater = LayoutInflater.from(this);
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
-        mTitleTextView.setText("List Lapangan");
+        mTitleTextView.setText("List Lapangan " + login);
 
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
+
+        actionActioBar(mCustomView);
+    }
+
+    private void actionActioBar(View actionbarView) {
+        CustomFontTextView txtMap = ButterKnife.findById(actionbarView, R.id.iconByMap);
+        txtMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LocationByMapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setStatusBarColor() {
@@ -154,11 +178,6 @@ public class MainActivity extends AppCompatActivity {
         LabelLokasi.setVisibility(View.GONE);
         LabelNo.setVisibility(View.GONE);
         LabelNamaLap.setVisibility(View.GONE);
-    }
-
-    public void tambahLapangan(View view) {
-        Intent intent = new Intent(MainActivity.this, TambahLapanganActivity.class);
-        startActivity(intent);
     }
 
     private RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
