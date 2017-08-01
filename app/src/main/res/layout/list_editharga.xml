@@ -8,6 +8,7 @@
         android:id="@+id/lychildHarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
         <View
 
@@ -26,6 +27,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <Spinner
@@ -40,7 +42,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="0.1"
                     android:text="-"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -50,13 +51,14 @@
                     style="@style/SpinnerThemeWhite"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"
                     android:entries="@array/array_itemjam" />
+                <View
+                    android:layout_width="@dimen/size20"
+                    android:layout_height="1dp"></View>
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                     android:id="@+id/iconHargaAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size30"
                     android:layout_weight="0.1"
                     android:layout_gravity="bottom"
                     android:text="@string/icon_add"
@@ -70,7 +72,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:layout_marginLeft="@dimen/size20"
                     android:layout_gravity="bottom"
                     android:text="@string/icon_remove"
                     android:textColor="@color/colorSnackbar"

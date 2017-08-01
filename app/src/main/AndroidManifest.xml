@@ -70,7 +70,9 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.UpdateHargaPerJamActivity"></activity>
+        <activity
+            android:name=".Activity.UpdateHargaPerJamActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 
 </manifest>
