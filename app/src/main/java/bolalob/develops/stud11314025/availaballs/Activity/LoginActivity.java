@@ -1,16 +1,13 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -46,10 +43,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     CustomFontTextView iconemailTV;
 
     private LoginPresenter presenter;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String USER = "userKey";
-    public static final String PASS = "passKey";
-    SharedPreferences sharedpreferences;
+
+    private Context getContext() {
+        return LoginActivity.this;
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -64,22 +61,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         }
 
         presenter = new LoginPresenterImp(this);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String user = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
-
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(USER, user);
-                editor.putString(PASS, pass);
-                editor.commit();
+                SharePreferencesManager.setLoginPreference(getContext(), user, pass);
                 presenter.login(etEmail.getText().toString(), etPassword.getText().toString());
             }
         });
-
 
 
     }
@@ -206,50 +197,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
             @Override
             public void run() {
-//                moveTaskToBack(true);
-//                finish();
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.gc();
                 System.exit(1);
-//                finish();
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
-    }
-
-
-    //    @Override
-//    public void onBackPressed() {
-//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//        alertDialogBuilder.setMessage("Are you Sure want to Logout?");
-//        alertDialogBuilder.setNegativeButton("Quit", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sharedpreferences.edit();
-//                editor.clear();
-//                editor.commit();
-//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//        alertDialogBuilder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                Toast.makeText(LoginActivity.this, "Anda batal keluar ...", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        AlertDialog alertDialog = alertDialogBuilder.create();
-//        alertDialog.show();
-//    }
-
-
-    public void setAlpha(View view) {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.layoutUsername);
-        layout.setAlpha(1);
     }
 
 }

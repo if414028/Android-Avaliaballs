@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/lychildHarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -52,10 +53,10 @@
                     android:layout_weight="0.4"
                     android:entries="@array/array_itemjam" />
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/iconHargaSeninAdd"
+                    android:id="@+id/iconHargaAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size40"
+                    android:layout_marginLeft="@dimen/size30"
                     android:layout_weight="0.1"
                     android:layout_gravity="bottom"
                     android:text="@string/icon_add"
@@ -65,7 +66,7 @@
 
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/iconHargaSeninRemove"
+                    android:id="@+id/iconHargaRemove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"

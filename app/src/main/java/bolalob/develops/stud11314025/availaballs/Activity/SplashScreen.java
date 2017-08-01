@@ -18,6 +18,9 @@ public class SplashScreen extends AppCompatActivity {
     public static final String USER = "userKey";
     public static final String PASS = "passKey";
 
+    private Context getContext(){
+        return SplashScreen.this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +36,11 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-                String user = sharedpreferences.getString(USER,"");
-                String pass = sharedpreferences.getString(PASS,"");
+//                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+//                String user = sharedpreferences.getString(USER,"");
+//                String pass = sharedpreferences.getString(PASS,"");
+                String user = SharePreferencesManager.getUser(getContext());
+                String pass = SharePreferencesManager.getPass(getContext());
 
                 if (user.isEmpty()&&pass.isEmpty()){
                     finish();

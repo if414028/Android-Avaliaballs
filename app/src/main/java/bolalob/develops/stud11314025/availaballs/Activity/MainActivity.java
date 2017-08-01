@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
 
-    public static final String USER = "userKey";
+    private Context getContext(){
+        return MainActivity.this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,15 +114,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setActionbar() {
-        SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-        String user = sharedpreferences.getString(USER, "-");
         ActionBar mActionBar = getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
         LayoutInflater mInflater = LayoutInflater.from(this);
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
-        mTitleTextView.setText("List Lapangan" + " Login By " + user);
+        mTitleTextView.setText("List Lapangan");
 
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
@@ -185,10 +185,7 @@ public class MainActivity extends AppCompatActivity {
         btnLgout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.clear();
-                editor.commit();
+                SharePreferencesManager.logout(getContext());
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -198,45 +195,8 @@ public class MainActivity extends AppCompatActivity {
         btnCncl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(MainActivity.this, "Anda batal keluar ...", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });
-
-
-
-//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//        View dialogView = getLayoutInflater().inflate(R.layout.alert_dialog_logout,null);
-//        alertDialogBuilder.setMessage("Are you Sure want to Logout?");
-//        alertDialogBuilder.setNegativeButton("Quit", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sharedpreferences.edit();
-//                editor.clear();
-//                editor.commit();
-//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//        alertDialogBuilder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                Toast.makeText(MainActivity.this, "Anda batal keluar ...", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        AlertDialog alertDialog = alertDialogBuilder.create();
-//        alertDialog.show();
     }
-
-    private RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
-
-    };
 }
