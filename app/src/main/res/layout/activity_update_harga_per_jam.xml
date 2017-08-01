@@ -8,23 +8,26 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/size20"
         android:layout_marginTop="@dimen/size20"
         android:orientation="vertical"
         tools:context="bolalob.develops.stud11314025.availaballs.Activity.UpdateHargaPerJamActivity">
 
         <LinearLayout
             android:id="@+id/lySenin"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Senin" />
 
             <LinearLayout
+
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/size10"
@@ -134,9 +137,15 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/clrlineblur"
+    android:orientation="vertical">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/size20"
+            android:id="@+id/lySelasa"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -257,10 +266,13 @@
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
             </LinearLayout>
         </LinearLayout>
+</LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lyRabu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
@@ -381,7 +393,14 @@
             </LinearLayout>
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/clrlineblur"
+        android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/lyKamis"
+            android:layout_marginLeft="@dimen/size20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -502,10 +521,13 @@
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lyJumat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
@@ -624,10 +646,16 @@
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
             </LinearLayout>
         </LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/clrlineblur">
         <LinearLayout
+            android:id="@+id/lySabtu"
+            android:layout_marginLeft="@dimen/size20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/clrlineblur"
             android:orientation="vertical">
 
             <TextView
@@ -746,10 +774,12 @@
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
             </LinearLayout>
         </LinearLayout>
-
+</LinearLayout>
         <LinearLayout
+            android:id="@+id/lyMinggu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
@@ -811,7 +841,6 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">

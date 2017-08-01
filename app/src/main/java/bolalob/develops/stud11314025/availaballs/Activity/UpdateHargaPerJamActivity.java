@@ -31,30 +31,73 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
     @BindView(R.id.iconHargaSeninAdd)
     CustomFontTextView iconHargaSeninAdd;
 
+    @BindView(R.id.iconHargaSelasaAdd)
+    CustomFontTextView iconHargaSelasaAdd;
+
+    @BindView(R.id.iconHargaRabuAdd)
+    CustomFontTextView iconHargaRabuAdd;
+
+    @BindView(R.id.iconHargaKamisAdd)
+    CustomFontTextView iconHargaKamisAdd;
+
+    @BindView(R.id.iconHargaJumatAdd)
+    CustomFontTextView iconHargaJumatAdd;
+
+    @BindView(R.id.iconHargaSabtuAdd)
+    CustomFontTextView iconHargaSabtuAdd;
+
+    @BindView(R.id.iconHargaMingguAdd)
+    CustomFontTextView iconHargaMingguAdd;
+
 
     @OnClick(R.id.btnSimpanHargaPerJam)
     void Updateharga() {
         this.finish();
     }
 
+    @OnClick(R.id.iconHargaMingguAdd)
+    void AddHargaMinggu(){
+        addViewMinggu();
+        iconHargaMingguAdd.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.iconHargaSabtuAdd)
+    void AddHargaSabtu(){
+        addViewSabtu();
+        iconHargaSabtuAdd.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.iconHargaJumatAdd)
+    void AddHargaJumat(){
+        addViewJumat();
+        iconHargaJumatAdd.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.iconHargaKamisAdd)
+    void AddHargaKamis(){
+        addViewKamis();
+        iconHargaKamisAdd.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.iconHargaRabuAdd)
+    void AddHargaRabu(){
+        addViewRabu();
+        iconHargaRabuAdd.setVisibility(View.GONE);
+    }
+
+
+    @OnClick(R.id.iconHargaSelasaAdd)
+    void AddHargaSelasa(){
+        addViewSelasa();
+        iconHargaSelasaAdd.setVisibility(View.GONE);
+    }
+
     @OnClick(R.id.iconHargaSeninAdd)
     void AddHargaSenin() {
-//        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        LinearLayout parent = (LinearLayout) findViewById(R.id.lySenin);
-//        View tv = inflater.inflate(R.layout.list_editharga, null);
         addViewSenin();
         iconHargaSeninAdd.setVisibility(View.GONE);
-
-//        int count = parent.getChildCount();
-//
-//        int maxHarga = 6;
-//
-//        if (count < maxHarga) {
-//            addViewSenin();
-//        } else {
-//            Toast.makeText(lySenin.getContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
-//        }
     }
+
 
 
     @Override
@@ -64,30 +107,241 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setActionBarOntheTop();
         setStatusBarColor();
+    }
 
-//       final View tv = LayoutInflater.from(this).inflate(R.layout.list_editharga, null);
-//        CustomFontTextView iconRemove = ButterKnife.findById(tv, R.id.iconHargaRemove);
-//        CustomFontTextView iconAdd = (CustomFontTextView) tv.findViewById(R.id.iconHargaAdd);
-//        iconRemove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ((LinearLayout) tv.getParent()).removeView(tv);
-//            }
-//        });
-//        iconAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AddHargaSenin();
-//            }
-//        });
+    private void addViewMinggu() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lyMinggu);
+        final View rowView = inflater.inflate(R.layout.list_editharga, null);
+        parent.addView(rowView);
+        CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+
+                int maxHarga = 6;
+
+                if (count < maxHarga) {
+                    addViewMinggu();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        CustomFontTextView btnRemove = ButterKnife.findById(rowView, R.id.iconHargaRemove);
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 4;
+
+                if (count == maxChild) {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    iconHargaMingguAdd.setVisibility(View.VISIBLE);
+                } else {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    count--;
+                }
+            }
+        });
+    }
+
+    private void addViewSabtu() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lySabtu);
+        final View rowView = inflater.inflate(R.layout.list_editharga, null);
+        parent.addView(rowView);
+        CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+
+                int maxHarga = 6;
+
+                if (count < maxHarga) {
+                    addViewSabtu();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        CustomFontTextView btnRemove = ButterKnife.findById(rowView, R.id.iconHargaRemove);
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 4;
+
+                if (count == maxChild) {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    iconHargaSabtuAdd.setVisibility(View.VISIBLE);
+                } else {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    count--;
+                }
+            }
+        });
+    }
+
+    private void addViewJumat() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lyJumat);
+        final View rowView = inflater.inflate(R.layout.list_editharga, null);
+        parent.addView(rowView);
+        CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+
+                int maxHarga = 6;
+
+                if (count < maxHarga) {
+                    addViewJumat();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        CustomFontTextView btnRemove = ButterKnife.findById(rowView, R.id.iconHargaRemove);
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 4;
+
+                if (count == maxChild) {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    iconHargaJumatAdd.setVisibility(View.VISIBLE);
+                } else {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    count--;
+                }
+            }
+        });
+    }
+
+    private void addViewKamis() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lyKamis);
+        final View rowView = inflater.inflate(R.layout.list_editharga, null);
+        parent.addView(rowView);
+        CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+
+                int maxHarga = 6;
+
+                if (count < maxHarga) {
+                    addViewKamis();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        CustomFontTextView btnRemove = ButterKnife.findById(rowView, R.id.iconHargaRemove);
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 4;
+
+                if (count == maxChild) {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    iconHargaKamisAdd.setVisibility(View.VISIBLE);
+                } else {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    count--;
+                }
+            }
+        });
+    }
+    private void addViewRabu() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lyRabu);
+        final View rowView = inflater.inflate(R.layout.list_editharga, null);
+        parent.addView(rowView);
+        CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+
+                int maxHarga = 6;
+
+                if (count < maxHarga) {
+                    addViewRabu();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        CustomFontTextView btnRemove = ButterKnife.findById(rowView, R.id.iconHargaRemove);
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 4;
+
+                if (count == maxChild) {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    iconHargaRabuAdd.setVisibility(View.VISIBLE);
+                } else {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    count--;
+                }
+            }
+        });
+    }
+
+
+    private void addViewSelasa() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lySelasa);
+        final View rowView = inflater.inflate(R.layout.list_editharga, null);
+        parent.addView(rowView);
+        CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+
+                int maxHarga = 6;
+
+                if (count < maxHarga) {
+                    addViewSelasa();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        CustomFontTextView btnRemove = ButterKnife.findById(rowView, R.id.iconHargaRemove);
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 4;
+
+                if (count == maxChild) {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    iconHargaSelasaAdd.setVisibility(View.VISIBLE);
+                } else {
+                    ((LinearLayout) rowView.getParent()).removeView(rowView);
+                    count--;
+                }
+            }
+        });
     }
 
     private void addViewSenin() {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final LinearLayout parent = (LinearLayout) findViewById(R.id.lySenin);
         final View rowView = inflater.inflate(R.layout.list_editharga, null);
-        lySenin.addView(rowView);
-
+        parent.addView(rowView);
         CustomFontTextView btnAdd = ButterKnife.findById(rowView, R.id.iconHargaAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,8 +352,8 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
 
                 if (count < maxHarga) {
                     addViewSenin();
-                }else {
-                    Toast.makeText(lySenin.getContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hanya dapat menambahkan 3 Harga tambahan", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -113,7 +367,7 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
                 if (count == maxChild) {
                     ((LinearLayout) rowView.getParent()).removeView(rowView);
                     iconHargaSeninAdd.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     ((LinearLayout) rowView.getParent()).removeView(rowView);
                     count--;
                 }
