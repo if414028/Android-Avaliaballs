@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -54,6 +55,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
     CustomFontTextView IcEditJam;
     @BindView(R.id.appbar)
     AppBarLayout appbar;
+    @BindView(R.id.btnEditHarga)
+    CustomFontTextView btnEHarga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,13 @@ public class DetailLapanganActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentJm = new Intent(DetailLapanganActivity.this, UpdateJamBukaActivity.class);
                 startActivity(intentJm);
+            }
+        });
+        btnEHarga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentHr = new Intent(getApplicationContext(),UpdateHargaPerJamActivity.class);
+                startActivity(intentHr);
             }
         });
     }

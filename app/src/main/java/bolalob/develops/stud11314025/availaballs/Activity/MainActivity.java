@@ -1,12 +1,17 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
+
+    public static final String USER = "userKey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
         setStatusBarColor();
         progressBar.setVisibility(View.VISIBLE);
         consumeAPIListLapngan();
-
-
     }
 
     private void consumeAPIListLapngan() {
@@ -106,13 +112,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setActionbar() {
+        SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        String user = sharedpreferences.getString(USER, "-");
         ActionBar mActionBar = getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
         LayoutInflater mInflater = LayoutInflater.from(this);
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
-        mTitleTextView.setText("List Lapangan");
+        mTitleTextView.setText("List Lapangan" + " Login By " + user);
 
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
@@ -159,6 +167,69 @@ public class MainActivity extends AppCompatActivity {
     public void tambahLapangan(View view) {
         Intent intent = new Intent(MainActivity.this, TambahLapanganActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final View dialogView = getLayoutInflater().inflate(R.layout.alert_dialog_logout, null);
+        Button btnLgout = (Button) dialogView.findViewById(R.id.btnLogout);
+        Button btnCncl = (Button) dialogView.findViewById(R.id.btnCancel);
+
+        alertDialogBuilder.setView(dialogView);
+        final AlertDialog dialog = alertDialogBuilder.create();
+        dialog.show();
+
+
+        btnLgout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnCncl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(MainActivity.this, "Anda batal keluar ...", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+
+
+//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//        View dialogView = getLayoutInflater().inflate(R.layout.alert_dialog_logout,null);
+//        alertDialogBuilder.setMessage("Are you Sure want to Logout?");
+//        alertDialogBuilder.setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedpreferences.edit();
+//                editor.clear();
+//                editor.commit();
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//        alertDialogBuilder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                Toast.makeText(MainActivity.this, "Anda batal keluar ...", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        AlertDialog alertDialog = alertDialogBuilder.create();
+//        alertDialog.show();
     }
 
     private RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {

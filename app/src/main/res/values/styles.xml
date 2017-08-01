@@ -43,6 +43,10 @@
         <item name="colorControlActivated">#FFFFFF</item>
     </style>
 
+    <style name="SpinnerThemeWhite" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/bgspinner_checked</item>
+    </style>
+
     <style name="SpinnerTheme" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/bgspinner</item>
     </style>

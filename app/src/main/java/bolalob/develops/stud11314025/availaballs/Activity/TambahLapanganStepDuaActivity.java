@@ -2,12 +2,16 @@ package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,10 +51,19 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_lapangan_step_dua);
         ButterKnife.bind(this);
-
+        setStatusBarColor();
         addActionBar();
 
         spinnerJumlahLapangan.setOnItemSelectedListener(this);
+    }
+
+    private void setStatusBarColor() {
+        Window window = TambahLapanganStepDuaActivity.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.clrNavigation));
+        }
     }
 
     @OnClick(R.id.location_button)
