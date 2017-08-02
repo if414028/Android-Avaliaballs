@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:font="@string/font_roboto" />
+
+    <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+        android:id="@+id/title_text_centered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:font="@string/font_roboto" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+            android:id="@+id/iconByMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:text="@string/icon_bymap"
+            android:textColor="@color/clrpressed"
+            android:textSize="20dp"
+            app:font="@string/font_icon">
+
+        </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+        <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+            android:id="@+id/iconOlogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:text="@string/icon_logout"
+            android:textColor="@color/clrpressed"
+            android:textSize="20dp"
+            app:font="@string/font_icon">
+
+        </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+    </LinearLayout>
+
+</RelativeLayout>

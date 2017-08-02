@@ -92,8 +92,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 c.startActivity(i);
             }
         });
-
-
     }
 
 

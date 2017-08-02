@@ -96,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     viewnotEmpty();
                 }
-
-
             }
 
             @Override
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
         LayoutInflater mInflater = LayoutInflater.from(this);
-        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+        View mCustomView = mInflater.inflate(R.layout.custom_actionbar_home, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
         mTitleTextView.setText("List Lapangan " + login);
 
