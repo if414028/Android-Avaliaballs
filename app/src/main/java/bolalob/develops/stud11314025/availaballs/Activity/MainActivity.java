@@ -1,14 +1,10 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -33,6 +29,7 @@ import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Service.API;
 import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;

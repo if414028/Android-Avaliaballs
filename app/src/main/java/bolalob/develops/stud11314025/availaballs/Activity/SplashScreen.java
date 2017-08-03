@@ -2,7 +2,6 @@ package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import bolalob.develops.stud11314025.availaballs.R;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -36,9 +36,6 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-//                String user = sharedpreferences.getString(USER,"");
-//                String pass = sharedpreferences.getString(PASS,"");
                 String user = SharePreferencesManager.getUser(getContext());
                 String pass = SharePreferencesManager.getPass(getContext());
 

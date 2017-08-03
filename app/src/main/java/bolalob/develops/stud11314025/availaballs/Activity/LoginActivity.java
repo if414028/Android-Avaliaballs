@@ -15,7 +15,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +23,7 @@ import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginPresenterImp;
 import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginView;
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnFocusChange;
