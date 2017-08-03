@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater mInflater = LayoutInflater.from(this);
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar_home, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
-        mTitleTextView.setText("List Lapangan " + login);
+        mTitleTextView.setText("List Lapangan");
 
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
