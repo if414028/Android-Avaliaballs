@@ -22,6 +22,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import bolalob.develops.stud11314025.availaballs.R;
+import bolalob.develops.stud11314025.availaballs.UpdateNamaAlamatLapanganActivity;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,6 +51,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
     ImageView loadingImage;
     @BindView(R.id.IcEditHariJam)
     CustomFontTextView IcEditJam;
+    @BindView(R.id.btnEditLapangan)
+    CustomFontTextView IcEditNamaLapangan;
     @BindView(R.id.appbar)
     AppBarLayout appbar;
 
@@ -76,6 +79,13 @@ public class DetailLapanganActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentJm = new Intent(DetailLapanganActivity.this, UpdateJamBukaActivity.class);
+                startActivity(intentJm);
+            }
+        });
+        IcEditNamaLapangan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentJm = new Intent(DetailLapanganActivity.this, UpdateNamaAlamatLapanganActivity.class);
                 startActivity(intentJm);
             }
         });
