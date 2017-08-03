@@ -157,18 +157,20 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         int length = etTelepon.getText().length();
         if (length == 0) {
             lltelepon.setAlpha(0.5f);
-        } else lltelepon.setAlpha(1.0f);
-    }
-
-    @OnFocusChange(value = R.id.eTTelepon)
-    void afterTeleponFocusChanged(boolean focused) {
-        final View lltelepon = findViewById(R.id.layoutTelepon1);
-        if (!focused) {
-            lltelepon.setAlpha(0.5f);
         } else {
             lltelepon.setAlpha(1.0f);
         }
     }
+
+//    @OnFocusChange(value = R.id.eTTelepon)
+//    void afterTeleponFocusChanged(boolean focused) {
+//        final View lltelepon = findViewById(R.id.layoutTelepon1);
+//        if (!focused) {
+//            lltelepon.setAlpha(0.5f);
+//        } else {
+//            lltelepon.setAlpha(1.0f);
+//        }
+//    }
 
     public void addActionBar() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -216,19 +218,46 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
 
     @OnClick(R.id.iconTeleponAdd)
     void addTelepon() {
-        LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
+        final LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
 
-        View tv = LayoutInflater.from(this).inflate(R.layout.list_edittext_telepon, null);
+        final View tv = LayoutInflater.from(this).inflate(R.layout.list_edittext_telepon, null);
 
         int count = parent.getChildCount();
 
         int maxPhoneNumber = 3;
 
         if (count < maxPhoneNumber) {
+            addTlp.setVisibility(View.GONE);
             parent.addView(tv);
         } else {
             Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 3 nomor telepon.", Toast.LENGTH_LONG).show();
         }
+
+        CustomFontTextView addIcon = ButterKnife.findById(tv, R.id.iconTeleponAdd);
+        addIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addTelepon();
+            }
+        });
+
+        CustomFontTextView removeIcon = ButterKnife.findById(tv, R.id.iconTeleponRemove);
+        removeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count = parent.getChildCount();
+                int maxChild = 2;
+
+                if (count == maxChild) {
+                    ((LinearLayout) tv.getParent()).removeView(tv);
+                    addTlp.setVisibility(View.VISIBLE);
+
+                } else {
+                    ((LinearLayout) tv.getParent()).removeView(tv);
+                    count--;
+                }
+            }
+        });
     }
 
 }

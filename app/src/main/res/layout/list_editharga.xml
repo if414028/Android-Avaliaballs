@@ -40,8 +40,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:text="-"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -52,27 +52,26 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:entries="@array/array_itemjam" />
-                <View
-                    android:layout_width="@dimen/size20"
-                    android:layout_height="1dp"></View>
+
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                     android:id="@+id/iconHargaAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:text="@string/icon_add"
                     android:textColor="@color/clrAddLpng"
                     android:textSize="30sp"
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
-
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                     android:id="@+id/iconHargaRemove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:text="@string/icon_remove"
                     android:textColor="@color/colorSnackbar"
                     android:textSize="30sp"
@@ -89,7 +88,7 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size16"
+                android:layout_marginBottom="@dimen/size20"
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">

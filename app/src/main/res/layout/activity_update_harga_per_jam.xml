@@ -14,14 +14,14 @@
 
         <LinearLayout
             android:id="@+id/lySenin"
-
+            android:layout_marginRight="@dimen/size20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
-
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Senin" />
@@ -49,8 +49,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="0.1"
                         android:text="-"
                         android:textSize="16dp"
@@ -69,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
                         android:text="@string/icon_add"
                         android:textColor="@color/clrAddLpng"
@@ -87,7 +87,7 @@
                 <LinearLayout
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/size16"
+                    android:layout_marginBottom="@dimen/size20"
                     android:background="@drawable/hargabutton"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -144,12 +144,14 @@
     android:orientation="vertical">
         <LinearLayout
             android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:id="@+id/lySelasa"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Selasa" />
@@ -176,8 +178,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:text="-"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -194,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
 
                         android:text="@string/icon_add"
@@ -209,7 +211,7 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size16"
+                android:layout_marginBottom="@dimen/size20"
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -230,7 +232,7 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/txtInputHargaSelasa"
-                    android:layout_width="240dp"
+                    android:layout_width="200dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
@@ -273,9 +275,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rabu" />
@@ -302,8 +306,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:text="-"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -320,7 +324,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
 
                         android:text="@string/icon_add"
@@ -335,7 +339,7 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size16"
+                android:layout_marginBottom="@dimen/size20"
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -401,11 +405,13 @@
         <LinearLayout
             android:id="@+id/lyKamis"
             android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kamis" />
@@ -432,8 +438,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:text="-"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -450,7 +456,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
                         android:text="@string/icon_add"
                         android:textColor="@color/clrAddLpng"
@@ -464,7 +470,7 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size16"
+                android:layout_marginBottom="@dimen/size20"
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -528,9 +534,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jumat" />
@@ -557,8 +565,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:text="-"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -575,7 +583,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
                         android:text="@string/icon_add"
                         android:textColor="@color/clrAddLpng"
@@ -589,7 +597,7 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size16"
+                android:layout_marginBottom="@dimen/size20"
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -653,12 +661,14 @@
         <LinearLayout
             android:id="@+id/lySabtu"
             android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/clrlineblur"
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sabtu" />
@@ -685,8 +695,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:text="-"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -703,7 +713,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
                         android:text="@string/icon_add"
                         android:textColor="@color/clrAddLpng"
@@ -717,7 +727,7 @@
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size16"
+                android:layout_marginBottom="@dimen/size20"
                 android:background="@drawable/hargabutton"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -780,9 +790,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Minggu" />
@@ -809,8 +821,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:text="-"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -827,7 +839,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/size60"
+                        android:layout_marginLeft="@dimen/size44"
                         android:layout_weight="0.1"
                         android:text="@string/icon_add"
                         android:textColor="@color/clrAddLpng"
@@ -842,6 +854,7 @@
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/hargabutton"
+                android:layout_marginBottom="@dimen/size20"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 

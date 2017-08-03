@@ -57,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
+        android:textColor="@color/clrAddLpng"
         android:layout_marginRight="5dp"
         android:layout_marginTop="18dp"
         android:text="@string/icon_add"
@@ -66,6 +67,7 @@
     <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
         android:id="@+id/iconTeleponRemove"
         android:layout_width="wrap_content"
+        android:textColor="@color/colorSnackbar"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:layout_marginRight="5dp"
