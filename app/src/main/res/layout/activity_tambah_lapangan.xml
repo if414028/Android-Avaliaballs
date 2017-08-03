@@ -14,7 +14,56 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <include layout="@layout/layout_upload_image" />
+        <!--<include-->
+            <!--layout="@layout/layout_upload_image"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/upload_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="@dimen/size30">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/uploadfotobutton"
+                android:gravity="center">
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_camera"
+                    android:textSize="20sp"
+                    app:font="@string/font_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="upload foto lapanganmu &#xa;*720x340px"
+                    android:textColor="#808080"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/image_upload"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="center" />
+
+
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/layoutNamaLapangan"

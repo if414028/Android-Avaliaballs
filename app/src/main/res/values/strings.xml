@@ -28,6 +28,7 @@
     </string>
     <string name="option_get_place">Get place</string>
     <string name="pick_place">Choose a place</string>
+    <string name="upload_foto_lapangan">upload foto lapanganmu &#xa;*720x340px</string>
 
     <string-array name="array_itemjam">
         <item>00:00</item>

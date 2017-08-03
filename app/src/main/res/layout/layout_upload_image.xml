@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/uploadfotobutton"
         android:gravity="center">
@@ -16,7 +16,7 @@
             android:id="@+id/iconCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/icon_location"
+            android:text="@string/icon_camera"
             android:textSize="20sp"
             app:font="@string/font_icon" />
 
@@ -26,7 +26,7 @@
             android:layout_marginBottom="40dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="test"
+            android:text="@string/upload_foto_lapangan"
             android:textColor="#808080"
             android:textStyle="italic" />
     </LinearLayout>
