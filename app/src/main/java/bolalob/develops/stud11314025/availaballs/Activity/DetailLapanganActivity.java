@@ -22,7 +22,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import bolalob.develops.stud11314025.availaballs.R;
-import bolalob.develops.stud11314025.availaballs.UpdateNamaAlamatLapanganActivity;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;

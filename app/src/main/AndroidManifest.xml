@@ -61,13 +61,14 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value=" AIzaSyCbAWG_-JFDNxFhjZppwxiuaWDRTWkZ2Es " />
+            android:value="AIzaSyCvpN7qZPXwrahdKwx-XPYLuEm3vib9v7M" />
+        <!--AIzaSyCbAWG_-JFDNxFhjZppwxiuaWDRTWkZ2Es-->
 
         <activity android:name=".Activity.TambahLapanganStepTigaActivity" />
         <activity android:name=".Activity.UpdateJamBukaActivity" />
         <activity android:name=".Activity.SplashscreenActivity" />
         <activity android:name=".Activity.LocationByMapActivity" />
-        <activity android:name=".UpdateNamaAlamatLapanganActivity"></activity>
+        <activity android:name=".Activity.UpdateNamaAlamatLapanganActivity"></activity>
     </application>
 
 </manifest>

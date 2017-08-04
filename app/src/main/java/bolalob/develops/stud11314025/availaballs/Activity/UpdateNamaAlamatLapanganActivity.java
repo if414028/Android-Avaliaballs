@@ -1,4 +1,4 @@
-package bolalob.develops.stud11314025.availaballs;
+package bolalob.develops.stud11314025.availaballs.Activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -17,9 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,27 +28,25 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 
 import java.io.IOException;
 
-import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
+import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.FileUtil;
 import bolalob.develops.stud11314025.availaballs.Widget.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
+import butterknife.OnTextChanged;
 
 public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
 
-    @BindView(R.id.eTTelepon)
-    EditText etTelepon;
-    @BindView(R.id.iconTeleponAdd)
-    CustomFontTextView addTlp;
-    @BindView(R.id.lytlp)
-    LinearLayout ly;
+    @BindView(R.id.image_upload_update)
+    ImageView upload_img_update;
 
-    @BindView(R.id.image_upload)
-    ImageView upload_img;
+    @BindView(R.id.eTlokasiLapanganUpdate)
+    TextView etLokasiUpdate;
 
-    @BindView(R.id.txtCoordinat)
-    TextView textCoordinat;
+    @BindView(R.id.txtCoordinatUpdate)
+    TextView textCoordinatUpdate;
 
     int PLACE_PICKER_REQUEST = 1;
 
@@ -73,7 +70,7 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.location_button)
-    void onButtonClick() {
+    void onButtonUpdateClick() {
         try {
             PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
             startActivityForResult(builder.build(UpdateNamaAlamatLapanganActivity.this), PLACE_PICKER_REQUEST);
@@ -82,25 +79,8 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.iconTeleponAdd)
-    void addTelepon() {
-        LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
-
-        View tv = LayoutInflater.from(this).inflate(R.layout.list_edittext_telepon, null);
-
-        int count = parent.getChildCount();
-
-        int maxPhoneNumber = 3;
-
-        if (count < maxPhoneNumber) {
-            parent.addView(tv);
-        } else {
-            Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 3 nomor telepon.", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @OnClick(R.id.image_upload)
-    void onCameraButtonClick() {
+    @OnClick(R.id.image_upload_update)
+    void onCameraUpdateButtonClick() {
         if (Utils.checkSupportCamera(this)) {
             onAskPermission();
         } else {
@@ -144,7 +124,53 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         Glide.with(getContext())
                 .load(imagePath)
                 .dontAnimate()
-                .into(upload_img);
+                .into(upload_img_update);
+    }
+
+    @OnTextChanged(value = R.id.eTlokasiLapanganUpdate, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeLokasiTextUpdateChanged() {
+        final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
+        lllokasi.setAlpha(0.5f);
+    }
+
+    @OnTextChanged(value = R.id.eTlokasiLapanganUpdate, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onLokasiTextUpdateChanged() {
+        final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
+        int length = etLokasiUpdate.getText().length();
+        if (length == 0) {
+            lllokasi.setAlpha(0.5f);
+        } else lllokasi.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTlokasiLapanganUpdate, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterLokasiTextUpdateChanged() {
+        final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
+        final ImageView map = (ImageView) findViewById(R.id.location_button);
+
+        int length = etLokasiUpdate.getText().length();
+        if (length == 0) {
+            lllokasi.setAlpha(0.5f);
+        } else {
+            lllokasi.setAlpha(1.0f);
+        }
+    }
+
+    @OnTextChanged(value = R.id.txtCoordinatUpdate, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterGetLocationUpdateChanged() {
+        final TextView txtCoor = (TextView) findViewById(R.id.txtCoordinatUpdate);
+        final ImageView map = (ImageView) findViewById(R.id.location_button);
+        int length = textCoordinatUpdate.getText().length();
+        if (length > 1) {
+            map.setImageResource(R.drawable.map_color);
+        }
+    }
+
+    @OnFocusChange(value = R.id.eTlokasiLapanganUpdate)
+    void onLokasiUpdateFocusChanged(boolean focused) {
+        final View lllokasi = findViewById(R.id.layoutLokasiFrame);
+        if (!focused) {
+            lllokasi.setAlpha(0.5f);
+        }
     }
 
     @Override
@@ -187,7 +213,7 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
                 String toastMsg = String.format("%s", place.getName());
-                textCoordinat.setText(toastMsg);
+                textCoordinatUpdate.setText(toastMsg);
                 Toast.makeText(UpdateNamaAlamatLapanganActivity.this, toastMsg, Toast.LENGTH_LONG).show();
             }
         }
@@ -221,6 +247,5 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
     }
-
 
 }

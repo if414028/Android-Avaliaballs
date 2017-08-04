@@ -51,7 +51,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/image_upload"
+                android:id="@+id/image_upload_update"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -60,204 +60,24 @@
 
         </FrameLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutNamaLapangan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/size30"
-            android:layout_marginRight="@dimen/size30"
-            android:layout_marginTop="30dp"
-            android:alpha="0.5"
-            android:background="@drawable/texteditdark"
-            android:orientation="horizontal">
+        <include layout="@layout/layout_edit_text_nama_lapangan"/>
 
-            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                android:id="@+id/iconLapanganTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/icon_lapangan"
-                android:textSize="20dp"
-                app:font="@string/font_icon">
-
-            </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputNamaLapangan"
-                android:layout_width="240dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:theme="@style/TextLabel">
-
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
-                    android:id="@+id/eTNamaLapangan"
-                    android:layout_width="240dp"
-                    android:layout_height="40dp"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="15dp"
-                    android:drawableTint="@color/clrline"
-                    android:ems="10"
-                    android:hint="Nama Lapangan"
-                    android:inputType="text"
-                    android:textSize="12dp"
-                    android:textStyle="normal"
-                    app:font="@string/font_roboto" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutLokasi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/size30"
-            android:layout_marginRight="@dimen/size30"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
-            android:alpha="0.5"
-            android:background="@drawable/texteditdark"
-            android:orientation="horizontal">
-
-            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                android:id="@+id/iconLokasiTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="@string/icon_location"
-                android:textSize="20sp"
-                app:font="@string/font_icon">
-
-            </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputLokasi"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_weight="0.6"
-                android:theme="@style/TextLabel">
-
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
-                    android:id="@+id/eTLokasi"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="10dp"
-                    android:drawableTint="@color/clrline"
-                    android:ems="10"
-                    android:hint="Lokasi"
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:textSize="12dp"
-                    android:textStyle="normal"
-                    app:font="@string/font_roboto" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/location_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="7dp"
-                android:layout_weight="0.2"
-                android:src="@drawable/map_abu" />
-
-        </LinearLayout>
+        <include layout="@layout/layout_edit_text_lokasi_lapangan"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/size30"
+            android:layout_marginRight="@dimen/size30"
             android:gravity="right"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtCoordinat"
+                android:id="@+id/txtCoordinatUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:text="text"
                 android:textColor="#13b879" />
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lytlp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/size30"
-            android:layout_marginRight="@dimen/size30"
-            android:layout_marginTop="@dimen/size30"
-            android:layout_weight="1"
-            android:alpha="0.5"
-            android:background="@drawable/texteditdark"
-            android:orientation="horizontal">
-
-            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                android:id="@+id/iconTeleponTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="@string/icon_phone"
-                android:textSize="20dp"
-                app:font="@string/font_icon">
-
-            </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputTelepon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_weight="0.6"
-                android:theme="@style/TextLabel">
-
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
-                    android:id="@+id/eTTelepon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="15dp"
-                    android:drawableTint="@color/clrline"
-                    android:ems="10"
-                    android:hint="Telepon"
-                    android:inputType="phone"
-                    android:lines="3"
-                    android:textSize="12dp"
-                    android:textStyle="normal"
-                    app:font="@string/font_roboto" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                android:id="@+id/iconTeleponAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_weight="0.2"
-                android:text="@string/icon_add"
-                android:layout_marginBottom="7dp"
-                android:textSize="20dp"
-                app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
-
-        </LinearLayout>
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -272,7 +92,7 @@
         <Spinner
             android:id="@+id/spinnerJumlahLapangan"
             style="@style/SpinnerTheme"
-            android:layout_width="140dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:entries="@array/jumlah_lapangan" />
@@ -286,7 +106,7 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/circlebutton"
             android:onClick="nextStep"
-            android:text="Selanjutnya"
+            android:text="Simpan"
             android:textAllCaps="false"
             android:textColor="@android:color/background_light" />
 
