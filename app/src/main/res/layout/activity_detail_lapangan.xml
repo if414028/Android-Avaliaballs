@@ -55,11 +55,11 @@
 
                 <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
                     android:id="@+id/TvNamaLap"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
                     android:paddingTop="15dp"
                     android:text="Nama Lapangan"
+                    android:textStyle="bold"
                     android:textColor="@color/bb_darkBackgroundColor"
                     android:textSize="20sp"
                     app:font="@string/font_roboto" />
@@ -67,167 +67,11 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/activity_horizontal_margin">
+            <include layout="@layout/layout_info_lapangan"/>
 
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/TvAlamat"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/TvNamaLap"
-                    android:layout_weight="0.9"
-                    android:text="zzz"
-                    android:textSize="13sp"
-                    app:font="@string/font_roboto"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+            <include layout="@layout/layout_info_telepon_jumlah_lapangan"/>
 
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/btnEditLapangan"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="right|bottom"
-                    android:layout_weight="0.1"
-                    android:text="@string/icon_gear"
-                    android:textSize="25sp"
-                    app:font="@string/font_icon" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/activity_horizontal_margin">
-
-                <TextView
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:text="Telepon"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="Jumlah Lapangan"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/activity_horizontal_margin">
-
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/TvNoHp"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:text="085261335804"
-                    android:textColor="@color/bb_darkBackgroundColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:font="@string/font_roboto" />
-
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/TvJlhLpng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:text="2"
-                    android:textColor="@color/bb_darkBackgroundColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:font="@string/font_roboto" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/line2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/activity_horizontal_margin">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jam Buka" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvHari"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Senin - Sabtu"
-                    android:textColor="@color/bb_darkBackgroundColor"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/activity_horizontal_margin">
-
-                    <TextView
-                        android:id="@+id/TvJamOpen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.02"
-                        android:text="08:00"
-                        android:textColor="@color/bb_darkBackgroundColor"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" - " />
-
-                    <TextView
-                        android:id="@+id/TvJamClose"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="08:00"
-                        android:textColor="@color/bb_darkBackgroundColor"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                        android:id="@+id/IcEditHariJam"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="right|bottom"
-                        android:layout_weight="0.1"
-                        android:text="@string/icon_gear"
-                        android:textSize="25sp"
-                        app:font="@string/font_icon" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:id="@+id/line3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+            <include layout="@layout/layout_info_jam_lapangan"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"

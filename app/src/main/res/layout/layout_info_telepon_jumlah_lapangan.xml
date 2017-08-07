@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutNamaLapangan"
+    style="@style/LayoutEditText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:paddingTop="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telepon"
+                android:layout_weight="0.5"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Jumlah Lapangan"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/size5"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/activity_horizontal_margin">
+
+            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                android:id="@+id/TvNoHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="085261335804"
+                android:textColor="@color/bb_darkBackgroundColor"
+                android:textSize="16sp"
+                android:layout_weight="0.5"
+                android:textStyle="bold"
+                app:font="@string/font_roboto" />
+
+            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                android:id="@+id/TvJlhLpng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="2"
+                android:textColor="@color/bb_darkBackgroundColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:font="@string/font_roboto" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
