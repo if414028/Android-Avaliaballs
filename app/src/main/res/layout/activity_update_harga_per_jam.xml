@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size20"
+        android:orientation="vertical"
+        tools:context="bolalob.develops.stud11314025.availaballs.Activity.UpdateHargaPerJamActivity">
+
+
+        <include layout="@layout/layout_update_harga_senin"/>
+
+        <include layout="@layout/layout_update_harga_selasa"/>
+
+        <include layout="@layout/layout_update_harga_rabu"/>
+
+        <include layout="@layout/layout_update_harga_kamis"/>
+
+        <include layout="@layout/layout_update_harga_jumat"/>
+
+        <include layout="@layout/layout_update_harga_sabtu"/>
+
+        <include layout="@layout/layout_update_harga_minggu"/>
+        <Button
+            android:id="@+id/btnSimpanHargaPerJam"
+            android:layout_width="@dimen/size240"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/size30"
+            android:layout_marginTop="@dimen/size30"
+            android:background="@drawable/circlebutton"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+</ScrollView>

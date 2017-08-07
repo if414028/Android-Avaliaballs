@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingLeft="30dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:clickable="false"
+            android:id="@+id/spinnerJamBukaKamis"
+            android:layout_width="110dp"
+            android:alpha="0.5"
+            android:entries="@array/array_itemjam"
+            android:layout_height="wrap_content"
+            style="@style/SpinnerTheme"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+
+        <Spinner
+            android:clickable="false"
+            android:entries="@array/array_itemjam"
+            android:alpha="0.5"
+            android:id="@+id/spinnerJamTutupKamis"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            style="@style/SpinnerTheme"/>
+
+    </LinearLayout>
+
+</FrameLayout>

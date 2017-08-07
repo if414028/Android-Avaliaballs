@@ -2,12 +2,14 @@
 
 <resources>
     <color name="colorPrimary">#00000000</color>
+    <color name="colortest">#808080</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#333333</color>
     <color name="colorSnackbar">#f43b3e</color>
     <color name="clrNavigation">#09425c</color>
     <color name="clrpressed">#ffffff</color>
     <color name="clrtxt1">#999999</color>
+    <color name="clrlineblur">#f2f1f1</color>
     <color name="clrline">#b3b3b3</color>
     <color name="clrlinedark">#333333</color>
     <color name="clrAddLpng">#13B879</color>

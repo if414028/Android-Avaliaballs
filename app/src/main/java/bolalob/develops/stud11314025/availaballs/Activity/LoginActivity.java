@@ -1,9 +1,10 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
@@ -14,14 +15,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginPresenter;
 import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginPresenterImp;
 import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginView;
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnFocusChange;
@@ -42,10 +44,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private LoginPresenter presenter;
 
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-
-    public static final String TAG_EMAIL = "emailKey";
+    private Context getContext() {
+        return LoginActivity.this;
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.clrlinedark));
         }
 
         presenter = new LoginPresenterImp(this);
@@ -64,9 +65,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String user = etEmail.getText().toString();
+                String pass = etPassword.getText().toString();
+                SharePreferencesManager.setLoginPreference(getContext(), user, pass);
                 presenter.login(etEmail.getText().toString(), etPassword.getText().toString());
             }
         });
+
 
     }
 
@@ -156,12 +161,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void loginSucess() {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-        preferences = getSharedPreferences("myPreferences", MODE_PRIVATE);
-        editor = preferences.edit();
-        editor.putString(TAG_EMAIL, etEmail.getText().toString());
-        editor.commit();
         startActivity(mainIntent);
-
     }
 
     @Override
@@ -181,9 +181,28 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
-    public void setAlpha(View view) {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.layoutUsername);
-        layout.setAlpha(1);
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.gc();
+                System.exit(1);
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 
 }

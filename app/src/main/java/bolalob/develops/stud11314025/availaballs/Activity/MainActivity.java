@@ -1,12 +1,14 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +30,7 @@ import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Service.API;
 import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -38,9 +41,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
-    private SharedPreferences preferences;
-    private final String TAG_EMAIL = "emailKey";
 
     @BindView(R.id.rv_main)
     RecyclerView rvView;
@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     CustomFontTextView LabelLokasi;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
+
+    private Context getContext() {
+        return MainActivity.this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,16 +118,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setActionbar() {
-        preferences = getSharedPreferences("myPreferences", MODE_PRIVATE);
-        String login = preferences.getString(TAG_EMAIL, "-");
         ActionBar mActionBar = getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
         LayoutInflater mInflater = LayoutInflater.from(this);
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar_home, null);
-        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text_centered);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setText("List Lapangan");
-
+        CustomFontTextView iconLogout = ButterKnife.findById(mCustomView, R.id.iconOlogout);
+        iconLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
@@ -178,11 +187,39 @@ public class MainActivity extends AppCompatActivity {
         LabelNamaLap.setVisibility(View.GONE);
     }
 
-    private RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
+    public void tambahLapangan(View view) {
+        Intent intent = new Intent(MainActivity.this, TambahLapanganActivity.class);
+        startActivity(intent);
+    }
 
-    };
+    @Override
+    public void onBackPressed() {
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final View dialogView = getLayoutInflater().inflate(R.layout.alert_dialog_logout, null);
+        Button btnLgout = (Button) dialogView.findViewById(R.id.btnLogout);
+        Button btnCncl = (Button) dialogView.findViewById(R.id.btnCancel);
+
+        alertDialogBuilder.setView(dialogView);
+        final AlertDialog dialog = alertDialogBuilder.create();
+        dialog.show();
+
+
+        btnLgout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharePreferencesManager.logout(getContext());
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnCncl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+    }
 }

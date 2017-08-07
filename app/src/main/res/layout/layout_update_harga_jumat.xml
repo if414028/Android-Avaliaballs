@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/lyJumat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size20"
+        android:layout_marginRight="@dimen/size20"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="@dimen/size20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumat" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size10"
+            android:layout_marginTop="@dimen/size10"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerJamBukaJumat"
+                    style="@style/SpinnerThemeWhite"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/array_itemjam" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="-"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinnerJamTutupJumat"
+                    style="@style/SpinnerThemeWhite"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/array_itemjam" />
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconHargaJumatAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:layout_marginLeft="@dimen/size10"
+                    android:text="@string/icon_add"
+                    android:textColor="@color/clrAddLpng"
+                    android:textSize="20sp"
+                    app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size20"
+            android:background="@drawable/hargabutton"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                android:id="@+id/iconHargaJumatTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:text="Rp"
+                android:textColor="@color/clrlinedark"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:font="@string/font_icon">
+
+            </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtInputHargaJumat"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center_vertical"
+                android:theme="@style/TextLabelLogin">
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
+                    android:id="@+id/eTHargaJumat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:drawableTint="@color/clrline"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/clrlinedark"
+                    android:textColorHighlight="@color/clrlinedark"
+                    android:textSize="16dp"
+                    android:textStyle="normal"
+                    app:font="@string/font_roboto" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                android:id="@+id/iconHargaAddJumat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_add"
+                android:textSize="20dp"
+                app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

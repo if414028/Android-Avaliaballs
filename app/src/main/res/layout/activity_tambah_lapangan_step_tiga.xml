@@ -150,7 +150,7 @@
 
             <Spinner
                 android:id="@+id/spinnerJamBuka"
-                style="@style/SpinnerTheme"
+                style="@style/SpinnerThemeWhite"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -168,7 +168,7 @@
 
             <Spinner
                 android:id="@+id/spinnerJamTutup"
-                style="@style/SpinnerTheme"
+                style="@style/SpinnerThemeWhite"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
