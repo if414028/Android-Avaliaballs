@@ -28,7 +28,7 @@
         android:layout_height="wrap_content">
 
         <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
-            android:id="@+id/eTlokasiLapanganUpdate"
+            android:id="@+id/eTlokasiLapangan"
             style="@style/SimpleEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

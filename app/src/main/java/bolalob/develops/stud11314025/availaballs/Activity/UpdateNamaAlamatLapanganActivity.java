@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,14 +40,17 @@ import butterknife.OnTextChanged;
 
 public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
 
-    @BindView(R.id.image_upload_update)
+    @BindView(R.id.image_upload)
     ImageView upload_img_update;
 
-    @BindView(R.id.eTlokasiLapanganUpdate)
+    @BindView(R.id.eTlokasiLapangan)
     TextView etLokasiUpdate;
 
     @BindView(R.id.txtCoordinatUpdate)
     TextView textCoordinatUpdate;
+
+    @BindView(R.id.eTNamaLapangan)
+    EditText etNamaLapanganUpdate;
 
     int PLACE_PICKER_REQUEST = 1;
 
@@ -79,7 +83,7 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.image_upload_update)
+    @OnClick(R.id.image_upload)
     void onCameraUpdateButtonClick() {
         if (Utils.checkSupportCamera(this)) {
             onAskPermission();
@@ -127,13 +131,13 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
                 .into(upload_img_update);
     }
 
-    @OnTextChanged(value = R.id.eTlokasiLapanganUpdate, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
     void beforeLokasiTextUpdateChanged() {
         final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
         lllokasi.setAlpha(0.5f);
     }
 
-    @OnTextChanged(value = R.id.eTlokasiLapanganUpdate, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.TEXT_CHANGED)
     void onLokasiTextUpdateChanged() {
         final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
         int length = etLokasiUpdate.getText().length();
@@ -142,7 +146,7 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         } else lllokasi.setAlpha(1.0f);
     }
 
-    @OnTextChanged(value = R.id.eTlokasiLapanganUpdate, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void afterLokasiTextUpdateChanged() {
         final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
         final ImageView map = (ImageView) findViewById(R.id.location_button);
@@ -165,7 +169,7 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         }
     }
 
-    @OnFocusChange(value = R.id.eTlokasiLapanganUpdate)
+    @OnFocusChange(value = R.id.eTlokasiLapangan)
     void onLokasiUpdateFocusChanged(boolean focused) {
         final View lllokasi = findViewById(R.id.layoutLokasiFrame);
         if (!focused) {
@@ -246,6 +250,40 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
+    }
+
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeNamaLapanganUpdateTextChanged() {
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
+        llnamalapangan.setAlpha(0.5f);
+    }
+
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onNamaLapanganUpdateTextChanged() {
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
+        int length = etNamaLapanganUpdate.getText().length();
+        if (length == 0) {
+            llnamalapangan.setAlpha(0.5f);
+        } else llnamalapangan.setAlpha(1.0f);
+    }
+
+    @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterNamaLapanganUpdateTextChanged() {
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
+        int length = etNamaLapanganUpdate.getText().length();
+        if (length == 0) {
+            llnamalapangan.setAlpha(0.5f);
+        } else llnamalapangan.setAlpha(1.0f);
+    }
+
+    @OnFocusChange(value = R.id.eTNamaLapangan)
+    void onNamaLapanganUpdateFocusChanged(boolean focused) {
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
+        if (!focused) {
+            llnamalapangan.setAlpha(0.5f);
+        } else {
+            llnamalapangan.setAlpha(1.0f);
+        }
     }
 
 }

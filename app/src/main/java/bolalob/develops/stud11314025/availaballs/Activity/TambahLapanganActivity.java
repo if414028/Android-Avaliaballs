@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -150,7 +151,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
     void beforeNamaLapanganTextChanged() {
-        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
         llnamalapangan.setAlpha(0.5f);
     }
 
@@ -165,7 +166,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void afterNamaLapanganTextChanged() {
-        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
         int length = etNamaLapangan.getText().length();
         if (length == 0) {
             llnamalapangan.setAlpha(0.5f);
@@ -174,7 +175,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
 
     @OnFocusChange(value = R.id.eTNamaLapangan)
     void onNamaLapanganFocusChanged(boolean focused) {
-        final View llnamalapangan = findViewById(R.id.layoutNamaLapangan);
+        final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
         if (!focused) {
             llnamalapangan.setAlpha(0.5f);
         } else {

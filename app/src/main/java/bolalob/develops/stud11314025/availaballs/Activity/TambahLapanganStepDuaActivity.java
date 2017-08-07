@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -29,7 +30,7 @@ import butterknife.OnTextChanged;
 
 public class TambahLapanganStepDuaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    @BindView(R.id.eTLokasi)
+    @BindView(R.id.eTlokasiLapangan)
     EditText etLokasi;
     @BindView(R.id.eTTelepon)
     EditText etTelepon;
@@ -37,8 +38,8 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     CustomFontTextView addTlp;
     @BindView(R.id.lytlp)
     LinearLayout ly;
-    @BindView(R.id.txtCoordinat)
-    TextView textCoordinat;
+    @BindView(R.id.txtCoordinatUpdate)
+    TextView textCoordinatUpdate;
 
     int PLACE_PICKER_REQUEST = 1;
 
@@ -68,7 +69,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
                 String toastMsg = String.format("%s", place.getName());
-                textCoordinat.setText(toastMsg);
+                textCoordinatUpdate.setText(toastMsg);
                 Toast.makeText(TambahLapanganStepDuaActivity.this, toastMsg, Toast.LENGTH_LONG).show();
             }
         }
@@ -77,24 +78,24 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     @BindView(R.id.spinnerJumlahLapangan)
     Spinner spinnerJumlahLapangan;
 
-    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
-    void beforeLokasiTextChanged() {
-        final View lllokasi = findViewById(R.id.layoutLokasi);
+    @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+    void beforeLokasiTextUpdateChanged() {
+        final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
         lllokasi.setAlpha(0.5f);
     }
 
-    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.TEXT_CHANGED)
-    void onLokasiTextChanged() {
-        final View lllokasi = findViewById(R.id.layoutLokasi);
+    @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.TEXT_CHANGED)
+    void onLokasiTextUpdateChanged() {
+        final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
         int length = etLokasi.getText().length();
         if (length == 0) {
             lllokasi.setAlpha(0.5f);
         } else lllokasi.setAlpha(1.0f);
     }
 
-    @OnTextChanged(value = R.id.eTLokasi, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void afterLokasiTextChanged() {
-        final View lllokasi = findViewById(R.id.layoutLokasi);
+    @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterLokasiTextUpdateChanged() {
+        final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
         final ImageView map = (ImageView) findViewById(R.id.location_button);
 
         int length = etLokasi.getText().length();
@@ -105,19 +106,18 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         }
     }
 
-    @OnTextChanged(value = R.id.txtCoordinat, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void afterGetLocationChanged() {
-        final TextView txtCoor = (TextView) findViewById(R.id.txtCoordinat);
+    @OnTextChanged(value = R.id.txtCoordinatUpdate, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterGetLocationUpdateChanged() {
         final ImageView map = (ImageView) findViewById(R.id.location_button);
-        int length = textCoordinat.getText().length();
+        int length = textCoordinatUpdate.getText().length();
         if (length > 1) {
             map.setImageResource(R.drawable.map_color);
         }
     }
 
-    @OnFocusChange(value = R.id.eTLokasi)
-    void onLokasiFocusChanged(boolean focused) {
-        final View lllokasi = findViewById(R.id.layoutLokasi);
+    @OnFocusChange(value = R.id.eTlokasiLapangan)
+    void onLokasiUpdateFocusChanged(boolean focused) {
+        final View lllokasi = findViewById(R.id.layoutLokasiFrame);
         if (!focused) {
             lllokasi.setAlpha(0.5f);
         }
