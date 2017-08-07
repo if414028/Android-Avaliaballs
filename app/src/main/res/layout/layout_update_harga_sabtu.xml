@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/clrlineblur">
+
         <LinearLayout
             android:id="@+id/lySabtu"
-            android:layout_marginLeft="@dimen/size20"
-            android:layout_marginRight="@dimen/size20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size20"
+            android:layout_marginRight="@dimen/size20"
             android:background="@color/clrlineblur"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="@dimen/size20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size20"
                 android:text="Sabtu" />
 
             <LinearLayout
@@ -45,10 +46,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="@dimen/size5"
+                        android:layout_marginRight="@dimen/size5"
                         android:text="-"
-                        android:textSize="16dp"
+                        android:textSize="@dimen/font16"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -67,7 +68,7 @@
                         android:layout_weight="0.1"
                         android:text="@string/icon_add"
                         android:textColor="@color/clrAddLpng"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/font24"
                         app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 
 
@@ -86,11 +87,11 @@
                     android:id="@+id/iconHargaSabtuTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="@dimen/size20"
                     android:gravity="center_vertical"
                     android:text="Rp"
                     android:textColor="@color/clrlinedark"
-                    android:textSize="16dp"
+                    android:textSize="@dimen/font16"
                     android:textStyle="bold"
                     app:font="@string/font_icon">
 
@@ -99,7 +100,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/txtInputHargaSabtu"
                     android:layout_width="240dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -110,8 +111,7 @@
                     <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
                         android:id="@+id/eTHargaSabtu"
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_marginBottom="12dp"
+                        android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:drawableTint="@color/clrline"
                         android:ems="10"
@@ -119,19 +119,12 @@
                         android:inputType="numberDecimal"
                         android:textColor="@color/clrlinedark"
                         android:textColorHighlight="@color/clrlinedark"
-                        android:textSize="16dp"
+                        android:textSize="@dimen/font16"
                         android:textStyle="normal"
                         app:font="@string/font_roboto" />
 
                 </android.support.design.widget.TextInputLayout>
 
-                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
-                    android:id="@+id/iconHargaAddSabtu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/icon_add"
-                    android:textSize="20dp"
-                    app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
