@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_height="wrap_content"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutLokasiFrame"
+    style="@style/LayoutEditText"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/size30"
     android:layout_marginRight="@dimen/size30"
     android:layout_marginTop="@dimen/size30"
     android:alpha="0.5"
-    style="@style/LayoutEditText"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:text="@string/icon_location"
-        android:textSize="@dimen/font20"
         android:layout_marginLeft="@dimen/size5"
-        android:textColor="@color/clrlinedark"
         android:paddingBottom="@dimen/size5"
+        android:text="@string/icon_location"
+        android:textColor="@color/clrlinedark"
+        android:textSize="@dimen/font20"
         app:font="@string/font_icon" />
 
     <android.support.design.widget.TextInputLayout
