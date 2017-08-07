@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
     public static final String USER = "userKey";
     public static final String PASS = "passKey";
 
-    private Context getContext(){
+    private Context getContext() {
         return SplashScreen.this;
     }
 
@@ -39,18 +39,17 @@ public class SplashScreen extends AppCompatActivity {
                 String user = SharePreferencesManager.getUser(getContext());
                 String pass = SharePreferencesManager.getPass(getContext());
 
-                if (user.isEmpty()&&pass.isEmpty()){
+                if (user.isEmpty() && pass.isEmpty()) {
                     finish();
-                    Intent intent =new Intent(getApplicationContext(),LoginActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
-                }
-                else{
+                } else {
                     finish();
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
 
             }
-        },1000);
+        }, 1000);
     }
 }

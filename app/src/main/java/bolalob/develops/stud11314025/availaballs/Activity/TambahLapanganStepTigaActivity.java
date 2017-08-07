@@ -56,6 +56,7 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
         EditText harga = (EditText) findViewById(R.id.eTHarga);
         harga.addTextChangedListener(new NumberTextWatcher(harga));
     }
+
     private void setStatusBarColor() {
         Window window = TambahLapanganStepTigaActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
 
-    private Context getContext(){
+    private Context getContext() {
         return MainActivity.this;
     }
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar_home, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setText("List Lapangan");
-        CustomFontTextView iconLogout = ButterKnife.findById(mCustomView,R.id.iconOlogout);
+        CustomFontTextView iconLogout = ButterKnife.findById(mCustomView, R.id.iconOlogout);
         iconLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

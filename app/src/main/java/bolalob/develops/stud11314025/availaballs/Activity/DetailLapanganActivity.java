@@ -87,11 +87,12 @@ public class DetailLapanganActivity extends AppCompatActivity {
         btnEHarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentHr = new Intent(getApplicationContext(),UpdateHargaPerJamActivity.class);
+                Intent intentHr = new Intent(getApplicationContext(), UpdateHargaPerJamActivity.class);
                 startActivity(intentHr);
             }
         });
     }
+
     private void setStatusBarColor() {
         Window window = DetailLapanganActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -217,7 +218,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-         if (id == android.R.id.home) {
+        if (id == android.R.id.home) {
             // This ID represents the Home or Up button. In the case of this
             // activity, the Up button is shown. For
             // more details, see the Navigation pattern on Android Design:

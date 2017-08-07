@@ -56,38 +56,38 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.iconHargaMingguAdd)
-    void AddHargaMinggu(){
+    void AddHargaMinggu() {
         addViewMinggu();
         iconHargaMingguAdd.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.iconHargaSabtuAdd)
-    void AddHargaSabtu(){
+    void AddHargaSabtu() {
         addViewSabtu();
         iconHargaSabtuAdd.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.iconHargaJumatAdd)
-    void AddHargaJumat(){
+    void AddHargaJumat() {
         addViewJumat();
         iconHargaJumatAdd.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.iconHargaKamisAdd)
-    void AddHargaKamis(){
+    void AddHargaKamis() {
         addViewKamis();
         iconHargaKamisAdd.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.iconHargaRabuAdd)
-    void AddHargaRabu(){
+    void AddHargaRabu() {
         addViewRabu();
         iconHargaRabuAdd.setVisibility(View.GONE);
     }
 
 
     @OnClick(R.id.iconHargaSelasaAdd)
-    void AddHargaSelasa(){
+    void AddHargaSelasa() {
         addViewSelasa();
         iconHargaSelasaAdd.setVisibility(View.GONE);
     }
@@ -97,7 +97,6 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
         addViewSenin();
         iconHargaSeninAdd.setVisibility(View.GONE);
     }
-
 
 
     @Override
@@ -260,6 +259,7 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
             }
         });
     }
+
     private void addViewRabu() {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final LinearLayout parent = (LinearLayout) findViewById(R.id.lyRabu);
