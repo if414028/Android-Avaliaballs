@@ -1,317 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent">
 
-    >
-    />
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_horizontal_margin"
-    android:orientation="vertical"
-    tools:context="bolalob.develops.stud11314025.availaballs.Activity.UpdateJamBukaActivity">
-    <CheckBox
-        android:id="@+id/cbSenin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Senin"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        tools:context="bolalob.develops.stud11314025.availaballs.Activity.UpdateJamBukaActivity">
 
-        <Spinner
-            android:id="@+id/spinnerJamBukaSenin"
-            style="@style/SpinnerTheme"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:alpha="0.5"
-            android:clickable="false"
-            android:entries="@array/array_itemjam" />
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbSenin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Senin" />
 
-        <Spinner
-            android:clickable="false"
-            android:id="@+id/spinnerJamTutupSenin"
-            android:layout_width="110dp"
-            android:alpha="0.5"
-            android:layout_height="wrap_content"
-            android:entries="@array/array_itemjam"
+        <include layout="@layout/layout_update_jam_buka_senin" />
 
-            style="@style/SpinnerTheme"/>
-
-    </LinearLayout>
-
-    <CheckBox
-        android:id="@+id/cbSelasa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Selasa" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:clickable="false"
-            android:alpha="0.5"
-            android:id="@+id/spinnerJamBukaSelasa"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:entries="@array/array_itemjam"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbSelasa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Selasa" />
 
-        <Spinner
-            android:clickable="false"
-            android:alpha="0.5"
-            android:entries="@array/array_itemjam"
-            android:id="@+id/spinnerJamTutupSelasa"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
+        <include layout="@layout/layout_update_jam_buka_selasa" />
 
-    </LinearLayout>
-    <CheckBox
-        android:id="@+id/cbRabu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rabu"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:clickable="false"
-            android:alpha="0.5"
-            android:id="@+id/spinnerJamBukaRabu"
-            android:layout_width="110dp"
-            android:entries="@array/array_itemjam"
-
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbRabu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Rabu" />
 
-        <Spinner
-            android:clickable="false"
-            android:alpha="0.5"
-            android:id="@+id/spinnerJamTutupRabu"
-            android:layout_width="110dp"
-            android:entries="@array/array_itemjam"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
+        <include layout="@layout/layout_update_jam_buka_rabu" />
 
-    </LinearLayout>
-    <CheckBox
-        android:id="@+id/cbKamis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kamis"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:paddingLeft="30dp"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:clickable="false"
-            android:id="@+id/spinnerJamBukaKamis"
-            android:layout_width="110dp"
-            android:alpha="0.5"
-            android:entries="@array/array_itemjam"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbKamis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Kamis" />
 
-        <Spinner
-            android:clickable="false"
-            android:entries="@array/array_itemjam"
-            android:alpha="0.5"
-            android:id="@+id/spinnerJamTutupKamis"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
+        <include layout="@layout/layout_update_jam_buka_kamis" />
 
-    </LinearLayout>
-    <CheckBox
-        android:id="@+id/cbJumat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jumat"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:clickable="false"
-            android:id="@+id/spinnerJamBukaJumat"
-            android:layout_width="110dp"
-            android:alpha="0.5"
-            android:layout_height="wrap_content"
-            android:entries="@array/array_itemjam"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbJumat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Jumat" />
 
-        <Spinner
-            android:clickable="false"
-            android:id="@+id/spinnerJamTutupJumat"
-            android:layout_width="110dp"
-            android:entries="@array/array_itemjam"
-            android:layout_height="wrap_content"
-            android:alpha="0.5"
-            style="@style/SpinnerTheme"/>
+        <include layout="@layout/layout_update_jam_buka_jumat" />
 
-    </LinearLayout>
-    <CheckBox
-        android:id="@+id/cbSabtu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sabtu"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:alpha="0.5"
-            android:clickable="false"
-            android:id="@+id/spinnerJamBukaSabtu"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:entries="@array/array_itemjam"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbSabtu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Sabtu" />
 
-        <Spinner
-            android:alpha="0.5"
-            android:clickable="false"
-            android:id="@+id/spinnerJamTutupSabtu"
-            android:layout_width="110dp"
-            android:entries="@array/array_itemjam"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
+        <include layout="@layout/layout_update_jam_buka_sabtu" />
 
-    </LinearLayout>
-    <CheckBox
-        android:id="@+id/cbMinggu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Minggu"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:clickable="false"
-            android:id="@+id/spinnerJamBukaMinggu"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:entries="@array/array_itemjam"
-            android:alpha="0.5"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
+        <CheckBox
+            android:id="@+id/cbMinggu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:text="Minggu" />
 
-        <Spinner
-            android:clickable="false"
-            android:id="@+id/spinnerJamTutupMinggu"
-            android:layout_width="110dp"
-            android:alpha="0.5"
+        <include layout="@layout/layout_update_jam_buka_minggu" />
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:entries="@array/array_itemjam"
-            style="@style/SpinnerTheme"/>
-
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/circlebutton"
+            android:onClick="Simpan"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light" />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/btnSimpan"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/circlebutton"
-        android:text="Simpan"
-        android:textAllCaps="false"
-        android:textColor="@android:color/background_light"
-        android:layout_gravity="center"
-        android:onClick="Simpan"/>
-
-</LinearLayout>
 
 </ScrollView>

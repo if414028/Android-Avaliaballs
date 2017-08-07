@@ -11,7 +11,7 @@ import java.text.ParseException;
  * Created by Voldarex on 7/24/2017.
  */
 
-class NumberTextWatcher implements TextWatcher {
+public class NumberTextWatcher implements TextWatcher {
     private DecimalFormat df;
     private DecimalFormat dfnd;
     private boolean hasFractionalPart;
