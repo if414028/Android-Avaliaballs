@@ -48,7 +48,7 @@
         <item name="android:paddingBottom">@dimen/size10</item>
         <item name="android:layout_marginRight">@dimen/size20</item>
     </style>
-    
+
     <style name="CustomTextView">
         <item name="android:textSize">@dimen/font12</item>
         <item name="android:textColor">@color/colortest</item>

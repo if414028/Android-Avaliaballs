@@ -39,6 +39,7 @@ public class Service {
         return retrofit.create(serviceClass);
     }
 }
+
 //    private static API REST_CLIENT;
 //    static {
 //        setupRestClient();
@@ -62,7 +63,6 @@ public class Service {
 //                .build();
 //        REST_CLIENT = retrofit.create(API.class);
 //    }
-
 
 //    String API_BASE_URL = "https://api.myjson.com/";
 //
