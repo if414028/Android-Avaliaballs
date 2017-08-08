@@ -1,30 +1,20 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import bolalob.develops.stud11314025.availaballs.R;
 import butterknife.BindView;
@@ -79,7 +69,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         }
     }
 
-
     @OnClick(R.id.cbJumat)
     void cbjumat(CheckBox checkbox) {
         if (spinnerJmBkJumat.isClickable() == true && spinnerJmTpJumat.isClickable() == true) {
@@ -88,7 +77,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
             spinnerJumatTransformClickableFalse();
         }
     }
-
 
     @OnClick(R.id.cbKamis)
     void cbkamis(CheckBox checkbox) {
@@ -99,7 +87,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         }
     }
 
-
     @OnClick(R.id.cbRabu)
     void cbrabu(CheckBox checkbox) {
         if (spinnerJmBkRabu.isClickable() == true && spinnerJmTpRabu.isClickable() == true) {
@@ -109,7 +96,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         }
     }
 
-
     @OnClick(R.id.cbSelasa)
     void cbselasa(CheckBox checkbox) {
         if (spinnerJmBkSelasa.isClickable() == true && spinnerJmTpSelasa.isClickable() == true) {
@@ -118,7 +104,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
             spinnerSelasaTransformClickableFalse();
         }
     }
-
 
     @OnClick(R.id.cbSenin)
     void cbsenin(CheckBox checkbox) {
@@ -138,7 +123,6 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         setOnItemSelectedListenerAll();
         setStatusbar();
     }
-
 
     private void setStatusbar() {
         Window window = UpdateJamBukaActivity.this.getWindow();
@@ -190,22 +174,16 @@ public class UpdateJamBukaActivity extends AppCompatActivity implements AdapterV
         if (id == android.R.id.home) {
             this.finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String item = adapterView.getItemAtPosition(i).toString();
-
-        // Showing selected spinner item
-//        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+    public void onNothingSelected(AdapterView<?> adapterView) {    }
 
     public void Simpan(View view) {
         this.finish();

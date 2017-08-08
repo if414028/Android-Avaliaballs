@@ -3,16 +3,15 @@ package bolalob.develops.stud11314025.availaballs.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,28 +26,20 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
 
     @BindView(R.id.lySenin)
     LinearLayout lySenin;
-
     @BindView(R.id.iconHargaSeninAdd)
     CustomFontTextView iconHargaSeninAdd;
-
     @BindView(R.id.iconHargaSelasaAdd)
     CustomFontTextView iconHargaSelasaAdd;
-
     @BindView(R.id.iconHargaRabuAdd)
     CustomFontTextView iconHargaRabuAdd;
-
     @BindView(R.id.iconHargaKamisAdd)
     CustomFontTextView iconHargaKamisAdd;
-
     @BindView(R.id.iconHargaJumatAdd)
     CustomFontTextView iconHargaJumatAdd;
-
     @BindView(R.id.iconHargaSabtuAdd)
     CustomFontTextView iconHargaSabtuAdd;
-
     @BindView(R.id.iconHargaMingguAdd)
     CustomFontTextView iconHargaMingguAdd;
-
 
     @OnClick(R.id.btnSimpanHargaPerJam)
     void Updateharga() {
@@ -85,7 +76,6 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
         iconHargaRabuAdd.setVisibility(View.GONE);
     }
 
-
     @OnClick(R.id.iconHargaSelasaAdd)
     void AddHargaSelasa() {
         addViewSelasa();
@@ -97,7 +87,6 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
         addViewSenin();
         iconHargaSeninAdd.setVisibility(View.GONE);
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -298,7 +287,6 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
         });
     }
 
-
     private void addViewSelasa() {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final LinearLayout parent = (LinearLayout) findViewById(R.id.lySelasa);
@@ -374,7 +362,6 @@ public class UpdateHargaPerJamActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void setStatusBarColor() {
         Window window = this.getWindow();

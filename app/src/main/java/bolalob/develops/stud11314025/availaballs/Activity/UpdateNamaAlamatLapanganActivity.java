@@ -42,13 +42,10 @@ public class UpdateNamaAlamatLapanganActivity extends AppCompatActivity {
 
     @BindView(R.id.image_upload)
     ImageView upload_img_update;
-
     @BindView(R.id.eTlokasiLapangan)
     TextView etLokasiUpdate;
-
     @BindView(R.id.txtCoordinatUpdate)
     TextView textCoordinatUpdate;
-
     @BindView(R.id.eTNamaLapangan)
     EditText etNamaLapanganUpdate;
 

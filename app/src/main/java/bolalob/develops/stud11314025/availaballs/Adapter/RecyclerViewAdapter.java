@@ -21,9 +21,7 @@ import bolalob.develops.stud11314025.availaballs.R;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private List<Lapangan> lapangans;
 
-
     Context c;
-
 
     public RecyclerViewAdapter(Context c, List<Lapangan> inputdata) {
         this.c = c;
@@ -57,9 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // membuat view baru
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_lapangan_item, parent, false);
-        // mengeset ukuran view, margin, padding, dan parameter layout lainnya
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }

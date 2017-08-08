@@ -64,7 +64,6 @@
                     android:textSize="@dimen/font24"
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 
-
             </LinearLayout>
 
         </LinearLayout>

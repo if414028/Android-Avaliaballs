@@ -44,6 +44,8 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     LinearLayout ly;
     @BindView(R.id.txtCoordinatUpdate)
     TextView textCoordinatUpdate;
+    @BindView(R.id.spinnerJumlahLapangan)
+    Spinner spinnerJumlahLapangan;
 
     int PLACE_PICKER_REQUEST = 1;
 
@@ -88,9 +90,6 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         }
     }
 
-    @BindView(R.id.spinnerJumlahLapangan)
-    Spinner spinnerJumlahLapangan;
-
     @OnTextChanged(value = R.id.eTlokasiLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
     void beforeLokasiTextUpdateChanged() {
         final FrameLayout lllokasi = (FrameLayout) findViewById(R.id.layoutLokasiFrame);
@@ -116,15 +115,6 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
             lllokasi.setAlpha(0.5f);
         } else {
             lllokasi.setAlpha(1.0f);
-        }
-    }
-
-    @OnTextChanged(value = R.id.txtCoordinatUpdate, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void afterGetLocationUpdateChanged() {
-        final ImageView map = (ImageView) findViewById(R.id.location_button);
-        int length = textCoordinatUpdate.getText().length();
-        if (length > 1) {
-            map.setImageResource(R.drawable.map_color);
         }
     }
 
@@ -161,16 +151,6 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
             lltelepon.setAlpha(1.0f);
         }
     }
-
-//    @OnFocusChange(value = R.id.eTTelepon)
-//    void afterTeleponFocusChanged(boolean focused) {
-//        final View lltelepon = findViewById(R.id.layoutTelepon1);
-//        if (!focused) {
-//            lltelepon.setAlpha(0.5f);
-//        } else {
-//            lltelepon.setAlpha(1.0f);
-//        }
-//    }
 
     public void addActionBar() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

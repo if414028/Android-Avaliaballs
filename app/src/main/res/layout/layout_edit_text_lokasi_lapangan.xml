@@ -46,6 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:paddingBottom="@dimen/size10"
-        android:src="@drawable/map_abu" />
+        android:src="@drawable/map_color" />
 
 </FrameLayout>
