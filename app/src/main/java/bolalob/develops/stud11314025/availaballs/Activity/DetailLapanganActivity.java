@@ -43,17 +43,17 @@ public class DetailLapanganActivity extends AppCompatActivity {
     @BindView(R.id.TvJamClose)
     TextView tvCloseHour;
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    Toolbar toolBar;
     @BindView(R.id.app_bar_image)
-    ImageView appbarimage;
+    ImageView appBarImage;
     @BindView(R.id.placeholder_image)
     ImageView loadingImage;
     @BindView(R.id.IcEditHariJam)
-    CustomFontTextView IcEditJam;
+    CustomFontTextView icEditJam;
     @BindView(R.id.btnEditLapangan)
-    CustomFontTextView IcEditNamaLapangan;
+    CustomFontTextView icEditNamaLapangan;
     @BindView(R.id.appbar)
-    AppBarLayout appbar;
+    AppBarLayout appBar;
     @BindView(R.id.btnEditHarga)
     CustomFontTextView btnEHarga;
 
@@ -62,7 +62,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_lapangan);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolBar);
         setActionbar();
         getDataNamaLap();
         getDataLokLap();
@@ -76,14 +76,14 @@ public class DetailLapanganActivity extends AppCompatActivity {
         setCollapsingActionBar();
         setImageGlideinAppbar();
         setStatusBarColor();
-        IcEditJam.setOnClickListener(new View.OnClickListener() {
+        icEditJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentJm = new Intent(DetailLapanganActivity.this, UpdateJamBukaActivity.class);
                 startActivity(intentJm);
             }
         });
-        IcEditNamaLapangan.setOnClickListener(new View.OnClickListener() {
+        icEditNamaLapangan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentJm = new Intent(DetailLapanganActivity.this, UpdateNamaAlamatLapanganActivity.class);
@@ -178,7 +178,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
                         return false;
                     }
                 })
-                .into(appbarimage);
+                .into(appBarImage);
     }
 
     private void setCollapsingActionBar() {

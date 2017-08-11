@@ -18,9 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginPresenter;
-import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginPresenterImp;
-import bolalob.develops.stud11314025.availaballs.LoginMVP.LoginView;
+
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
@@ -29,7 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends AppCompatActivity  {
 
     @BindView(R.id.eTEmail)
     EditText etEmail;
@@ -42,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.iconEmailTextView)
     CustomFontTextView iconemailTV;
 
-    private LoginPresenter presenter;
 
     private Context getContext() {
         return LoginActivity.this;
@@ -60,7 +57,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.clrlinedark));
         }
 
-        presenter = new LoginPresenterImp(this);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +64,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 String user = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
                 SharePreferencesManager.setLoginPreference(getContext(), user, pass);
-                presenter.login(etEmail.getText().toString(), etPassword.getText().toString());
+                if (user.isEmpty()&&pass.isEmpty()) {
+                    showValidationError();
+                }else{
+                    loginSucess();
+                }
             }
         });
 
@@ -143,7 +143,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         }
     }
 
-    @Override
     public void showValidationError() {
         Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_login), "Email atau Password Kosong", Snackbar.LENGTH_LONG)
                 .setAction("Action", null);
@@ -158,13 +157,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         snackbar.show();
     }
 
-    @Override
     public void loginSucess() {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainIntent);
     }
 
-    @Override
     public void loginError() {
         Snackbar snackbar = Snackbar
                 .make(findViewById(R.id.activity_login), "Akun Tidak Terdaftar", Snackbar.LENGTH_SHORT)

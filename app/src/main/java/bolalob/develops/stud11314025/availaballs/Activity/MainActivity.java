@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -22,12 +21,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
+import bolalob.develops.stud11314025.availaballs.Adapter.RecyclerViewAdapterLapangan;
 
-import bolalob.develops.stud11314025.availaballs.Adapter.RecyclerViewAdapter;
-import bolalob.develops.stud11314025.availaballs.Model.Lapangan;
+import bolalob.develops.stud11314025.availaballs.Model.LapanganResult;
 import bolalob.develops.stud11314025.availaballs.R;
-import bolalob.develops.stud11314025.availaballs.Service.API;
+import bolalob.develops.stud11314025.availaballs.Service.LapanganService;
 import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
@@ -39,7 +37,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerViewAdapter adapter;
+    private RecyclerViewAdapterLapangan adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @BindView(R.id.rv_main)
@@ -67,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-
     private Context getContext() {
         return MainActivity.this;
     }
@@ -80,33 +77,116 @@ public class MainActivity extends AppCompatActivity {
         setActionbar();
         setStatusBarColor();
         progressBar.setVisibility(View.VISIBLE);
-        consumeAPIListLapngan();
+        consumeAPIListLapngan("1");
 
     }
 
-    private void consumeAPIListLapngan() {
-        API client = Service.createService(API.class);
-        Call<List<Lapangan>> call = client.getAllLapangan();
-        call.enqueue(new Callback<List<Lapangan>>() {
+    private void consumeAPIListLapngan(String pagenum) {
+        LapanganService client = Service.createService(LapanganService.class);
+        Call<LapanganResult> call = client.getAllLapangan(pagenum);
+        call.enqueue(new Callback<LapanganResult>() {
             @Override
-            public void onResponse(Call<List<Lapangan>> call, Response<List<Lapangan>> response) {
+            public void onResponse(Call<LapanganResult> call, Response<LapanganResult> response) {
                 progressBar.setVisibility(View.GONE);
-                List<Lapangan> repos = response.body();
-                adapter = new RecyclerViewAdapter(MainActivity.this, repos);
+                LapanganResult repos = response.body();
+                final int currentPage = repos.getCurrentPage();
+                final int nextPage = currentPage + 1;
+                final int totalPage = repos.getTotalPage();
+                adapter = new RecyclerViewAdapterLapangan();
+                adapter.setLapangan(repos.object);
                 layoutManager = new LinearLayoutManager(MainActivity.this);
                 rvView.setLayoutManager(layoutManager);
                 rvView.setAdapter(adapter);
-                if (repos.isEmpty()) {
+                btn1.setVisibility(totalPage >= 1 ? View.VISIBLE : View.GONE);
+                btn2.setVisibility(totalPage >= 2 ? View.VISIBLE : View.GONE);
+                btn3.setVisibility(totalPage >= 3 ? View.VISIBLE : View.GONE);
+                btn4.setVisibility(totalPage >= 4 ? View.VISIBLE : View.GONE);
+                btn5.setVisibility(totalPage >= 5 ? View.VISIBLE : View.GONE);
+                if (currentPage == totalPage || currentPage == totalPage - 1){
+                    btn1.setText("1");
+                    btn2.setText("2");
+                }else if (btn2.getText()==Integer.toString(totalPage-3)){
+                    btn1.setText("...");
+                    btn2.setText(Integer.toString(totalPage-3));
+                    btn3.setText(Integer.toString(totalPage-2));
+                }else{
+                    btn1.setText(Integer.toString(currentPage));
+                    btn2.setText(Integer.toString(currentPage + 1));
+                }
+                btn1.setText(currentPage == totalPage || currentPage == totalPage - 1 ? "1" : Integer.toString(currentPage));
+                btn2.setText(currentPage == totalPage || currentPage == totalPage - 1 ? "2" : Integer.toString(currentPage + 1));
+                btn5.setText(Integer.toString(totalPage));
+                btn4.setText(Integer.toString(totalPage - 1));
+                btn3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String value = btn2.getText().toString();
+                        int finalValue = Integer.parseInt(value) - 1;
+                        if (finalValue < totalPage - 4) {
+                            btn1.setText(finalValue == totalPage - 5 ? "..." : Integer.toString(finalValue + 1));
+                            btn2.setText(Integer.toString(finalValue + 2));
+                            btn3.setText(finalValue == totalPage - 5 ? Integer.toString(finalValue + 3) : "...");
+                        } else if (btn3.getText() == "...") {
+                            btn1.setText("...");
+                        } else {
+                            adapter.clear();
+                            consumeAPIListLapngan(btn3.getText().toString());
+                        }
+                    }
+                });
+                btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (btn1.getText() == "...") {
+                            btn3.setText("...");
+                            btn1.setText(Integer.toString(currentPage));
+                            btn2.setText(Integer.toString(currentPage + 1));
+                        } else {
+                            adapter.clear();
+                            consumeAPIListLapngan(btn1.getText().toString());
+                        }
+                    }
+                });
+
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        adapter.clear();
+                        consumeAPIListLapngan(btn2.getText().toString());
+                        btn1.setText(Integer.toString(currentPage - 1));
+                        btn3.setText(btn2.getText() == Integer.toString(totalPage - 3) ? Integer.toString(currentPage + 1) : "...");                        ;
+                    }
+                });
+
+                btn4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        adapter.clear();
+                        consumeAPIListLapngan(btn4.getText().toString());
+                    }
+                });
+                btn5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        adapter.clear();
+                        consumeAPIListLapngan(btn5.getText().toString());
+                        btn1.setText("1");
+                        btn2.setText("2");
+                        btn3.setText("...");
+                    }
+                });
+                if (repos.object.isEmpty()) {
                     viewEmpty();
                 } else {
                     viewnotEmpty();
                 }
             }
 
+
             @Override
-            public void onFailure(Call<List<Lapangan>> call, Throwable t) {
+            public void onFailure(Call<LapanganResult> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT);
             }
         });
     }
