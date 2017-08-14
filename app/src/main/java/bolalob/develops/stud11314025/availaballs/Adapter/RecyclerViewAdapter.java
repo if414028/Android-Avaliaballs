@@ -65,7 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String NamaLap = lapangans.get(position).getFieldName().toString();
         final String Location = lapangans.get(position).getLocation().toString();
         final String Photo = lapangans.get(position).getPhoto().toString();
-        final String PhoneNum = lapangans.get(position).getPhoneNumber().toString();
+        final String PhoneNum = lapangans.get(position).getPhone().toString();
         final String Number = lapangans.get(position).getNumberOfField().toString();
         final String OpeningHour = lapangans.get(position).getOpeningHours().toString();
         final String ClosingHour = lapangans.get(position).getClosingHours().toString();

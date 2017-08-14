@@ -20,6 +20,8 @@
 
         <include layout="@layout/layout_edit_text_lokasi_lapangan" />
 
+        <include layout="@layout/layout_kota"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

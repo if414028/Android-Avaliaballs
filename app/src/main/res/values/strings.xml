@@ -58,6 +58,13 @@
         <item>24:00</item>
     </string-array>
 
+    <string-array name="kota">
+        <item>Medan</item>
+        <item>Jakarta</item>
+        <item>Surabaya</item>
+        <item>Papua</item>
+    </string-array>
+
     <string-array name="jumlah_lapangan">
         <item>1</item>
         <item>2</item>

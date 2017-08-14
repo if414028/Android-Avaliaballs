@@ -160,7 +160,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void loginSucess() {
-        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent mainIntent = new Intent(getApplicationContext(), DetailLapanganActivity.class);
         startActivity(mainIntent);
     }
 

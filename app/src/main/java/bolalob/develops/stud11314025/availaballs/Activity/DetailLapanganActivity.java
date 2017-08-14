@@ -16,15 +16,16 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-
+import bolalob.develops.stud11314025.availaballs.Model.LapanganDetailResult;
 import bolalob.develops.stud11314025.availaballs.R;
+import bolalob.develops.stud11314025.availaballs.Service.APIDetailLapangan;
+import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailLapanganActivity extends AppCompatActivity {
 
@@ -57,6 +58,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
     @BindView(R.id.btnEditHarga)
     CustomFontTextView btnEHarga;
 
+    int id = 32;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,18 +67,9 @@ public class DetailLapanganActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         setActionbar();
-        getDataNamaLap();
-        getDataLokLap();
-        getDataPhoto();
-        getDataPhoneNum();
-        getDataJumlahLap();
-        getDataPrice();
-        getDataOpenHour();
-        getDataCloseHour();
-        setTextTv();
-        setCollapsingActionBar();
-        setImageGlideinAppbar();
         setStatusBarColor();
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
+        collapsingToolbarLayout.setTitle(" ");
         IcEditJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +91,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
                 startActivity(intentHr);
             }
         });
+
+        consumeAPILapangan();
     }
 
     private void setStatusBarColor() {
@@ -108,100 +104,35 @@ public class DetailLapanganActivity extends AppCompatActivity {
         }
     }
 
-    private void setTextTv() {
-        tvNmLap.setText(getDataNamaLap());
-        tvOpenHour.setText(getDataOpenHour());
-        tvCloseHour.setText(getDataCloseHour());
-        tvAlmt.setText(getDataLokLap());
-        tvNoHp.setText(getDataPhoneNum());
-        tvJmlhLap.setText(getDataJumlahLap());
-        tvHrg.setText("Rp." + getDataPrice());
-    }
+    public void consumeAPILapangan() {
+        APIDetailLapangan client = Service.createService(APIDetailLapangan.class);
+        Call<LapanganDetailResult> call = client.getLapangan(id);
+        call.enqueue(new Callback<LapanganDetailResult>() {
+            @Override
+            public void onResponse(Call<LapanganDetailResult> call, Response<LapanganDetailResult> response) {
+                LapanganDetailResult lapangan = response.body();
+                String namaLapangan = lapangan.object.getFieldName();
+                String nomorTelepon = lapangan.object.getPhone();
+                String jumlahLapangan = lapangan.object.getNumberOfField().toString();
+                String alamatLapangan = lapangan.object.getDetailLocation();
+                String jamBuka = lapangan.object.getOpeningHours();
+                String jamTutup = lapangan.object.getClosingHours();
+                String hargaNormal = lapangan.object.getPrice();
 
-    private String getDataCloseHour() {
-        Intent intent = this.getIntent();
-        String closehour = intent.getExtras().getString("CLOSEHOUR_KEY");
-        return closehour;
+                tvNmLap.setText(namaLapangan);
+                tvNoHp.setText(nomorTelepon);
+                tvJmlhLap.setText(jumlahLapangan);
+                tvOpenHour.setText(jamBuka);
+                tvCloseHour.setText(jamTutup);
+                tvHrg.setText("Rp. " + hargaNormal);
+                tvAlmt.setText(alamatLapangan);
 
-    }
-
-    private String getDataOpenHour() {
-        Intent intent = this.getIntent();
-        String openhour = intent.getExtras().getString("OPENHOUR_KEY");
-        return openhour;
-
-    }
-
-    private String getDataPrice() {
-        Intent intent = this.getIntent();
-        String price = intent.getExtras().getString("PRICE_KEY");
-        return price;
-    }
-
-    private String getDataJumlahLap() {
-        Intent intent = this.getIntent();
-        String jmlhlap = intent.getExtras().getString("JUMLAHLAP_KEY");
-        return jmlhlap;
-    }
-
-    private String getDataPhoneNum() {
-        Intent intent = this.getIntent();
-        String phonenum = intent.getExtras().getString("PHONENUM_KEY");
-        return phonenum;
-    }
-
-    private String getDataLokLap() {
-        Intent intent = this.getIntent();
-        String loklap = intent.getExtras().getString("LOKASI_KEY");
-        return loklap;
-    }
-
-    private String getDataPhoto() {
-        Intent intent = this.getIntent();
-        String photo = intent.getExtras().getString("PHOTO_KEY");
-        return photo;
-    }
-
-    private void setImageGlideinAppbar() {
-        Glide.with(getApplicationContext())
-                .load(getDataPhoto())
-                .listener(new RequestListener<String, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        loadingImage.setVisibility(View.GONE);
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        loadingImage.setVisibility(View.GONE);
-                        return false;
-                    }
-                })
-                .into(appbarimage);
-    }
-
-    private void setCollapsingActionBar() {
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
+                setCollapsingActionBar(namaLapangan);
+            }
 
             @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(getDataNamaLap());
-                    collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.clrpressed));
-                    isShow = true;
-                } else if (isShow) {
-                    collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
-                    isShow = false;
-                }
+            public void onFailure(Call<LapanganDetailResult> call, Throwable t) {
+
             }
         });
     }
@@ -229,9 +160,28 @@ public class DetailLapanganActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String getDataNamaLap() {
-        Intent intent = this.getIntent();
-        final String namalap = intent.getExtras().getString("NAMALAP_KEY");
-        return namalap;
+    private void setCollapsingActionBar(final String namaLapangan) {
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbarLayout.setTitle(namaLapangan);
+                    collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.clrpressed));
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
+                    isShow = false;
+                }
+            }
+        });
+        return;
     }
 }

@@ -33,6 +33,8 @@
                 android:textColor="#13b879" />
         </LinearLayout>
 
+        <include layout="@layout/layout_kota"/>
+
         <LinearLayout
             android:id="@+id/lytlp"
             android:layout_width="match_parent"
