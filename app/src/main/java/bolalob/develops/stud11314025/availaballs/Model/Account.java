@@ -1,17 +1,20 @@
 package bolalob.develops.stud11314025.availaballs.Model;
 
+/**
+ * Created by Okta on 06/07/2017.
+ */
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-public class  Account {
-
-    @SerializedName("id")
-    @Expose
+public class Account {
     private Integer id;
     @SerializedName("username")
     @Expose
     private String username;
+    @SerializedName("password")
+    @Expose
+    private String password;
+    @SerializedName("role")
+    @Expose
+    private String role;
     @SerializedName("name")
     @Expose
     private String name;
@@ -21,6 +24,9 @@ public class  Account {
     @SerializedName("totalField")
     @Expose
     private Integer totalField;
+    @SerializedName("latestUpdate")
+    @Expose
+    private java.lang.Object latestUpdate;
 
     public Integer getId() {
         return id;
@@ -36,6 +42,22 @@ public class  Account {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getName() {
@@ -61,4 +83,13 @@ public class  Account {
     public void setTotalField(Integer totalField) {
         this.totalField = totalField;
     }
+
+    public java.lang.Object getLatestUpdate() {
+        return latestUpdate;
+    }
+
+    public void setLatestUpdate(java.lang.Object latestUpdate) {
+        this.latestUpdate = latestUpdate;
+    }
+
 }
