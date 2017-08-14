@@ -158,7 +158,7 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
     public void loginSucess() {
-        Intent mainIntent = new Intent(getApplicationContext(), DetailLapanganActivity.class);
+        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainIntent);
     }
 
