@@ -1,8 +1,5 @@
 package bolalob.develops.stud11314025.availaballs.Service;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -15,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Service {
 
-    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    private static final String BASE_URL = "http://10.183.28.122:8080/";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()

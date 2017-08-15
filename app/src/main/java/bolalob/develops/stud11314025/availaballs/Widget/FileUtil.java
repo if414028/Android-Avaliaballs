@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
@@ -29,6 +30,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import bolalob.develops.stud11314025.availaballs.BuildConfig;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * Created by bobbi.sinaga on 8/24/2015.
@@ -280,6 +284,12 @@ public class FileUtil {
 
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    @NonNull
+    public static MultipartBody.Part prepareFilePart(String partName, File file) {
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpg"), file);
+        return MultipartBody.Part.createFormData(partName, file.getName(), requestFile);
     }
 
 }

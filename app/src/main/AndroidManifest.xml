@@ -54,7 +54,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
+                android:resource="@xml/provider_paths"/>
         </provider>
 
         <activity android:name=".Activity.TambahLapanganStepDuaActivity" />
@@ -67,6 +67,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCvpN7qZPXwrahdKwx-XPYLuEm3vib9v7M" />
         <!--AIzaSyCbAWG_-JFDNxFhjZppwxiuaWDRTWkZ2Es-->
+        <!--AIzaSyCvpN7qZPXwrahdKwx-XPYLuEm3vib9v7M-->
 
         <activity android:name=".Activity.TambahLapanganStepTigaActivity" />
 

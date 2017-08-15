@@ -16,10 +16,12 @@
 
         <include layout="@layout/layout_frame_upload_photo_lapangan" />
 
+
+
         <include layout="@layout/layout_edit_text_nama_lapangan" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/next"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

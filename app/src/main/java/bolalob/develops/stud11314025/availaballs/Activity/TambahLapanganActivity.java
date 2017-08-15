@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,16 +29,24 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.File;
 import java.io.IOException;
 
 import bolalob.develops.stud11314025.availaballs.R;
+import bolalob.develops.stud11314025.availaballs.Service.APIUploadPhoto;
+import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.FileUtil;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import bolalob.develops.stud11314025.availaballs.Widget.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TambahLapanganActivity extends AppCompatActivity {
 
@@ -45,13 +54,12 @@ public class TambahLapanganActivity extends AppCompatActivity {
     EditText etNamaLapangan;
 
     @BindView(R.id.image_upload)
-    ImageView upload_img;
+    ImageView img_upload;
 
     private static final int ASK_MULTIPLE_PERMISSION = 1111;
     private static final int REQUEST_FROM_CAMERA = 1001;
     private static final int REQUEST_FROM_ALBUM = 1002;
 
-    private Uri imageUri;
     private String imagePath;
 
     private Context getContext() {
@@ -59,7 +67,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_lapangan);
         ButterKnife.bind(this);
@@ -76,8 +84,15 @@ public class TambahLapanganActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.image_upload)
-    void onCameraButtonClick() {
+    @Override
+    public void onBackPressed() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            navigateUpTo(new Intent(this, MainActivity.class));
+        }
+    }
+
+    @OnClick(R.id.upload_frame)
+    void onButtonClick() {
         if (Utils.checkSupportCamera(this)) {
             onAskPermission();
         } else {
@@ -121,14 +136,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
         Glide.with(getContext())
                 .load(imagePath)
                 .dontAnimate()
-                .into(upload_img);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            navigateUpTo(new Intent(this, MainActivity.class));
-        }
+                .into(img_upload);
     }
 
     @Override
@@ -168,6 +176,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
         }
     }
 
+
     @OnTextChanged(value = R.id.eTNamaLapangan, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
     void beforeNamaLapanganTextChanged() {
         final FrameLayout llnamalapangan = (FrameLayout) findViewById(R.id.layoutNamaLapangan);
@@ -203,6 +212,11 @@ public class TambahLapanganActivity extends AppCompatActivity {
     }
 
     public void nextStep(View view) {
+        String namaLapangan = etNamaLapangan.getText().toString();
+
+        uploadImage();
+
+        SharePreferencesManager.setFirstStepCreateLapangan(getContext(), namaLapangan);
         Intent intent = new Intent(TambahLapanganActivity.this, TambahLapanganStepDuaActivity.class);
         startActivity(intent);
     }
@@ -234,6 +248,28 @@ public class TambahLapanganActivity extends AppCompatActivity {
         mActionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clrNavigation)));
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
+    }
+
+    private void uploadImage() {
+
+        APIUploadPhoto service = Service.createService(APIUploadPhoto.class);
+
+        File file = new File(imagePath);
+
+        Call<ResponseBody> call = service.upload(imagePath != null ? FileUtil.prepareFilePart("file", file) : null);
+
+        call.enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.v("Upload", "success");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("Upload error:", t.getMessage());
+            }
+        });
     }
 
 }
