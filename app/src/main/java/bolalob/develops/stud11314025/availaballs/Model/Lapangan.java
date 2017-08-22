@@ -7,7 +7,7 @@ public class Lapangan {
 
     @SerializedName("idFutsalField")
     @Expose
-    private Integer idFutsalField;
+    private int idFutsalField;
     @SerializedName("fieldName")
     @Expose
     private String fieldName;
@@ -19,7 +19,7 @@ public class Lapangan {
     private String detailLocation;
     @SerializedName("numberOfField")
     @Expose
-    private Integer numberOfField;
+    private String numberOfField;
     @SerializedName("openingHours")
     @Expose
     private String openingHours;
@@ -32,12 +32,9 @@ public class Lapangan {
     @SerializedName("price")
     @Expose
     private String price;
-    @SerializedName("photo")
-    @Expose
-    private String photo;
     @SerializedName("account")
     @Expose
-    private Account account;
+    private String account;
     @SerializedName("days")
     @Expose
     private String days;
@@ -48,11 +45,31 @@ public class Lapangan {
     @Expose
     private String longitude;
 
-    public Integer getIdFutsalField() {
+    public Lapangan(){
+
+    }
+
+    public Lapangan(int idFutsalField, String fieldName, String location, String detailLocation, String numberOfField, String openingHours, String closingHours, String phone, String price, String account, String days, String latitude, String longitude) {
+        this.idFutsalField = idFutsalField;
+        this.fieldName = fieldName;
+        this.location = location;
+        this.detailLocation = detailLocation;
+        this.numberOfField = numberOfField;
+        this.openingHours = openingHours;
+        this.closingHours = closingHours;
+        this.phone = phone;
+        this.price = price;
+        this.account = account;
+        this.days = days;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public int getIdFutsalField() {
         return idFutsalField;
     }
 
-    public void setIdFutsalField(Integer idFutsalField) {
+    public void setIdFutsalField(int idFutsalField) {
         this.idFutsalField = idFutsalField;
     }
 
@@ -80,11 +97,11 @@ public class Lapangan {
         this.detailLocation = detailLocation;
     }
 
-    public Integer getNumberOfField() {
+    public String getNumberOfField() {
         return numberOfField;
     }
 
-    public void setNumberOfField(Integer numberOfField) {
+    public void setNumberOfField(String numberOfField) {
         this.numberOfField = numberOfField;
     }
 
@@ -120,23 +137,15 @@ public class Lapangan {
         this.price = price;
     }
 
-    public Object getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public Account getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 
-    public Object getDays() {
+    public String getDays() {
         return days;
     }
 
@@ -158,5 +167,24 @@ public class Lapangan {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Lapangan{" +
+                "idFutsalField=" + idFutsalField +
+                ", fieldName='" + fieldName + '\'' +
+                ", location='" + location + '\'' +
+                ", detailLocation='" + detailLocation + '\'' +
+                ", numberOfField='" + numberOfField + '\'' +
+                ", openingHours='" + openingHours + '\'' +
+                ", closingHours='" + closingHours + '\'' +
+                ", phone='" + phone + '\'' +
+                ", price='" + price + '\'' +
+                ", account='" + account + '\'' +
+                ", days='" + days + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                '}';
     }
 }

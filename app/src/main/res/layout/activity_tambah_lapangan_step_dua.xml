@@ -29,7 +29,6 @@
                 android:id="@+id/txtCoordinatUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:textColor="#13b879" />
         </LinearLayout>
 
@@ -40,6 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginLeft="@dimen/size30"
+            android:layout_marginRight="@dimen/size30"
             android:orientation="vertical">
 
             <LinearLayout
@@ -47,8 +48,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/size30"
-                android:layout_marginRight="@dimen/size30"
                 android:alpha="0.5"
                 android:background="@drawable/texteditdark"
                 android:orientation="horizontal">

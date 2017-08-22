@@ -1,5 +1,6 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -19,9 +20,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import bolalob.develops.stud11314025.availaballs.Model.Lapangan;
+import bolalob.develops.stud11314025.availaballs.Model.LapanganDetailResult;
 import bolalob.develops.stud11314025.availaballs.R;
+import bolalob.develops.stud11314025.availaballs.Service.APICreateLapangan;
+import bolalob.develops.stud11314025.availaballs.Service.Service;
 import bolalob.develops.stud11314025.availaballs.Widget.NumberTextWatcher;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TambahLapanganStepTigaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -46,15 +56,49 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
     @BindView(R.id.spinnerJamTutup)
     Spinner spinnerJamTutup;
 
+    private Context getContext() {
+        return TambahLapanganStepTigaActivity.this;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_lapangan_step_tiga);
+        ButterKnife.bind(this);
         setStatusBarColor();
         addActionBar();
 
         EditText harga = (EditText) findViewById(R.id.eTHarga);
         harga.addTextChangedListener(new NumberTextWatcher(harga));
+
+    }
+
+    public String getSelectedHari() {
+        String selectedHari = "";
+        if (chSenin.isChecked()) {
+            selectedHari = selectedHari + chSenin.getText();
+        }
+        if (chSelasa.isChecked()) {
+            selectedHari = selectedHari + "," + chSelasa.getText();
+        }
+        if (chRabu.isChecked()) {
+            selectedHari = selectedHari + "," + chRabu.getText();
+        }
+        if (chKamis.isChecked()) {
+            selectedHari = selectedHari + "," + chKamis.getText();
+        }
+        if (chJumat.isChecked()) {
+            selectedHari = selectedHari + "," + chJumat.getText();
+        }
+        if (chSabtu.isChecked()) {
+            selectedHari = selectedHari + "," + chSabtu.getText();
+        }
+        if (chMinggu.isChecked()) {
+            selectedHari = selectedHari + "," + chMinggu.getText();
+        }
+
+        return selectedHari;
+
     }
 
     private void setStatusBarColor() {
@@ -109,7 +153,60 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
     }
 
     public void finishStep(View view) {
+
+        Lapangan lapangan = new Lapangan();
+
+        String selectingHariResult = getSelectedHari();
+
+        String jamBuka = spinnerJamBuka.getSelectedItem().toString();
+        String jamBukaResult = jamBuka + ":00";
+        String jamTutup = spinnerJamTutup.getSelectedItem().toString();
+        String jamTutupResult = jamTutup + ":00";
+        String hargaLapangan = etHarga.getText().toString();
+
+        lapangan.setDays(selectingHariResult);
+        lapangan.setOpeningHours(jamBukaResult);
+        lapangan.setClosingHours(jamTutupResult);
+        lapangan.setPrice(hargaLapangan);
+
+        SharePreferencesManager.setThirdStepCreateLapangan(getContext(), lapangan);
+
+        createLapangan();
+
         Intent intent = new Intent(TambahLapanganStepTigaActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void createLapangan() {
+        String account = "3";
+        Lapangan result = SharePreferencesManager.getAllData(getContext());
+        result.setAccount(account);
+        System.out.println(result.toString());
+        APICreateLapangan service = Service.createService(APICreateLapangan.class);
+        Call<LapanganDetailResult> call = service.createLapangan(result.getFieldName(),
+                result.getDetailLocation(),
+                result.getPhone(),
+                result.getNumberOfField(),
+                result.getOpeningHours(),
+                result.getClosingHours(),
+                result.getPrice(),
+                account,
+                result.getLocation(),
+                result.getDays(),
+                result.getLongitude(),
+                result.getLatitude());
+        call.enqueue(new Callback<LapanganDetailResult>() {
+
+            @Override
+            public void onResponse(Call<LapanganDetailResult> call, Response<LapanganDetailResult> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<LapanganDetailResult> call, Throwable t) {
+
+            }
+        });
+
     }
 }

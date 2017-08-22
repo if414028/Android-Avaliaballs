@@ -58,7 +58,6 @@ public class DetailLapanganActivity extends AppCompatActivity {
     @BindView(R.id.btnEditHarga)
     CustomFontTextView btnEHarga;
 
-    int id = 32;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +92,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
         });
 
         consumeAPILapangan();
+
     }
 
     private void setStatusBarColor() {
@@ -105,7 +105,16 @@ public class DetailLapanganActivity extends AppCompatActivity {
     }
 
     public void consumeAPILapangan() {
+        Bundle intent = getIntent().getExtras();
+        int id;
+        if(intent == null){
+            id = 0;
+        }
+        else {
+            id = intent.getInt("ID_LAPANGAN_KEY");
+        }
         APIDetailLapangan client = Service.createService(APIDetailLapangan.class);
+        System.out.println(id);
         Call<LapanganDetailResult> call = client.getLapangan(id);
         call.enqueue(new Callback<LapanganDetailResult>() {
             @Override
@@ -118,7 +127,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
                 String jamBuka = lapangan.object.getOpeningHours();
                 String jamTutup = lapangan.object.getClosingHours();
                 String hargaNormal = lapangan.object.getPrice();
-
+                System.out.println("nama lapangan" + namaLapangan);
                 tvNmLap.setText(namaLapangan);
                 tvNoHp.setText(nomorTelepon);
                 tvJmlhLap.setText(jumlahLapangan);
@@ -132,7 +141,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LapanganDetailResult> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }

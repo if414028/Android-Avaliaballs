@@ -23,7 +23,7 @@
         app:font="@string/font_icon" />
 
     <Spinner
-        android:id="@+id/spinnerJumlahLapangan"
+        android:id="@+id/spinnerKota"
         android:layout_marginLeft="@dimen/size20"
         style="@style/SpinnerWithNoBorder"
         android:layout_width="match_parent"

@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import bolalob.develops.stud11314025.availaballs.Adapter.RecyclerViewAdapterLapangan;
-
 import bolalob.develops.stud11314025.availaballs.Model.LapanganResult;
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Service.LapanganService;
@@ -97,11 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 layoutManager = new LinearLayoutManager(MainActivity.this);
                 rvView.setLayoutManager(layoutManager);
                 rvView.setAdapter(adapter);
-                btn1.setVisibility(totalPage >= 1 ? View.VISIBLE : View.GONE);
-                btn2.setVisibility(totalPage >= 2 ? View.VISIBLE : View.GONE);
-                btn3.setVisibility(totalPage >= 3 ? View.VISIBLE : View.GONE);
-                btn4.setVisibility(totalPage >= 4 ? View.VISIBLE : View.GONE);
-                btn5.setVisibility(totalPage >= 5 ? View.VISIBLE : View.GONE);
                 if (currentPage == totalPage || currentPage == totalPage - 1){
                     btn1.setText("1");
                     btn2.setText("2");
@@ -180,6 +174,11 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     viewnotEmpty();
                 }
+                btn1.setVisibility(totalPage >= 1 ? View.VISIBLE : View.GONE);
+                btn2.setVisibility(totalPage >= 2 ? View.VISIBLE : View.GONE);
+                btn3.setVisibility(totalPage >= 3 ? View.VISIBLE : View.INVISIBLE);
+                btn4.setVisibility(totalPage >= 4 ? View.VISIBLE : View.GONE);
+                btn5.setVisibility(totalPage >= 5 ? View.VISIBLE : View.GONE);
             }
 
 

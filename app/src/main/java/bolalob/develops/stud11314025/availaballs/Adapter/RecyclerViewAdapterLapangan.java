@@ -12,7 +12,6 @@ import java.util.List;
 
 import bolalob.develops.stud11314025.availaballs.Activity.DetailLapanganActivity;
 import bolalob.develops.stud11314025.availaballs.Model.Lapangan;
-import bolalob.develops.stud11314025.availaballs.Model.ResultObject;
 import bolalob.develops.stud11314025.availaballs.R;
 
 /**
@@ -43,21 +42,23 @@ public class RecyclerViewAdapterLapangan extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Context context = holder.itemView.getContext();
-            final String NamaLap = lapangan.get(position).getFieldName().toString();
-            final String Location = lapangan.get(position).getLocation().toString();
-            holder.tvNo.setText(Integer.toString(i++));
-            holder.tvNamaLapangan.setText(lapangan.get(position).getFieldName().toString());
-            holder.tvLokasi.setText(lapangan.get(position).getLocation().toString());
-            holder.setItemClickListener(new ItemClickListener() {
-                @Override
-                public void onItemClick(View v, int pos) {
-                    Intent i = new Intent(context, DetailLapanganActivity.class);
-                    i.putExtra("NAMALAP_KEY", NamaLap);
-                    i.putExtra("LOKASI_KEY", Location);
-                    context.startActivity(i);
-                }
-            });
-        }
+        final int IdLapangan = lapangan.get(position).getIdFutsalField();
+        final String NamaLap = lapangan.get(position).getFieldName().toString();
+        final String Location = lapangan.get(position).getLocation().toString();
+        holder.tvNo.setText(Integer.toString(i++));
+        holder.tvNamaLapangan.setText(lapangan.get(position).getFieldName().toString());
+        holder.tvLokasi.setText(lapangan.get(position).getLocation().toString());
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Intent i = new Intent(context, DetailLapanganActivity.class);
+                i.putExtra("ID_LAPANGAN_KEY", IdLapangan);
+                i.putExtra("NAMALAP_KEY", NamaLap);
+                i.putExtra("LOKASI_KEY", Location);
+                context.startActivity(i);
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {

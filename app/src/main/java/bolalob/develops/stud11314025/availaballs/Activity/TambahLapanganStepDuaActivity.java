@@ -1,5 +1,6 @@
 package bolalob.develops.stud11314025.availaballs.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -24,8 +25,10 @@ import android.widget.Toast;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
+import bolalob.develops.stud11314025.availaballs.Model.Lapangan;
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
+import bolalob.develops.stud11314025.availaballs.Widget.SharePreferencesManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -46,8 +49,14 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     TextView textCoordinatUpdate;
     @BindView(R.id.spinnerJumlahLapangan)
     Spinner spinnerJumlahLapangan;
+    @BindView(R.id.spinnerKota)
+    Spinner spinnerKota;
 
     int PLACE_PICKER_REQUEST = 1;
+
+    private Context getContext() {
+        return TambahLapanganStepDuaActivity.this;
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -192,6 +201,27 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     }
 
     public void nextStep(View view) {
+        String alamatLapangan = etLokasi.getText().toString();
+        String coordinatLapangan = textCoordinatUpdate.getText().toString();
+        String[] temp;
+        String delimiter = " ";
+        temp = coordinatLapangan.split(delimiter);
+        String longitude = temp[0];
+        String latitude = temp[1];
+        String kota = spinnerKota.getSelectedItem().toString();
+        String jumlahLapangan = spinnerJumlahLapangan.getSelectedItem().toString();
+        String phone = etTelepon.getText().toString();
+
+        Lapangan lapangan = new Lapangan();
+        lapangan.setDetailLocation(alamatLapangan);
+        lapangan.setLocation(kota);
+        lapangan.setPhone(phone);
+        lapangan.setNumberOfField(jumlahLapangan);
+        lapangan.setLongitude(longitude);
+        lapangan.setLatitude(latitude);
+
+        SharePreferencesManager.setSecondStepCreateLapagan(getContext(), lapangan);
+
         Intent intent = new Intent(TambahLapanganStepDuaActivity.this, TambahLapanganStepTigaActivity.class);
         startActivity(intent);
     }

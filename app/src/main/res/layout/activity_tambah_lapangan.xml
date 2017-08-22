@@ -16,8 +16,6 @@
 
         <include layout="@layout/layout_frame_upload_photo_lapangan" />
 
-
-
         <include layout="@layout/layout_edit_text_nama_lapangan" />
 
         <Button
