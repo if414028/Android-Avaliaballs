@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 btn1.setVisibility(totalPage >= 1 ? View.VISIBLE : View.GONE);
                 btn2.setVisibility(totalPage >= 2 ? View.VISIBLE : View.GONE);
-                btn3.setVisibility(totalPage >= 3 ? View.VISIBLE : View.INVISIBLE);
+                btn3.setVisibility(totalPage >= 3 ? View.VISIBLE : View.GONE);
                 btn4.setVisibility(totalPage >= 4 ? View.VISIBLE : View.GONE);
                 btn5.setVisibility(totalPage >= 5 ? View.VISIBLE : View.GONE);
             }

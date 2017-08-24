@@ -214,7 +214,7 @@ public class TambahLapanganActivity extends AppCompatActivity {
     public void nextStep(View view) {
         String namaLapangan = etNamaLapangan.getText().toString();
 
-        uploadImage();
+        //uploadImage();
 
         SharePreferencesManager.setFirstStepCreateLapangan(getContext(), namaLapangan);
         Intent intent = new Intent(TambahLapanganActivity.this, TambahLapanganStepDuaActivity.class);

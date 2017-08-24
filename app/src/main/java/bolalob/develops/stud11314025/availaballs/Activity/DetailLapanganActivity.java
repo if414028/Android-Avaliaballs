@@ -33,6 +33,8 @@ public class DetailLapanganActivity extends AppCompatActivity {
     TextView tvHrg;
     @BindView(R.id.TvNoHp)
     TextView tvNoHp;
+    @BindView(R.id.TvHari)
+    TextView tvHari;
     @BindView(R.id.TvAlamat)
     TextView tvAlmt;
     @BindView(R.id.TvJlhLpng)
@@ -127,6 +129,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
                 String jamBuka = lapangan.object.getOpeningHours();
                 String jamTutup = lapangan.object.getClosingHours();
                 String hargaNormal = lapangan.object.getPrice();
+                String hariBuka = lapangan.object.getDays();
                 System.out.println("nama lapangan" + namaLapangan);
                 tvNmLap.setText(namaLapangan);
                 tvNoHp.setText(nomorTelepon);
@@ -135,6 +138,7 @@ public class DetailLapanganActivity extends AppCompatActivity {
                 tvCloseHour.setText(jamTutup);
                 tvHrg.setText("Rp. " + hargaNormal);
                 tvAlmt.setText(alamatLapangan);
+                tvHari.setText(hariBuka);
 
                 setCollapsingActionBar(namaLapangan);
             }

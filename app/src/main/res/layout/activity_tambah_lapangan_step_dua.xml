@@ -32,15 +32,15 @@
                 android:textColor="#13b879" />
         </LinearLayout>
 
-        <include layout="@layout/layout_kota"/>
+        <include layout="@layout/layout_kota" />
 
         <LinearLayout
             android:id="@+id/lytlp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginLeft="@dimen/size30"
             android:layout_marginRight="@dimen/size30"
+            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -98,13 +98,162 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="18dp"
-                    android:textColor="@color/clrAddLpng"
                     android:layout_weight="0.2"
                     android:text="@string/icon_add"
+                    android:textColor="@color/clrAddLpng"
                     android:textSize="20dp"
                     app:font="@string/font_icon"></bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutTelepon2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/size20"
+                android:alpha="0.5"
+                android:background="@drawable/texteditdark"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconTeleponTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/icon_phone"
+                    android:textSize="20dp"
+                    app:font="@string/font_icon">
+
+                </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputTelepon2"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0.8"
+                    android:theme="@style/TextLabel">
+
+                    <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
+                        android:id="@+id/eTTelepon2"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="15dp"
+                        android:drawableTint="@color/clrline"
+                        android:ems="10"
+                        android:hint="Telepon"
+                        android:inputType="phone"
+                        android:lines="3"
+                        android:textSize="12dp"
+                        android:textStyle="normal"
+                        app:font="@string/font_roboto" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconTeleponAdd2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/icon_add"
+                    android:textColor="@color/clrAddLpng"
+                    android:textSize="20dp"
+                    app:font="@string/font_icon" />
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconTeleponRemove2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/icon_remove"
+                    android:textColor="@color/colorSnackbar"
+                    android:textSize="20dp"
+                    app:font="@string/font_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutTelepon3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/size20"
+                android:alpha="0.5"
+                android:background="@drawable/texteditdark"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconTeleponTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/icon_phone"
+                    android:textSize="20dp"
+                    app:font="@string/font_icon">
+
+                </bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputTelepon3"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0.8"
+                    android:theme="@style/TextLabel">
+
+                    <bolalob.develops.stud11314025.availaballs.Widget.CustomFontEditTextView
+                        android:id="@+id/eTTelepon3"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="15dp"
+                        android:drawableTint="@color/clrline"
+                        android:ems="10"
+                        android:hint="Telepon"
+                        android:inputType="phone"
+                        android:lines="3"
+                        android:textSize="12dp"
+                        android:textStyle="normal"
+                        app:font="@string/font_roboto" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconTeleponAdd3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/icon_add"
+                    android:textColor="@color/clrAddLpng"
+                    android:textSize="20dp"
+                    app:font="@string/font_icon" />
+
+                <bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView
+                    android:id="@+id/iconTeleponRemove3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/icon_remove"
+                    android:textColor="@color/colorSnackbar"
+                    android:textSize="20dp"
+                    app:font="@string/font_icon" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

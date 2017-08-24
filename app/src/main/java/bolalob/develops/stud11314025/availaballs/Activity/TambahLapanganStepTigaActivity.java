@@ -76,25 +76,25 @@ public class TambahLapanganStepTigaActivity extends AppCompatActivity implements
     public String getSelectedHari() {
         String selectedHari = "";
         if (chSenin.isChecked()) {
-            selectedHari = selectedHari + chSenin.getText();
+            selectedHari = selectedHari + "senin";
         }
         if (chSelasa.isChecked()) {
-            selectedHari = selectedHari + "," + chSelasa.getText();
+            selectedHari = selectedHari + "," + "selasa";
         }
         if (chRabu.isChecked()) {
-            selectedHari = selectedHari + "," + chRabu.getText();
+            selectedHari = selectedHari + "," + "rabu";
         }
         if (chKamis.isChecked()) {
-            selectedHari = selectedHari + "," + chKamis.getText();
+            selectedHari = selectedHari + "," + "kamis";
         }
         if (chJumat.isChecked()) {
-            selectedHari = selectedHari + "," + chJumat.getText();
+            selectedHari = selectedHari + "," + "jumat";
         }
         if (chSabtu.isChecked()) {
-            selectedHari = selectedHari + "," + chSabtu.getText();
+            selectedHari = selectedHari + "," + "sabtu";
         }
         if (chMinggu.isChecked()) {
-            selectedHari = selectedHari + "," + chMinggu.getText();
+            selectedHari = selectedHari + "," + "minggu";
         }
 
         return selectedHari;

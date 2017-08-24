@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,6 +27,10 @@ import android.widget.Toast;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import bolalob.develops.stud11314025.availaballs.Model.Kota;
 import bolalob.develops.stud11314025.availaballs.Model.Lapangan;
 import bolalob.develops.stud11314025.availaballs.R;
 import bolalob.develops.stud11314025.availaballs.Widget.CustomFontTextView;
@@ -34,6 +40,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class TambahLapanganStepDuaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -43,6 +51,10 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     EditText etTelepon;
     @BindView(R.id.iconTeleponAdd)
     CustomFontTextView addTlp;
+    @BindView(R.id.eTTelepon2)
+    EditText etTelepon2;
+    @BindView(R.id.eTTelepon3)
+    EditText etTelepon3;
     @BindView(R.id.lytlp)
     LinearLayout ly;
     @BindView(R.id.txtCoordinatUpdate)
@@ -51,6 +63,13 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     Spinner spinnerJumlahLapangan;
     @BindView(R.id.spinnerKota)
     Spinner spinnerKota;
+    @BindView(R.id.layoutTelepon)
+    LinearLayout layoutTelepon;
+    @BindView(R.id.layoutTelepon2)
+    LinearLayout layoutTelepon2;
+    @BindView(R.id.layoutTelepon3)
+    LinearLayout layoutTelepon3;
+
 
     int PLACE_PICKER_REQUEST = 1;
 
@@ -65,6 +84,19 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         ButterKnife.bind(this);
         setStatusBarColor();
         addActionBar();
+
+        List<String> location = new ArrayList<>();
+
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Kota> realmResults = realm.where(Kota.class).findAll();
+        List<Kota> kotaResults = realm.copyFromRealm(realmResults);
+        for (int i = 0; i<kotaResults.size(); i++){
+            Kota tmpListKota = kotaResults.get(i);
+            Log.d("Data Kota" , tmpListKota.getLocation());
+            location.add(tmpListKota.getLocation());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_list_item_1, location);
+        spinnerKota.setAdapter(adapter);
 
         spinnerJumlahLapangan.setOnItemSelectedListener(this);
     }
@@ -135,31 +167,31 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         }
     }
 
-    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
-    void beforeTeleponTextChanged() {
-        final View lltelepon = findViewById(R.id.layoutTelepon);
-        lltelepon.setAlpha(0.5f);
-    }
+//    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.BEFORE_TEXT_CHANGED)
+//    void beforeTeleponTextChanged() {
+//        final View lltelepon = findViewById(R.id.layoutTelepon);
+//        lltelepon.setAlpha(0.5f);
+//    }
 
-    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.TEXT_CHANGED)
-    void onTeleponTextChanged() {
-        final View lltelepon = findViewById(R.id.layoutTelepon);
-        int length = etTelepon.getText().length();
-        if (length == 0) {
-            lltelepon.setAlpha(0.5f);
-        } else lltelepon.setAlpha(1.0f);
-    }
+//    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.TEXT_CHANGED)
+//    void onTeleponTextChanged() {
+//        final View lltelepon = findViewById(R.id.layoutTelepon);
+//        int length = etTelepon.getText().length();
+//        if (length == 0) {
+//            lltelepon.setAlpha(0.5f);
+//        } else lltelepon.setAlpha(1.0f);
+//    }
 
-    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void afterTeleponTextChanged() {
-        final View lltelepon = findViewById(R.id.layoutTelepon);
-        int length = etTelepon.getText().length();
-        if (length == 0) {
-            lltelepon.setAlpha(0.5f);
-        } else {
-            lltelepon.setAlpha(1.0f);
-        }
-    }
+//    @OnTextChanged(value = R.id.eTTelepon, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+//    void afterTeleponTextChanged() {
+//        final View lltelepon = findViewById(R.id.layoutTelepon);
+//        int length = etTelepon.getText().length();
+//        if (length == 0) {
+//            lltelepon.setAlpha(0.5f);
+//        } else {
+//            lltelepon.setAlpha(1.0f);
+//        }
+//    }
 
     public void addActionBar() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -211,11 +243,16 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         String kota = spinnerKota.getSelectedItem().toString();
         String jumlahLapangan = spinnerJumlahLapangan.getSelectedItem().toString();
         String phone = etTelepon.getText().toString();
+        String phone2 = etTelepon2.getText().toString();
+        String phone3 = etTelepon3.getText().toString();
+
+        String teleponResult = (phone + ", " + phone2 + ", " + phone3);
+        System.out.println(teleponResult);
 
         Lapangan lapangan = new Lapangan();
         lapangan.setDetailLocation(alamatLapangan);
         lapangan.setLocation(kota);
-        lapangan.setPhone(phone);
+        lapangan.setPhone(teleponResult);
         lapangan.setNumberOfField(jumlahLapangan);
         lapangan.setLongitude(longitude);
         lapangan.setLatitude(latitude);
@@ -227,47 +264,32 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     }
 
     @OnClick(R.id.iconTeleponAdd)
-    void addTelepon() {
-        final LinearLayout parent = (LinearLayout) findViewById(R.id.lytlp);
+    void addTelepon(){
+        layoutTelepon2.setVisibility(View.VISIBLE);
+    }
 
-        final View tv = LayoutInflater.from(this).inflate(R.layout.list_edittext_telepon, null);
+    @OnClick(R.id.iconTeleponAdd2)
+    void addTelepon2(){
+        layoutTelepon3.setVisibility(View.VISIBLE);
+    }
 
+    @OnClick(R.id.iconTeleponRemove2)
+    void removeTelepon2(){
+        layoutTelepon2.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.iconTeleponRemove3)
+    void removeTelepon3(){
+        LinearLayout parent = (LinearLayout)findViewById(R.id.lytlp);
         int count = parent.getChildCount();
-
         int maxPhoneNumber = 3;
-
-        if (count < maxPhoneNumber) {
-            addTlp.setVisibility(View.GONE);
-            parent.addView(tv);
-        } else {
-            Toast.makeText(ly.getContext(), "Hanya dapat menambahkan 3 nomor telepon.", Toast.LENGTH_LONG).show();
+        if (count < 3){
+            layoutTelepon3.setVisibility(View.GONE);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Maksimal 3 nomor telepon", Toast.LENGTH_SHORT).show();
         }
 
-        CustomFontTextView addIcon = ButterKnife.findById(tv, R.id.iconTeleponAdd);
-        addIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addTelepon();
-            }
-        });
-
-        CustomFontTextView removeIcon = ButterKnife.findById(tv, R.id.iconTeleponRemove);
-        removeIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int count = parent.getChildCount();
-                int maxChild = 2;
-
-                if (count == maxChild) {
-                    ((LinearLayout) tv.getParent()).removeView(tv);
-                    addTlp.setVisibility(View.VISIBLE);
-
-                } else {
-                    ((LinearLayout) tv.getParent()).removeView(tv);
-                    count--;
-                }
-            }
-        });
     }
 
 }

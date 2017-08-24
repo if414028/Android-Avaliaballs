@@ -87,12 +87,10 @@ public class LocationByMapActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-
         if (marker.equals(position1)) {
             Intent intent = new Intent(LocationByMapActivity.this, DetailLapanganActivity.class);
             intent.putExtra("NAMALAP_KEY", "GFK");
             intent.putExtra("LOKASI_KEY", "Kuningan");
-//            intent.putExtra("PHOTO_KEY", Photo);
             intent.putExtra("PHONENUM_KEY", "0812345678");
             intent.putExtra("JUMLAHLAP_KEY", "2");
             intent.putExtra("OPENHOUR_KEY", "08:00");
@@ -104,7 +102,6 @@ public class LocationByMapActivity extends AppCompatActivity implements OnMapRea
             Intent intent = new Intent(LocationByMapActivity.this, DetailLapanganActivity.class);
             intent.putExtra("NAMALAP_KEY", "GFK");
             intent.putExtra("LOKASI_KEY", "Kuningan");
-//            intent.putExtra("PHOTO_KEY", Photo);
             intent.putExtra("PHONENUM_KEY", "0812345678");
             intent.putExtra("JUMLAHLAP_KEY", "2");
             intent.putExtra("OPENHOUR_KEY", "08:00");
@@ -114,7 +111,6 @@ public class LocationByMapActivity extends AppCompatActivity implements OnMapRea
             Intent intent = new Intent(LocationByMapActivity.this, DetailLapanganActivity.class);
             intent.putExtra("NAMALAP_KEY", "GFK");
             intent.putExtra("LOKASI_KEY", "Kuningan");
-//            intent.putExtra("PHOTO_KEY", Photo);
             intent.putExtra("PHONENUM_KEY", "0812345678");
             intent.putExtra("JUMLAHLAP_KEY", "2");
             intent.putExtra("OPENHOUR_KEY", "08:00");
