@@ -124,7 +124,7 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("%s", place.getName());
+                String toastMsg = String.format("%s", place.getLatLng());
                 textCoordinatUpdate.setText(toastMsg);
                 Toast.makeText(TambahLapanganStepDuaActivity.this, toastMsg, Toast.LENGTH_LONG).show();
             }
@@ -235,11 +235,14 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
     public void nextStep(View view) {
         String alamatLapangan = etLokasi.getText().toString();
         String coordinatLapangan = textCoordinatUpdate.getText().toString();
-        String[] temp;
-        String delimiter = " ";
-        temp = coordinatLapangan.split(delimiter);
-        String longitude = temp[0];
-        String latitude = temp[1];
+
+        String[] tmpSplit = coordinatLapangan.split(",");
+        String tmpDepan = tmpSplit[0];
+        String tmpBelakang = tmpSplit[1];
+
+        String longitude = tmpDepan.substring(10, tmpDepan.length());
+        String latitude = tmpBelakang.substring(0, tmpBelakang.length()-1);
+
         String kota = spinnerKota.getSelectedItem().toString();
         String jumlahLapangan = spinnerJumlahLapangan.getSelectedItem().toString();
         String phone = etTelepon.getText().toString();
@@ -247,7 +250,8 @@ public class TambahLapanganStepDuaActivity extends AppCompatActivity implements 
         String phone3 = etTelepon3.getText().toString();
 
         String teleponResult = (phone + ", " + phone2 + ", " + phone3);
-        System.out.println(teleponResult);
+//        System.out.println(teleponResult);
+//        System.out.println(longitude + latitude);
 
         Lapangan lapangan = new Lapangan();
         lapangan.setDetailLocation(alamatLapangan);

@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     android:id="@+id/map"
     tools:context=".Activity.LocationByMapActivity"
-    android:name="com.google.android.gms.maps.SupportMapFragment" />
+    android:name="com.google.android.gms.maps.SupportMapFragment" >
+
+    <ProgressBar
+        android:id="@+id/progressBarMap"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/progress"
+        android:visibility="gone" />
+
+</fragment>
